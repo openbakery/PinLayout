@@ -1,0 +1,13 @@
+plugins {
+  id "org.openbakery.xcode-plugin" version "0.14.4"
+}
+
+
+xcodebuild {
+	scheme = 'PinLayout'
+  target = 'PinLayout'
+	simulator = true
+	destination = ['iPhone 7']
+  
+}
+

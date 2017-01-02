@@ -1,0 +1,7 @@
+.gradle/
+.idea/
+Cartfile.resolved
+Carthage/
+PinLayout.xcodeproj/project.xcworkspace/
+PinLayout.xcodeproj/xcuserdata/
+build/
