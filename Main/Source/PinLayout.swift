@@ -370,7 +370,7 @@ open class PinLayout: NSObject, NSCoding {
 		self.setEqualConstantOfView(view, andView: secondView, withAttribute: .height, withPriority:1000, withMultiplier:multiplier)
 	}
 
-	@objc @discardableResult open func setSameWidthOfView(_ view: UIView, andView secondView: UIView) {
+	@objc open func setSameWidthOfView(_ view: UIView, andView secondView: UIView) {
 		self.setEqualConstantOfView(view, andView: secondView, withAttribute: .width)
 	}
 
