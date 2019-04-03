@@ -20,6 +20,15 @@
 		A7AF81861E1A59E800BCF7B4 /* Hamcrest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7AF81591E1A4F9D00BCF7B4 /* Hamcrest.framework */; };
 		A7AF81881E1A5A9000BCF7B4 /* Hamcrest.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = A7AF81591E1A4F9D00BCF7B4 /* Hamcrest.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A7AF81891E1A5AA200BCF7B4 /* PinLayoutTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355B2C6D12D766AA75FDEE0C /* PinLayoutTest.swift */; };
+		A7BE8D2E2254FE7900BCC009 /* BasePinLayoutTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7BE8D2B2254FE7900BCC009 /* BasePinLayoutTest.swift */; };
+		A7BE8D2F2254FE7900BCC009 /* PinLayout_Readable_Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7BE8D2C2254FE7900BCC009 /* PinLayout_Readable_Test.swift */; };
+		A7BE8D302254FE7900BCC009 /* PinLayout_iOS10_Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7BE8D2D2254FE7900BCC009 /* PinLayout_iOS10_Test.swift */; };
+		A7BE8D322254FF7800BCC009 /* XCTestCaseViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7BE8D312254FF7800BCC009 /* XCTestCaseViewControllerExtension.swift */; };
+		A7BE8D3A2254FFAB00BCC009 /* ConstraintAnchorMatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7BE8D352254FFAB00BCC009 /* ConstraintAnchorMatcher.swift */; };
+		A7BE8D3B2254FFAB00BCC009 /* ConstraintEqualMatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7BE8D362254FFAB00BCC009 /* ConstraintEqualMatcher.swift */; };
+		A7BE8D3C2254FFAB00BCC009 /* ContraintAlignMatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7BE8D372254FFAB00BCC009 /* ContraintAlignMatcher.swift */; };
+		A7BE8D3D2254FFAB00BCC009 /* ConstraintConstantMatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7BE8D382254FFAB00BCC009 /* ConstraintConstantMatcher.swift */; };
+		A7BE8D3E2254FFAB00BCC009 /* ConstraintMatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7BE8D392254FFAB00BCC009 /* ConstraintMatcher.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +88,15 @@
 		A7AF81561E1A443E00BCF7B4 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Platforms/iPhoneOS.platform/Developer/Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		A7AF81591E1A4F9D00BCF7B4 /* Hamcrest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Hamcrest.framework; path = Carthage/Build/iOS/Hamcrest.framework; sourceTree = "<group>"; };
 		A7AF815F1E1A52A800BCF7B4 /* PinLayoutDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PinLayoutDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A7BE8D2B2254FE7900BCC009 /* BasePinLayoutTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasePinLayoutTest.swift; sourceTree = "<group>"; };
+		A7BE8D2C2254FE7900BCC009 /* PinLayout_Readable_Test.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinLayout_Readable_Test.swift; sourceTree = "<group>"; };
+		A7BE8D2D2254FE7900BCC009 /* PinLayout_iOS10_Test.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinLayout_iOS10_Test.swift; sourceTree = "<group>"; };
+		A7BE8D312254FF7800BCC009 /* XCTestCaseViewControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XCTestCaseViewControllerExtension.swift; sourceTree = "<group>"; };
+		A7BE8D352254FFAB00BCC009 /* ConstraintAnchorMatcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConstraintAnchorMatcher.swift; sourceTree = "<group>"; };
+		A7BE8D362254FFAB00BCC009 /* ConstraintEqualMatcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConstraintEqualMatcher.swift; sourceTree = "<group>"; };
+		A7BE8D372254FFAB00BCC009 /* ContraintAlignMatcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContraintAlignMatcher.swift; sourceTree = "<group>"; };
+		A7BE8D382254FFAB00BCC009 /* ConstraintConstantMatcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConstraintConstantMatcher.swift; sourceTree = "<group>"; };
+		A7BE8D392254FFAB00BCC009 /* ConstraintMatcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConstraintMatcher.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,6 +168,11 @@
 		355B278D8126DFFDA017F00E /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				A7BE8D342254FF8E00BCC009 /* Matchers */,
+				A7BE8D332254FF8100BCC009 /* Extension */,
+				A7BE8D2B2254FE7900BCC009 /* BasePinLayoutTest.swift */,
+				A7BE8D2D2254FE7900BCC009 /* PinLayout_iOS10_Test.swift */,
+				A7BE8D2C2254FE7900BCC009 /* PinLayout_Readable_Test.swift */,
 				355B2C6D12D766AA75FDEE0C /* PinLayoutTest.swift */,
 			);
 			path = Source;
@@ -217,6 +240,26 @@
 				A7AF81561E1A443E00BCF7B4 /* XCTest.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A7BE8D332254FF8100BCC009 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				A7BE8D312254FF7800BCC009 /* XCTestCaseViewControllerExtension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		A7BE8D342254FF8E00BCC009 /* Matchers */ = {
+			isa = PBXGroup;
+			children = (
+				A7BE8D352254FFAB00BCC009 /* ConstraintAnchorMatcher.swift */,
+				A7BE8D382254FFAB00BCC009 /* ConstraintConstantMatcher.swift */,
+				A7BE8D362254FFAB00BCC009 /* ConstraintEqualMatcher.swift */,
+				A7BE8D392254FFAB00BCC009 /* ConstraintMatcher.swift */,
+				A7BE8D372254FFAB00BCC009 /* ContraintAlignMatcher.swift */,
+			);
+			path = Matchers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -296,26 +339,29 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0820;
-				LastUpgradeCheck = 0820;
+				LastUpgradeCheck = 1020;
 				ORGANIZATIONNAME = org.openbakery;
 				TargetAttributes = {
 					A7AF813A1E1A416000BCF7B4 = {
 						CreatedOnToolsVersion = 8.2.1;
+						LastSwiftMigration = 1020;
 						ProvisioningStyle = Automatic;
 					};
 					A7AF81431E1A416000BCF7B4 = {
 						CreatedOnToolsVersion = 8.2.1;
+						LastSwiftMigration = 1020;
 						ProvisioningStyle = Automatic;
 					};
 					A7AF815E1E1A52A800BCF7B4 = {
 						CreatedOnToolsVersion = 8.2.1;
+						LastSwiftMigration = 1020;
 						ProvisioningStyle = Automatic;
 					};
 				};
 			};
 			buildConfigurationList = A7AF81351E1A416000BCF7B4 /* Build configuration list for PBXProject "PinLayout" */;
 			compatibilityVersion = "Xcode 8.0";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
@@ -372,7 +418,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A7BE8D3A2254FFAB00BCC009 /* ConstraintAnchorMatcher.swift in Sources */,
+				A7BE8D322254FF7800BCC009 /* XCTestCaseViewControllerExtension.swift in Sources */,
+				A7BE8D302254FE7900BCC009 /* PinLayout_iOS10_Test.swift in Sources */,
+				A7BE8D2E2254FE7900BCC009 /* BasePinLayoutTest.swift in Sources */,
+				A7BE8D3B2254FFAB00BCC009 /* ConstraintEqualMatcher.swift in Sources */,
+				A7BE8D3E2254FFAB00BCC009 /* ConstraintMatcher.swift in Sources */,
 				A7AF81891E1A5AA200BCF7B4 /* PinLayoutTest.swift in Sources */,
+				A7BE8D2F2254FE7900BCC009 /* PinLayout_Readable_Test.swift in Sources */,
+				A7BE8D3D2254FFAB00BCC009 /* ConstraintConstantMatcher.swift in Sources */,
+				A7BE8D3C2254FFAB00BCC009 /* ContraintAlignMatcher.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -416,20 +471,29 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -453,12 +517,13 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -469,20 +534,29 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -500,10 +574,11 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -527,7 +602,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = org.openbakery.PinLayout;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -547,7 +622,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = org.openbakery.PinLayout;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
@@ -564,7 +639,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.openbakery.PinLayoutTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -581,7 +656,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.openbakery.PinLayoutTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
@@ -595,7 +670,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.openbakery.PinLayoutDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -609,7 +684,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.openbakery.PinLayoutDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};

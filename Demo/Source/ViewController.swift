@@ -24,8 +24,9 @@ class ViewController: UIViewController {
 		button.setTitleColor(UIColor.red, for: .highlighted)
 		view.addSubview(button)
 
-		layout.pinView(button, toEdge:.top, gap:44.0)
-		layout.horizontalCenterView(button)
+		
+		layout.pin(view:button, to:.topSafeArea, gap:44.0)
+		layout.horizontalCenter(view: button)
 
 	}
 

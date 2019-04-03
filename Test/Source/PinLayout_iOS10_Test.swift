@@ -1,0 +1,55 @@
+//
+// Created by René Pirringer
+//
+
+
+import Foundation
+import XCTest
+import Hamcrest
+@testable import PinLayout
+
+class PinLayout_For_isOS10: PinLayout {
+
+	override func pinToGuide(for view: UIView, superview: UIView, edge: PinLayoutHelperEdge, gap: Float) -> NSLayoutConstraint? {
+		return nil
+	}
+}
+
+class PinLayout_iOS10_Test :BasePinLayoutTest {
+
+
+	override func setUp() {
+		super.setUp()
+		pinLayout = PinLayout_For_isOS10()
+	}
+
+
+
+
+	func test_iOS10_safeGuide_Top_pins_using_topLayoutGuide() {
+
+		let viewController = UIViewController()
+		show(viewController:viewController)
+
+		viewController.view.addSubview(view)
+
+		pinLayout.pin(view: view, to: .topSafeArea, withGuide: viewController.topLayoutGuide)
+
+		let constraint = self.constraintOnView(viewController.view, firstAttribute: .top, secondAttribute: .bottom)
+		assertThat(constraint, present())
+
+		if let constraintUnwrapped = constraint {
+			assertThat(constraintUnwrapped.secondItem, present())
+			if let secondItemView = constraintUnwrapped.secondItem as? UILayoutSupport {
+				assertThat(secondItemView === viewController.topLayoutGuide)
+			} else {
+				XCTFail("secondItem is not a UILayoutSupport")
+			}
+			assertThat(constraintUnwrapped.constant, equalTo(0.0))
+			assertThat(constraintUnwrapped.relation, equalTo(.equal))
+		}
+
+	}
+
+}
+
