@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 48;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -13,12 +13,11 @@
 		355B262022C67FE64614E81E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 355B2E12FCFE60C32F9115E3 /* Assets.xcassets */; };
 		355B2A9E684A842FC7DC9046 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355B22F6E3D2252F9ADCBD1F /* ViewController.swift */; };
 		355B2DB65EED796E43DD3603 /* PinLayout.h in Headers */ = {isa = PBXBuildFile; fileRef = 355B22DCF7EA5B11594D9593 /* PinLayout.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A71E3B1E25A867C900F02CC6 /* Hamcrest.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = A71E3B1D25A867C900F02CC6 /* Hamcrest.xcframework */; };
 		A7AF81451E1A416000BCF7B4 /* PinLayout.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7AF813B1E1A416000BCF7B4 /* PinLayout.framework */; };
 		A7AF81571E1A443E00BCF7B4 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7AF81561E1A443E00BCF7B4 /* XCTest.framework */; };
 		A7AF817F1E1A55A000BCF7B4 /* PinLayout.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7AF813B1E1A416000BCF7B4 /* PinLayout.framework */; };
 		A7AF81801E1A55A000BCF7B4 /* PinLayout.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A7AF813B1E1A416000BCF7B4 /* PinLayout.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		A7AF81861E1A59E800BCF7B4 /* Hamcrest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7AF81591E1A4F9D00BCF7B4 /* Hamcrest.framework */; };
-		A7AF81881E1A5A9000BCF7B4 /* Hamcrest.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = A7AF81591E1A4F9D00BCF7B4 /* Hamcrest.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A7AF81891E1A5AA200BCF7B4 /* PinLayoutTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355B2C6D12D766AA75FDEE0C /* PinLayoutTest.swift */; };
 		A7BE8D2E2254FE7900BCC009 /* BasePinLayoutTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7BE8D2B2254FE7900BCC009 /* BasePinLayoutTest.swift */; };
 		A7BE8D2F2254FE7900BCC009 /* PinLayout_Readable_Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7BE8D2C2254FE7900BCC009 /* PinLayout_Readable_Test.swift */; };
@@ -66,7 +65,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				A7AF81881E1A5A9000BCF7B4 /* Hamcrest.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,10 +81,10 @@
 		355B2CD3C63C48E5B91AADC3 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		355B2E12FCFE60C32F9115E3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		355B2ED3033704BF995C2953 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.info; path = Info.plist; sourceTree = "<group>"; };
+		A71E3B1D25A867C900F02CC6 /* Hamcrest.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = Hamcrest.xcframework; path = Carthage/Build/Hamcrest.xcframework; sourceTree = "<group>"; };
 		A7AF813B1E1A416000BCF7B4 /* PinLayout.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PinLayout.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7AF81441E1A416000BCF7B4 /* PinLayoutTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PinLayoutTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7AF81561E1A443E00BCF7B4 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Platforms/iPhoneOS.platform/Developer/Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		A7AF81591E1A4F9D00BCF7B4 /* Hamcrest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Hamcrest.framework; path = Carthage/Build/iOS/Hamcrest.framework; sourceTree = "<group>"; };
 		A7AF815F1E1A52A800BCF7B4 /* PinLayoutDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PinLayoutDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7BE8D2B2254FE7900BCC009 /* BasePinLayoutTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasePinLayoutTest.swift; sourceTree = "<group>"; };
 		A7BE8D2C2254FE7900BCC009 /* PinLayout_Readable_Test.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinLayout_Readable_Test.swift; sourceTree = "<group>"; };
@@ -113,7 +111,7 @@
 			files = (
 				A7AF81571E1A443E00BCF7B4 /* XCTest.framework in Frameworks */,
 				A7AF81451E1A416000BCF7B4 /* PinLayout.framework in Frameworks */,
-				A7AF81861E1A59E800BCF7B4 /* Hamcrest.framework in Frameworks */,
+				A71E3B1E25A867C900F02CC6 /* Hamcrest.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -236,7 +234,7 @@
 		A7AF81551E1A443D00BCF7B4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				A7AF81591E1A4F9D00BCF7B4 /* Hamcrest.framework */,
+				A71E3B1D25A867C900F02CC6 /* Hamcrest.xcframework */,
 				A7AF81561E1A443E00BCF7B4 /* XCTest.framework */,
 			);
 			name = Frameworks;
@@ -577,7 +575,8 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -598,7 +597,11 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = Main/Resource/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = org.openbakery.PinLayout;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -618,7 +621,11 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = Main/Resource/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = org.openbakery.PinLayout;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -633,10 +640,14 @@
 				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)/Carthage/Build/",
 				);
 				INFOPLIST_FILE = Test/Resource/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = org.openbakery.PinLayoutTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -650,10 +661,14 @@
 				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)/Carthage/Build/",
 				);
 				INFOPLIST_FILE = Test/Resource/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = org.openbakery.PinLayoutTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -667,7 +682,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = ED5DV56QPQ;
 				INFOPLIST_FILE = Demo/Resource/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = org.openbakery.PinLayoutDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -681,7 +699,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = ED5DV56QPQ;
 				INFOPLIST_FILE = Demo/Resource/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = org.openbakery.PinLayoutDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
