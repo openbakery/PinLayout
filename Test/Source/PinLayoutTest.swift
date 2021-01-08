@@ -563,7 +563,7 @@ class PinLayoutTest: PinLayout_Base_Test {
 
 
 	@available(iOS 11, *)
-	func test_pin_leading_with_saveGuide() {
+	func test_pin_leading_with_safeGuide() {
 		toView.addSubview(view)
 		pinLayout.pin(view:view, to:.leadingSafeArea)
 		assertThat(view, isPinnedToSafeAreaAnchor(.leading))
@@ -571,7 +571,7 @@ class PinLayoutTest: PinLayout_Base_Test {
 	}
 	
 	@available(iOS 11, *)
-	func test_pin_leading_with_saveGuide_and_gap() {
+	func test_pin_leading_with_safeGuide_and_gap() {
 		toView.addSubview(view)
 		if let constraint = pinLayout.pin(view:view, to:.leadingSafeArea) {
 			constraint.constant = 200
@@ -582,7 +582,7 @@ class PinLayoutTest: PinLayout_Base_Test {
 	
 
 	@available(iOS 11, *)
-	func test_pin_trailing_with_saveGuide() {
+	func test_pin_trailing_with_safeGuide() {
 		toView.addSubview(view)
 		pinLayout.pin(view:view, to:.trailingSafeArea)
 		assertThat(view, isPinnedToSafeAreaAnchor(.trailing))
@@ -590,7 +590,7 @@ class PinLayoutTest: PinLayout_Base_Test {
 	}
 
 	@available(iOS 11, *)
-	func test_pin_top_with_saveGuide() {
+	func test_pin_top_with_safeGuide() {
 		toView.addSubview(view)
 		pinLayout.pin(view:view, to:.topSafeArea)
 		assertThat(view, isPinnedToSafeAreaAnchor(.top))
@@ -598,7 +598,7 @@ class PinLayoutTest: PinLayout_Base_Test {
 	}
 
 	@available(iOS 11, *)
-	func test_pin_bottom_with_saveGuide() {
+	func test_pin_bottom_with_safeGuide() {
 		toView.addSubview(view)
 		pinLayout.pin(view:view, to:.bottomSafeArea)
 		assertThat(view, isPinnedToSafeAreaAnchor(.bottom))

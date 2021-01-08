@@ -48,7 +48,7 @@ extension PinLayout {
 	}
 
 
-	open func saveAreaCenter(view: UIView, with other: UIView? = nil) -> [NSLayoutConstraint] {
+	open func safeAreaCenter(view: UIView, with other: UIView? = nil) -> [NSLayoutConstraint] {
 		var result = [NSLayoutConstraint]()
 
 		if let constraint = self.centerX(view: view, with: other) {
