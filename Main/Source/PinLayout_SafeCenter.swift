@@ -48,6 +48,7 @@ extension PinLayout {
 	}
 
 
+	@discardableResult
 	open func safeAreaCenter(view: UIView, with other: UIView? = nil) -> [NSLayoutConstraint] {
 		var result = [NSLayoutConstraint]()
 
