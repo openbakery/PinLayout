@@ -1,5 +1,6 @@
 //
-// Created by René Pirringer
+// Created by Rene Pirringer on 2019-01-14.
+// Copyright (c) 2019 Rene Pirringer. All rights reserved.
 //
 
 import Foundation
@@ -8,8 +9,7 @@ import Hamcrest
 @testable import PinLayout
 
 
-
-class PinLayout_Readable_Test : BasePinLayoutTest {
+class PinLayout_Readable_Test : PinLayout_Base_Test {
 
 
 	@available(iOS 11, *)

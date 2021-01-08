@@ -1,5 +1,5 @@
 //
-// Created by René Pirringer
+// Created by Rene Pirringer on 01.08.16.
 //
 
 import Foundation
@@ -11,7 +11,7 @@ open class PinLayout: NSObject, NSCoding {
 
 	let top = NSLayoutConstraint.Attribute.top
 
-	var recordedConstraints: [NSLayoutConstraint]?
+	public var recordedConstraints: [NSLayoutConstraint]?
 
 	@objc public override init() {
 	}
@@ -25,7 +25,9 @@ open class PinLayout: NSObject, NSCoding {
 
 	@objc(OBPinLayoutDefaults) public enum PinLayoutDefaults: Int {
 		case cellHeight = 1
-		case insets
+		case cellMargin
+		case cellIconWidth
+		case margin
 	}
 
 
@@ -72,12 +74,17 @@ open class PinLayout: NSObject, NSCoding {
 		return nil
 	}
 
-	@objc open func defaultsFor(_ defaults: PinLayoutDefaults) -> Float {
+	@objc(valueFor:)
+	open func value(for defaults: PinLayoutDefaults) -> Float {
 		switch (defaults) {
 		case .cellHeight:
 			return 44.0
-		case .insets:
-			return 16.0
+		case .cellMargin:
+			return 15.0
+		case .cellIconWidth:
+			return 29.0
+		case .margin:
+			return 8
 		}
 	}
 
@@ -107,9 +114,6 @@ open class PinLayout: NSObject, NSCoding {
 	@discardableResult
 	open func pin(view: UIView, to edge: PinLayoutHelperEdge, gap: Float, relatedBy relation: NSLayoutConstraint.Relation) -> NSLayoutConstraint? {
 		if let superview = view.superview {
-			if let constraint = self.pinToGuide(for: view, superview: superview, edge: edge, gap: gap) {
-				return constraint
-			}
 			return self.pin(view: view, to: edge, of: superview, gap: gap, multiplier: 1.0, relatedBy: relation)
 		}
 		return nil
@@ -118,6 +122,7 @@ open class PinLayout: NSObject, NSCoding {
 
 	open func pinToGuide(for view: UIView, superview: UIView, edge: PinLayoutHelperEdge, gap: Float) -> NSLayoutConstraint? {
 		var constraint : NSLayoutConstraint?
+		view.translatesAutoresizingMaskIntoConstraints = false
 		if #available(iOS 11, *) {
 			switch edge {
 			case .leadingSafeArea:
@@ -167,6 +172,11 @@ open class PinLayout: NSObject, NSCoding {
 
 	@objc @discardableResult open func pin(view: UIView, to edge: PinLayoutHelperEdge, of ofView: UIView, gap: Float, multiplier: Float, relatedBy relation: NSLayoutConstraint.Relation = .equal) -> NSLayoutConstraint? {
 		if let commonSuperView = self.findSuperViewFor(view, ofView) {
+			
+			if let constraint = self.pinToGuide(for: view, superview: commonSuperView, edge: edge, gap: gap) {
+				return constraint
+			}
+			
 			view.translatesAutoresizingMaskIntoConstraints = false
 
 			var firstView = view
@@ -312,69 +322,83 @@ open class PinLayout: NSObject, NSCoding {
 		}
 	}
 
-	@objc @discardableResult open func setMaxHeightOfView(_ view: UIView, toValue: Float) -> NSLayoutConstraint {
-		return self.setMaxHeightOfView(view, toValue: toValue, withPriority: UILayoutPriority.required)
+	@objc(setMaxHeightOfView:to:)
+	@discardableResult open func setMaxHeight(of view: UIView, to value: Float) -> NSLayoutConstraint {
+		return self.setMaxHeight(of: view, to: value, priority: UILayoutPriority.required)
 	}
 
-	@objc @discardableResult open func setMaxHeightOfView(_ view: UIView, toValue: Float, withPriority: UILayoutPriority) -> NSLayoutConstraint {
-		return self.setConstantOfView(view, toConstant: toValue, ofAttribute: .height, toRelation: .lessThanOrEqual, withPriority: withPriority)
+	@objc(setMaxHeightOfView:to:priority:)
+	@discardableResult open func setMaxHeight(of view: UIView, to value: Float, priority: UILayoutPriority) -> NSLayoutConstraint {
+		return self.setConstant(view: view, constant: value, attribute: .height, relation: .lessThanOrEqual, priority: priority)
 	}
 
-	@objc @discardableResult open func setMaxWidthOfView(_ view: UIView, toValue: Float) -> NSLayoutConstraint {
-		return self.setMaxWidthOfView(view, toValue: toValue, withPriority: UILayoutPriority.required)
+	@objc(setMaxWidthOfView:to:)
+	@discardableResult open func setMaxWidth(of view: UIView, to value: Float) -> NSLayoutConstraint {
+		return self.setMaxWidth(of: view, to: value, priority: UILayoutPriority.required)
 	}
 
-	@objc @discardableResult open func setMaxWidthOfView(_ view: UIView, toValue: Float, withPriority: UILayoutPriority) -> NSLayoutConstraint {
-		return self.setConstantOfView(view, toConstant: toValue, ofAttribute: .width, toRelation: .lessThanOrEqual, withPriority: withPriority)
+	@objc(setMaxWidthOfView:to:priority:)
+	@discardableResult open func setMaxWidth(of view: UIView, to value: Float, priority: UILayoutPriority) -> NSLayoutConstraint {
+		return self.setConstant(view: view, constant: value, attribute: .width, relation: .lessThanOrEqual, priority: priority)
 	}
 
-	@objc @discardableResult open func setMinHeightOfView(_ view: UIView, toValue: Float) -> NSLayoutConstraint {
-		return self.setMinHeightOfView(view, toValue: toValue, withPriority: UILayoutPriority.required)
+	@objc(setMinHeightOfView:to:)
+	@discardableResult open func setMinHeight(of view: UIView, to value: Float) -> NSLayoutConstraint {
+		return self.setMinHeight(of: view, to: value, priority: UILayoutPriority.required)
 	}
 
-	@objc @discardableResult open func setMinHeightOfView(_ view: UIView, toValue: Float, withPriority: UILayoutPriority) -> NSLayoutConstraint {
-		return self.setConstantOfView(view, toConstant: toValue, ofAttribute: .height, toRelation: .greaterThanOrEqual, withPriority: withPriority)
+	@objc(setMinHeightOfView:to:priority:)
+	@discardableResult open func setMinHeight(of view: UIView, to value: Float, priority: UILayoutPriority) -> NSLayoutConstraint {
+		return self.setConstant(view: view, constant: value, attribute: .height, relation: .greaterThanOrEqual, priority: priority)
 	}
 
-	@objc @discardableResult open func setMinWidthOfView(_ view: UIView, toValue: Float) -> NSLayoutConstraint {
-		return self.setMinWidthOfView(view, toValue: toValue, withPriority: UILayoutPriority.required)
+	@objc(setMinWidthOfView:to:)
+	@discardableResult open func setMinWidth(of view: UIView, to value: Float) -> NSLayoutConstraint {
+		return self.setMinWidth(of: view, to: value, priority: UILayoutPriority.required)
 	}
 
-	@objc @discardableResult open func setMinWidthOfView(_ view: UIView, toValue: Float, withPriority: UILayoutPriority) -> NSLayoutConstraint {
-		return self.setConstantOfView(view, toConstant: toValue, ofAttribute: .width, toRelation: .greaterThanOrEqual, withPriority: withPriority)
-	}
-
-
-	@objc(setHeightOfView: toValue:)
-	@discardableResult open func setHeight(of view: UIView, toValue: Float) -> NSLayoutConstraint {
-		return self.setHeight(of: view, toValue: toValue, withPriority: UILayoutPriority.required)
-	}
-
-	@objc(setHeightOfView: toValue:withPriority:)
-	@discardableResult open func setHeight(of view: UIView, toValue: Float, withPriority: UILayoutPriority) -> NSLayoutConstraint {
-		return self.setConstantOfView(view, toConstant: toValue, ofAttribute: .height, withPriority: withPriority)
-	}
-
-	@objc(setWidthOfView: toValue:)
-	@discardableResult open func setWidth(of view: UIView, toValue: Float) -> NSLayoutConstraint {
-		return self.setWidth(of: view, toValue: toValue, withPriority: UILayoutPriority.required)
-	}
-
-	@objc(setWidthOfView: toValue:withPriority:)
-	@discardableResult open func setWidth(of view: UIView, toValue: Float, withPriority: UILayoutPriority) -> NSLayoutConstraint {
-		return self.setConstantOfView(view, toConstant: toValue, ofAttribute: .width, withPriority: withPriority)
+	@objc(setMinWidthOfView:to:priority:)
+	@discardableResult
+	open func setMinWidth(of view: UIView, to value: Float, priority: UILayoutPriority) -> NSLayoutConstraint {
+		return self.setConstant(view: view, constant: value, attribute: .width, relation: .greaterThanOrEqual, priority: priority)
 	}
 
 
-	@objc @discardableResult open func setConstantOfView(_ view: UIView, toConstant: Float, ofAttribute: NSLayoutConstraint.Attribute) -> NSLayoutConstraint {
-		return self.setConstantOfView(view, toConstant: toConstant, ofAttribute: ofAttribute, toRelation: .equal, withPriority: UILayoutPriority.required)
+	@objc(setHeightOfView:to:)
+	@discardableResult open func setHeight(of view: UIView, to value: Float) -> NSLayoutConstraint {
+		return self.setHeight(of: view, to: value, priority: UILayoutPriority.required)
 	}
 
-	@objc @discardableResult open func setConstantOfView(_ view: UIView, toConstant: Float, ofAttribute: NSLayoutConstraint.Attribute, withPriority: UILayoutPriority) -> NSLayoutConstraint {
-		return self.setConstantOfView(view, toConstant: toConstant, ofAttribute: ofAttribute, toRelation: .equal, withPriority: withPriority)
+	@objc(setHeightOfView:to:priority:)
+	@discardableResult open func setHeight(of view: UIView, to value: Float, priority: UILayoutPriority) -> NSLayoutConstraint {
+		return self.setConstant(view: view, constant: value, attribute: .height, priority: priority)
 	}
 
-	@objc @discardableResult open func setConstantOfView(_ view: UIView, toConstant constant: Float, ofAttribute attribute: NSLayoutConstraint.Attribute, toRelation relation: NSLayoutConstraint.Relation, withPriority priority: UILayoutPriority) -> NSLayoutConstraint {
+	@objc(setWidthOfView:to:)
+	@discardableResult open func setWidth(of view: UIView, to value: Float) -> NSLayoutConstraint {
+		return self.setWidth(of: view, to: value, priority: UILayoutPriority.required)
+	}
+
+	@objc(setWidthOfView:to:priority:)
+	@discardableResult open func setWidth(of view: UIView, to value: Float, priority: UILayoutPriority) -> NSLayoutConstraint {
+		return self.setConstant(view: view, constant: value, attribute: .width, priority: priority)
+	}
+
+
+	@objc
+	@discardableResult open func setConstant(view: UIView, constant: Float, attribute: NSLayoutConstraint.Attribute) -> NSLayoutConstraint {
+		return self.setConstant(view: view, constant: constant, attribute: attribute, relation: .equal, priority: UILayoutPriority.required)
+	}
+
+	@objc @discardableResult open func setConstant(view: UIView, constant: Float, attribute: NSLayoutConstraint.Attribute, priority: UILayoutPriority) -> NSLayoutConstraint {
+		return self.setConstant(view: view, constant: constant, attribute: attribute, relation: .equal, priority: priority)
+	}
+
+	@objc @discardableResult open func setConstant(view: UIView,
+																								 constant: Float,
+																								 attribute: NSLayoutConstraint.Attribute,
+																								 relation: NSLayoutConstraint.Relation,
+																								 priority: UILayoutPriority) -> NSLayoutConstraint {
 		view.translatesAutoresizingMaskIntoConstraints = false;
 		let constraint = NSLayoutConstraint(item: view, attribute: attribute, relatedBy: relation, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: CGFloat(constant))
 		constraint.priority = priority
@@ -383,19 +407,19 @@ open class PinLayout: NSObject, NSCoding {
 		return constraint
 	}
 
-	@objc open func setEqualConstantOfView(_ view: UIView, andView secondView: UIView, to attribute: PinLayoutConstant, withPriority priority: UILayoutPriority, withMultiplier multiplier: Float) {
-		setEqualConstantOfView(view, andView: secondView, withAttribute: toConstantAttribute(attribute), withPriority: priority, withMultiplier: multiplier)
+	@objc open func setEqualConstant(view: UIView, andView secondView: UIView, attribute: PinLayoutConstant, priority: UILayoutPriority, multiplier: Float) {
+		setEqualConstant(view: view, andView: secondView, attribute: toConstantAttribute(attribute), priority: priority, multiplier: multiplier)
 	}
 
 
-	@objc open func setEqualConstantOfView(_ view: UIView, andView secondView: UIView, to attribute: PinLayoutConstant) {
-		setEqualConstantOfView(view, andView: secondView, withAttribute: toConstantAttribute(attribute))
+	@objc open func setEqualConstant(view: UIView, andView secondView: UIView, attribute: PinLayoutConstant) {
+		setEqualConstant(view: view, andView: secondView, attribute: toConstantAttribute(attribute))
 	}
 
 
-	func setEqualConstantOfView(_ view: UIView, andView secondView: UIView, withAttribute: NSLayoutConstraint.Attribute, withPriority priority: UILayoutPriority, withMultiplier multiplier: Float, withConstant constant: Float = 0) {
+	func setEqualConstant(view: UIView, andView secondView: UIView, attribute: NSLayoutConstraint.Attribute, priority: UILayoutPriority, multiplier: Float, constant: Float = 0) {
 		if let commonSuperView = self.findSuperViewFor(view, secondView) {
-			let constraint = NSLayoutConstraint(item: view, attribute: withAttribute, relatedBy: .equal, toItem: secondView, attribute: withAttribute, multiplier: CGFloat(multiplier), constant: CGFloat(constant))
+			let constraint = NSLayoutConstraint(item: view, attribute: attribute, relatedBy: .equal, toItem: secondView, attribute: attribute, multiplier: CGFloat(multiplier), constant: CGFloat(constant))
 			view.translatesAutoresizingMaskIntoConstraints = false
 			constraint.priority = priority;
 			commonSuperView.addConstraint(constraint)
@@ -403,13 +427,13 @@ open class PinLayout: NSObject, NSCoding {
 		}
 	}
 
-	func setEqualConstantOfView(_ view: UIView, andView secondView: UIView, withAttribute: NSLayoutConstraint.Attribute, withConstant constant: Float = 0) {
-		setEqualConstantOfView(view, andView: secondView, withAttribute: withAttribute, withPriority: UILayoutPriority(rawValue: 1000), withMultiplier: 1.0, withConstant: constant)
+	func setEqualConstant(view: UIView, andView secondView: UIView, attribute: NSLayoutConstraint.Attribute, constant: Float = 0) {
+		setEqualConstant(view: view, andView: secondView, attribute: attribute, priority: UILayoutPriority(rawValue: 1000), multiplier: 1.0, constant: constant)
 	}
 
-	func setEqualConstantOfView(_ view: UIView, withAttribute: NSLayoutConstraint.Attribute, withConstant constant: Float = 0) {
+	func setEqualConstant(view: UIView, attribute: NSLayoutConstraint.Attribute, constant: Float = 0) {
 		if let superview = view.superview {
-			self.setEqualConstantOfView(view, andView: superview, withAttribute: withAttribute, withConstant: constant)
+			self.setEqualConstant(view: view, andView: superview, attribute: attribute, constant: constant)
 		}
 	}
 
@@ -429,15 +453,20 @@ open class PinLayout: NSObject, NSCoding {
 
 	@objc(horizontalCenterView:)
 	open func horizontalCenter(view: UIView) {
-		self.setEqualConstantOfView(view, withAttribute: .centerX)
+		self.setEqualConstant(view: view, attribute: .centerX)
 	}
 
 	@objc open func horizontalCenter(view: UIView, toView secondView: UIView, offset: Float = 0) {
-		self.setEqualConstantOfView(view, andView: secondView, withAttribute: .centerX, withConstant: offset)
+		self.setEqualConstant(view: view, andView: secondView, attribute: .centerX, constant: offset)
 	}
 
 	@objc open func horizontalCenter(view: UIView, offset: Float) {
-		self.setEqualConstantOfView(view, withAttribute: .centerX, withConstant: offset)
+		self.setEqualConstant(view: view, attribute: .centerX, constant: offset)
+	}
+
+	@objc(horizontalCenterView:priority:)
+	open func horizontalCenter(view: UIView, priority: UILayoutPriority) {
+		self.setEqualConstant(view: view, andView: view, attribute: .centerX, priority: priority, multiplier: 1.0, constant: 0)
 	}
 
 	@objc(verticalCenterView:toView:)
@@ -445,50 +474,56 @@ open class PinLayout: NSObject, NSCoding {
 		self.verticalCenter(view: view, toView: secondView, offset: 0)
 	}
 
-	@objc(verticalCenterView:toView:offset:)
-	open func verticalCenter(view: UIView, toView secondView: UIView, offset: Float = 0) {
-		self.setEqualConstantOfView(view, andView: secondView, withAttribute: .centerY, withConstant: offset)
+	@objc(verticalCenterView:toView:offset:priority:)
+	open func verticalCenter(view: UIView, toView secondView: UIView, offset: Float = 0, priority: UILayoutPriority = .required) {
+		self.setEqualConstant(view: view, andView: secondView, attribute: .centerY, priority: priority, multiplier: 1.0, constant: offset)
 	}
 
 	@objc(verticalCenterView:)
 	open func verticalCenter(view: UIView) {
-		self.setEqualConstantOfView(view, withAttribute: .centerY)
+		self.setEqualConstant(view: view, attribute: .centerY)
 	}
 
-	@objc(verticalCenterView:offset:) open func verticalCenter(view: UIView, offset: Float) {
-		self.setEqualConstantOfView(view, withAttribute: .centerY, withConstant: offset)
+	@objc(verticalCenterView:priority:)
+	open func verticalCenter(view: UIView, priority: UILayoutPriority) {
+		self.setEqualConstant(view: view, andView: view, attribute: .centerY, priority: priority, multiplier: 1.0, constant: 0)
+	}
+
+	@objc(verticalCenterView:offset:)
+	open func verticalCenter(view: UIView, offset: Float) {
+		self.setEqualConstant(view: view, attribute: .centerY, constant: offset)
 	}
 
 
-	@objc open func setWidthAndHeightEqualOfView(_ view: UIView) {
+	@objc open func setEqualWidthAndHeight(view: UIView) {
 		let constraint = NSLayoutConstraint(item: view, attribute: .width, relatedBy: .equal, toItem: view, attribute: .height, multiplier: 1.0, constant: 0.0)
 		view.addConstraint(constraint)
 		self.recordedConstraints?.append(constraint)
 	}
 
 
-	@objc open func setSameHeightOfView(_ view: UIView, andView secondView: UIView) {
-		self.setEqualConstantOfView(view, andView: secondView, withAttribute: .height)
+	@objc open func setEqualHeight(view: UIView, andView secondView: UIView) {
+		self.setEqualConstant(view: view, andView: secondView, attribute: .height)
 	}
 
-	@objc open func setSameHeightOfView(_ view: UIView, andView secondView: UIView, withPriority priority: UILayoutPriority) {
-		self.setEqualConstantOfView(view, andView: secondView, withAttribute: .height, withPriority: priority, withMultiplier: 1.0)
+	@objc open func setEqualHeight(view: UIView, andView secondView: UIView, priority: UILayoutPriority) {
+		self.setEqualConstant(view: view, andView: secondView, attribute: .height, priority: priority, multiplier: 1.0)
 	}
 
-	@objc open func setSameHeightOfView(_ view: UIView, andView secondView: UIView, withMultiplier multiplier: Float) {
-		self.setEqualConstantOfView(view, andView: secondView, withAttribute: .height, withPriority: UILayoutPriority(rawValue: 1000), withMultiplier: multiplier)
+	@objc open func setEqualHeight(view: UIView, andView secondView: UIView, multiplier: Float) {
+		self.setEqualConstant(view: view, andView: secondView, attribute: .height, priority: UILayoutPriority(rawValue: 1000), multiplier: multiplier)
 	}
 
-	@objc open func setSameWidthOfView(_ view: UIView, andView secondView: UIView) {
-		self.setEqualConstantOfView(view, andView: secondView, withAttribute: .width)
+	@objc open func setEqualWidth(view: UIView, andView secondView: UIView) {
+		self.setEqualConstant(view: view, andView: secondView, attribute: .width)
 	}
 
-	@objc open func setSameWidthOfView(_ view: UIView, andView secondView: UIView, withMultiplier multiplier: Float) {
-		self.setEqualConstantOfView(view, andView: secondView, withAttribute: .width, withPriority: UILayoutPriority(rawValue: 1000), withMultiplier: multiplier)
+	@objc open func setEqualWidth(view: UIView, andView secondView: UIView, multiplier: Float) {
+		self.setEqualConstant(view: view, andView: secondView, attribute: .width, priority: UILayoutPriority(rawValue: 1000), multiplier: multiplier)
 	}
 
-	@objc open func setSameWidthOfView(_ view: UIView, andView secondView: UIView, withPriority priority: UILayoutPriority) {
-		self.setEqualConstantOfView(view, andView: secondView, withAttribute: .width, withPriority: priority, withMultiplier: 1.0)
+	@objc open func setEqualWidth(view: UIView, andView secondView: UIView, priority: UILayoutPriority) {
+		self.setEqualConstant(view: view, andView: secondView, attribute: .width, priority: priority, multiplier: 1.0)
 	}
 
 	@objc(alignView:withView:toEdge:)
