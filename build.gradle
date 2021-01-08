@@ -1,13 +1,75 @@
-plugins {
-  id "org.openbakery.xcode-plugin" version "0.15.4"
+buildscript {
+	repositories {
+		maven {
+			url('http://repo.openbakery.org/')
+			//url('file:///Users/rene/workspace/openbakery/xcodePlugin/repository')
+		}
+		mavenCentral()
+	}
+
+	dependencies {
+			classpath "org.openbakery:xcode-plugin:0.21.0.develop.+"
+			//classpath "org.openbakery:xcode-plugin:0.19.2+"
+	}
 }
+
+apply plugin: "org.openbakery.xcode-plugin"
+
+apply from: 'https://hq.ciqua.com/gradle/BuildSettings.gradle'
+
+project.ext.userHome=System.getenv()["HOME"]
+carthage {
+  xcframework = true
+  command = project.ext.userHome + "/Tools/carthage/carthage"
+}
+
+if (project.hasProperty('buildSettings.version')) {
+  project.ext.buildSettingsVersion = project['buildSettings.version']
+} else {
+  project.ext.buildSettingsVersion = "21.0.0"
+}
+
+buildSettings {
+  version = project.ext.buildSettingsVersion
+  displayName = "OBPinLayout"
+  baseBundleIdentifier = "org.openbakery.PinLayout"
+  scheme = "OBPinLayout"
+  beta = false
+}
+
+apply from: 'https://hq.ciqua.com/gradle/Framework.gradle'
+
+frameworkSettings {
+	name = "OBPinLayout"
+  shortname = "OBPinLayout"
+	baseURL = "https://frameworks.ciqua.com"
+	bundleIdentifier = buildSettings.bundleIdentifier
+	version = buildSettings.version.versionString
+}
+
+apply from: 'https://hq.ciqua.com/gradle/Publish.gradle'
 
 
 xcodebuild {
-	scheme = 'PinLayout'
+  version = "12.2"
+  scheme = 'PinLayout'
   target = 'PinLayout'
-	simulator = true
-	destination = ['iPhone 7']
-  
+  configuration = 'Debug'
+  type = 'iOS'
+  bitcode = true
+
+  destination = ['iPhone 8', 'iPad' ]
 }
 
+coverage {
+  outputFormat = 'html'
+  exclude = '.*Test.*swift$'
+}
+
+
+task buildForRelease(type:org.openbakery.XcodeBuildTask) {
+	scheme = 'PinLayout'
+	target = 'PinLayout'
+	configuration = 'Release'
+	simulator = false
+}
