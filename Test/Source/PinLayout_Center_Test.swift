@@ -14,8 +14,7 @@ import Hamcrest
 class PinLayout_Center_Test: PinLayout_Base_Test {
 	
 	// MARK: - horizontal equal
-	
-	
+
 	func test_view_is_horizontal_center() {
 		let superview = UIView()
 		superview.addSubview(view)

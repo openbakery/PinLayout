@@ -7,11 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		355B2100CDC6C6F6F437A4C6 /* PinLayout_Center.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355B228E94B4FBC7597FC521 /* PinLayout_Center.swift */; };
 		355B211828F73913C596D498 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 355B20D6C7D688C99CD23129 /* LaunchScreen.storyboard */; };
 		355B22D632B4EB413E57AB70 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355B2CD3C63C48E5B91AADC3 /* AppDelegate.swift */; };
 		355B239A581D748FF0763FFD /* PinLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355B2210AE0EEC3DFB043028 /* PinLayout.swift */; };
+		355B23A5308C9D9FDC0A0C93 /* PinLayout_Save_Center.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355B2584C2C27AECAC1C4AA5 /* PinLayout_Save_Center.swift */; };
 		355B262022C67FE64614E81E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 355B2E12FCFE60C32F9115E3 /* Assets.xcassets */; };
 		355B2A9E684A842FC7DC9046 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355B22F6E3D2252F9ADCBD1F /* ViewController.swift */; };
+		355B2CC210E1717BB5C78656 /* PinLayout_SaveCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355B25ACE74641A30BFC9A28 /* PinLayout_SaveCenter.swift */; };
 		355B2DB65EED796E43DD3603 /* PinLayout.h in Headers */ = {isa = PBXBuildFile; fileRef = 355B22DCF7EA5B11594D9593 /* PinLayout.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A71E3B1E25A867C900F02CC6 /* Hamcrest.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = A71E3B1D25A867C900F02CC6 /* Hamcrest.xcframework */; };
 		A71E3B2625A8688000F02CC6 /* PinLayout_AutoResizing_Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71E3B2325A8688000F02CC6 /* PinLayout_AutoResizing_Test.swift */; };
@@ -76,10 +79,13 @@
 
 /* Begin PBXFileReference section */
 		355B2210AE0EEC3DFB043028 /* PinLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinLayout.swift; sourceTree = "<group>"; };
+		355B228E94B4FBC7597FC521 /* PinLayout_Center.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinLayout_Center.swift; sourceTree = "<group>"; };
 		355B22DCF7EA5B11594D9593 /* PinLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PinLayout.h; sourceTree = "<group>"; };
 		355B22F6E3D2252F9ADCBD1F /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		355B22FA348442A6B9595866 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Demo/Resource/PinLayoutDemo/Base.lproj/LaunchScreen.storyboard; sourceTree = SOURCE_ROOT; };
 		355B23CF9FBCDE18FBF33952 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.info; path = Info.plist; sourceTree = "<group>"; };
+		355B2584C2C27AECAC1C4AA5 /* PinLayout_Save_Center.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinLayout_Save_Center.swift; sourceTree = "<group>"; };
+		355B25ACE74641A30BFC9A28 /* PinLayout_SaveCenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinLayout_SaveCenter.swift; sourceTree = "<group>"; };
 		355B27C8B0B4765D939CED54 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.info; path = Info.plist; sourceTree = "<group>"; };
 		355B2C6D12D766AA75FDEE0C /* PinLayoutTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinLayoutTest.swift; sourceTree = "<group>"; };
 		355B2CD3C63C48E5B91AADC3 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -139,6 +145,8 @@
 			children = (
 				355B22DCF7EA5B11594D9593 /* PinLayout.h */,
 				355B2210AE0EEC3DFB043028 /* PinLayout.swift */,
+				355B228E94B4FBC7597FC521 /* PinLayout_Center.swift */,
+				355B25ACE74641A30BFC9A28 /* PinLayout_SaveCenter.swift */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -184,6 +192,7 @@
 				A7BE8D2D2254FE7900BCC009 /* PinLayout_iOS10_Test.swift */,
 				A7BE8D2C2254FE7900BCC009 /* PinLayout_Readable_Test.swift */,
 				355B2C6D12D766AA75FDEE0C /* PinLayoutTest.swift */,
+				355B2584C2C27AECAC1C4AA5 /* PinLayout_Save_Center.swift */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -421,6 +430,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				355B239A581D748FF0763FFD /* PinLayout.swift in Sources */,
+				355B2100CDC6C6F6F437A4C6 /* PinLayout_Center.swift in Sources */,
+				355B2CC210E1717BB5C78656 /* PinLayout_SaveCenter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -442,6 +453,7 @@
 				A7BE8D2F2254FE7900BCC009 /* PinLayout_Readable_Test.swift in Sources */,
 				A7BE8D3D2254FFAB00BCC009 /* ConstraintConstantMatcher.swift in Sources */,
 				A7BE8D3C2254FFAB00BCC009 /* ContraintAlignMatcher.swift in Sources */,
+				355B23A5308C9D9FDC0A0C93 /* PinLayout_Save_Center.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
