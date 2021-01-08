@@ -54,10 +54,10 @@ public func isPinnedToSafeAreaAnchor<T: UIView>(_ attribute: NSLayoutConstraint.
 	}
 }
 
-public func isPinnedToSafeAreaAnchor<T: UIView>(_ attribute: NSLayoutConstraint.Attribute, gap: Float) -> Matcher<T> {
+public func isPinnedToSafeAreaAnchor<T: UIView>(_ attribute: NSLayoutConstraint.Attribute, gap: CGFloat) -> Matcher<T> {
 	return Matcher("view has \(attribute) anchor for safe area") {
 		(value: T) -> MatchResult in
-		return hasSafeAreaAnchorConstraint(for: value, baseView: value.superview, attribute: attribute, constant: CGFloat(gap))
+		return hasSafeAreaAnchorConstraint(for: value, baseView: value.superview, attribute: attribute, constant: gap)
 	}
 }
 
@@ -70,9 +70,9 @@ public func isPinnedToReadableAnchor<T: UIView>(_ attribute: NSLayoutConstraint.
 }
 
 
-public func isPinnedToReadableAnchor<T: UIView>(_ attribute: NSLayoutConstraint.Attribute, gap: Float) -> Matcher<T> {
+public func isPinnedToReadableAnchor<T: UIView>(_ attribute: NSLayoutConstraint.Attribute, gap: CGFloat) -> Matcher<T> {
 	return Matcher("view has \(attribute) anchor for safe area") {
 		(value: T) -> MatchResult in
-		return hasReadableAnchorConstraint(for: value, baseView: value.superview, attribute: attribute, constant: CGFloat(-gap))
+		return hasReadableAnchorConstraint(for: value, baseView: value.superview, attribute: attribute, constant: -gap)
 	}
 }

@@ -20,7 +20,7 @@ class MyViewController: UIViewController, TopLayoutGuide {
 
 class PinLayout_For_isOS10: PinLayout {
 
-	override func pinToGuide(for view: UIView, superview: UIView, edge: PinLayoutHelperEdge, gap: Float) -> NSLayoutConstraint? {
+	override func pinToGuide(for view: UIView, superview: UIView, edge: PinLayoutHelperEdge, gap: CGFloat) -> NSLayoutConstraint? {
 		return nil
 	}
 }

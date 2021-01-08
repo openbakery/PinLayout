@@ -17,6 +17,7 @@
 		A71E3B2625A8688000F02CC6 /* PinLayout_AutoResizing_Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71E3B2325A8688000F02CC6 /* PinLayout_AutoResizing_Test.swift */; };
 		A71E3B2725A8688000F02CC6 /* PinLayout_Base_Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71E3B2425A8688000F02CC6 /* PinLayout_Base_Test.swift */; };
 		A71E3B2825A8688000F02CC6 /* PinLayout_Defaults_Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71E3B2525A8688000F02CC6 /* PinLayout_Defaults_Test.swift */; };
+		A71E3B2D25A86A5C00F02CC6 /* PinLayout_Center_Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71E3B2C25A86A5C00F02CC6 /* PinLayout_Center_Test.swift */; };
 		A7AF81451E1A416000BCF7B4 /* PinLayout.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7AF813B1E1A416000BCF7B4 /* PinLayout.framework */; };
 		A7AF81571E1A443E00BCF7B4 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7AF81561E1A443E00BCF7B4 /* XCTest.framework */; };
 		A7AF817F1E1A55A000BCF7B4 /* PinLayout.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7AF813B1E1A416000BCF7B4 /* PinLayout.framework */; };
@@ -88,6 +89,7 @@
 		A71E3B2325A8688000F02CC6 /* PinLayout_AutoResizing_Test.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinLayout_AutoResizing_Test.swift; sourceTree = "<group>"; };
 		A71E3B2425A8688000F02CC6 /* PinLayout_Base_Test.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinLayout_Base_Test.swift; sourceTree = "<group>"; };
 		A71E3B2525A8688000F02CC6 /* PinLayout_Defaults_Test.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinLayout_Defaults_Test.swift; sourceTree = "<group>"; };
+		A71E3B2C25A86A5C00F02CC6 /* PinLayout_Center_Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinLayout_Center_Test.swift; sourceTree = "<group>"; };
 		A7AF813B1E1A416000BCF7B4 /* PinLayout.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PinLayout.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7AF81441E1A416000BCF7B4 /* PinLayoutTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PinLayoutTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7AF81561E1A443E00BCF7B4 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Platforms/iPhoneOS.platform/Developer/Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -177,6 +179,7 @@
 				A7BE8D2B2254FE7900BCC009 /* BasePinLayoutTest.swift */,
 				A71E3B2325A8688000F02CC6 /* PinLayout_AutoResizing_Test.swift */,
 				A71E3B2425A8688000F02CC6 /* PinLayout_Base_Test.swift */,
+				A71E3B2C25A86A5C00F02CC6 /* PinLayout_Center_Test.swift */,
 				A71E3B2525A8688000F02CC6 /* PinLayout_Defaults_Test.swift */,
 				A7BE8D2D2254FE7900BCC009 /* PinLayout_iOS10_Test.swift */,
 				A7BE8D2C2254FE7900BCC009 /* PinLayout_Readable_Test.swift */,
@@ -429,6 +432,7 @@
 				A7BE8D322254FF7800BCC009 /* XCTestCaseViewControllerExtension.swift in Sources */,
 				A7BE8D302254FE7900BCC009 /* PinLayout_iOS10_Test.swift in Sources */,
 				A7BE8D2E2254FE7900BCC009 /* BasePinLayoutTest.swift in Sources */,
+				A71E3B2D25A86A5C00F02CC6 /* PinLayout_Center_Test.swift in Sources */,
 				A7BE8D3B2254FFAB00BCC009 /* ConstraintEqualMatcher.swift in Sources */,
 				A7BE8D3E2254FFAB00BCC009 /* ConstraintMatcher.swift in Sources */,
 				A71E3B2725A8688000F02CC6 /* PinLayout_Base_Test.swift in Sources */,
