@@ -20,66 +20,66 @@ extension PinLayout {
 	@discardableResult
 	open func equalCenter(view: UIView, with secondView: UIView) -> [NSLayoutConstraint] {
 		var constraints = [NSLayoutConstraint]()
-		if let constraint = self.verticalCenter(view: view) {
+		if let constraint = self.equalCenterY(view: view) {
 			constraints.append(constraint)
 		}
-		if let constraint = self.horizontalCenter(view: view) {
+		if let constraint = self.equalCenterX(view: view) {
 			constraints.append(constraint)
 		}
 		return constraints
 	}
 
-	@objc(horizontalCenterView:)
+	@objc(equalCenterXView:)
 	@discardableResult
-	open func horizontalCenter(view: UIView) -> NSLayoutConstraint? {
+	open func equalCenterX(view: UIView) -> NSLayoutConstraint? {
 		self.setEqualConstant(view: view, attribute: .centerX)
 	}
 
 	@objc
 	@discardableResult
-	open func horizontalCenter(view: UIView, toView secondView: UIView, offset: CGFloat = 0) -> NSLayoutConstraint? {
+	open func equalCenterX(view: UIView, toView secondView: UIView, offset: CGFloat = 0) -> NSLayoutConstraint? {
 		self.setEqualConstant(view: view, andView: secondView, attribute: .centerX, constant: offset)
 	}
 
 
 	@objc
 	@discardableResult
-	open func horizontalCenter(view: UIView, offset: CGFloat) -> NSLayoutConstraint? {
+	open func equalCenterX(view: UIView, offset: CGFloat) -> NSLayoutConstraint? {
 		self.setEqualConstant(view: view, attribute: .centerX, constant: offset)
 	}
 
-	@objc(horizontalCenterView:priority:)
-	open func horizontalCenter(view: UIView, priority: UILayoutPriority) {
+	@objc(equalCenterXView:priority:)
+	open func equalCenterX(view: UIView, priority: UILayoutPriority) {
 		self.setEqualConstant(view: view, andView: view, attribute: .centerX, priority: priority, multiplier: 1.0, constant: 0)
 	}
 
-	@objc(verticalCenterView:toView:)
+	@objc(equalCenterYView:toView:)
 	@discardableResult
-	open func verticalCenter(view: UIView, toView secondView: UIView) -> NSLayoutConstraint? {
-		self.verticalCenter(view: view, toView: secondView, offset: 0)
+	open func equalCenterY(view: UIView, toView secondView: UIView) -> NSLayoutConstraint? {
+		self.equalCenterY(view: view, toView: secondView, offset: 0)
 	}
 
 	@objc(verticalCenterView:toView:offset:priority:)
 	@discardableResult
-	open func verticalCenter(view: UIView, toView secondView: UIView, offset: CGFloat = 0, priority: UILayoutPriority = .required) -> NSLayoutConstraint? {
+	open func equalCenterY(view: UIView, toView secondView: UIView, offset: CGFloat = 0, priority: UILayoutPriority = .required) -> NSLayoutConstraint? {
 		self.setEqualConstant(view: view, andView: secondView, attribute: .centerY, priority: priority, multiplier: 1.0, constant: offset)
 	}
 
-	@objc(verticalCenterView:)
+	@objc(equalCenterYView:)
 	@discardableResult
-	open func verticalCenter(view: UIView) -> NSLayoutConstraint? {
+	open func equalCenterY(view: UIView) -> NSLayoutConstraint? {
 		self.setEqualConstant(view: view, attribute: .centerY)
 	}
 
-	@objc(verticalCenterView:priority:)
+	@objc(equalCenterYView:priority:)
 	@discardableResult
-	open func verticalCenter(view: UIView, priority: UILayoutPriority) -> NSLayoutConstraint? {
+	open func equalCenterY(view: UIView, priority: UILayoutPriority) -> NSLayoutConstraint? {
 		self.setEqualConstant(view: view, andView: view, attribute: .centerY, priority: priority, multiplier: 1.0, constant: 0)
 	}
 
-	@objc(verticalCenterView:offset:)
+	@objc(equalCenterYView:offset:)
 	@discardableResult
-	open func verticalCenter(view: UIView, offset: CGFloat) -> NSLayoutConstraint? {
+	open func equalCenterY(view: UIView, offset: CGFloat) -> NSLayoutConstraint? {
 		self.setEqualConstant(view: view, attribute: .centerY, constant: offset)
 	}
 

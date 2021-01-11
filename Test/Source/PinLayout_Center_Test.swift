@@ -19,7 +19,7 @@ class PinLayout_Center_Test: PinLayout_Base_Test {
 		let superview = UIView()
 		superview.addSubview(view)
 		
-		let constraint = pinLayout.horizontalCenter(view: view)
+		let constraint = pinLayout.equalCenterX(view: view)
 
 		
 		// then
@@ -36,7 +36,7 @@ class PinLayout_Center_Test: PinLayout_Base_Test {
 		let superview = UIView()
 		superview.addSubview(view)
 		
-		let constraint = pinLayout.horizontalCenter(view: view, offset: 10)
+		let constraint = pinLayout.equalCenterX(view: view, offset: 10)
 
 		
 		// then
@@ -49,7 +49,7 @@ class PinLayout_Center_Test: PinLayout_Base_Test {
 		superview.addSubview(view)
 		superview.addSubview(other)
 		
-		let constraint = pinLayout.horizontalCenter(view: view, toView: other)
+		let constraint = pinLayout.equalCenterX(view: view, toView: other)
 
 		
 		// then
@@ -68,7 +68,7 @@ class PinLayout_Center_Test: PinLayout_Base_Test {
 		superview.addSubview(view)
 		superview.addSubview(other)
 		
-		let constraint = pinLayout.horizontalCenter(view: view, toView: other, offset: 10)
+		let constraint = pinLayout.equalCenterX(view: view, toView: other, offset: 10)
 
 		
 		// then
@@ -82,7 +82,7 @@ class PinLayout_Center_Test: PinLayout_Base_Test {
 		let superview = UIView()
 		superview.addSubview(view)
 		
-		let constraint = pinLayout.verticalCenter(view: view)
+		let constraint = pinLayout.equalCenterY(view: view)
 
 		
 		// then
@@ -99,7 +99,7 @@ class PinLayout_Center_Test: PinLayout_Base_Test {
 		let superview = UIView()
 		superview.addSubview(view)
 		
-		let constraint = pinLayout.verticalCenter(view: view, offset: 10)
+		let constraint = pinLayout.equalCenterY(view: view, offset: 10)
 
 		
 		// then
@@ -112,7 +112,7 @@ class PinLayout_Center_Test: PinLayout_Base_Test {
 		superview.addSubview(view)
 		superview.addSubview(other)
 		
-		let constraint = pinLayout.verticalCenter(view: view, toView: other)
+		let constraint = pinLayout.equalCenterY(view: view, toView: other)
 
 		
 		// then
@@ -131,7 +131,7 @@ class PinLayout_Center_Test: PinLayout_Base_Test {
 		superview.addSubview(view)
 		superview.addSubview(other)
 		
-		let constraint = pinLayout.verticalCenter(view: view, toView: other, offset: 10)
+		let constraint = pinLayout.equalCenterY(view: view, toView: other, offset: 10)
 
 		
 		// then

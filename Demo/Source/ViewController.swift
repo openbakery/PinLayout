@@ -26,7 +26,7 @@ class ViewController: UIViewController {
 
 		
 		layout.pin(view:button, to:.topSafeArea, gap:44.0)
-		layout.horizontalCenter(view: button)
+		layout.equalCenterX(view: button)
 
 	}
 

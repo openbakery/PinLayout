@@ -29,7 +29,7 @@ extension PinLayout {
 			constraint.constant = offset
 			return constraint
 		}
-		return self.horizontalCenter(view: view)
+		return self.equalCenterX(view: view)
 	}
 
 
@@ -44,7 +44,7 @@ extension PinLayout {
 			constraint.constant = offset
 			return constraint
 		}
-		return self.verticalCenter(view: view)
+		return self.equalCenterY(view: view)
 	}
 
 	@objc(centerView:)
