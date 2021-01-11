@@ -89,26 +89,7 @@ class PinLayoutTest: PinLayout_Base_Test {
 		}
 	}
 
-	func testSetWidthAndHeightEqualOfView() {
-		toView.addSubview(view)
-		pinLayout.setEqualWidthAndHeight(view:view)
-		assertThat(view.constraints, hasCount(1))
 
-		if (view.constraints.count == 0) {
-			// avoid that the test crashes
-			return
-		}
-
-		let constraint = view.constraints[0]
-		assertThat(constraint.constant, equalTo(0))
-		assertThat(constraint.firstAttribute, equalTo(.width))
-		assertThat(constraint.secondAttribute, equalTo(.height))
-
-		assertThatFirstItemOf(constraint, equalToView:view)
-		assertThatSecondItemOf(constraint, equalToView:view)
-
-		assertThat(constraint.relation, equalTo(.equal))
-	}
 
 
 	func testPinEdgeBaseLineTop() {
