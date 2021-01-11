@@ -7,18 +7,18 @@ import Foundation
 
 extension PinLayout {
 
-	@objc(centerView:)
+	@objc(equalCenterView:)
 	@discardableResult
-	open func center(view: UIView) -> [NSLayoutConstraint] {
+	open func equalCenter(view: UIView) -> [NSLayoutConstraint] {
 		if let superview = view.superview {
-			return center(view: view, toView: superview)
+			return equalCenter(view: view, with: superview)
 		}
 		return []
 	}
 
-	@objc(centerView:toView:)
+	@objc(equalCenterView:toView:)
 	@discardableResult
-	open func center(view: UIView, toView secondView: UIView) -> [NSLayoutConstraint] {
+	open func equalCenter(view: UIView, with secondView: UIView) -> [NSLayoutConstraint] {
 		var constraints = [NSLayoutConstraint]()
 		if let constraint = self.verticalCenter(view: view) {
 			constraints.append(constraint)

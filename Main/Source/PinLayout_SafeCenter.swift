@@ -47,9 +47,15 @@ extension PinLayout {
 		return self.verticalCenter(view: view)
 	}
 
+	@objc(centerView:)
+	@discardableResult
+	open func center(view: UIView) -> [NSLayoutConstraint] {
+		return center(view: view, with: view.superview)
+	}
 
 	@discardableResult
-	open func safeAreaCenter(view: UIView, with other: UIView? = nil) -> [NSLayoutConstraint] {
+	@objc(centerView:toView:)
+	open func center(view: UIView, with other: UIView? = nil) -> [NSLayoutConstraint] {
 		var result = [NSLayoutConstraint]()
 
 		if let constraint = self.centerX(view: view, with: other) {

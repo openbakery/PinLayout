@@ -258,10 +258,11 @@ class PinLayoutTest: PinLayout_Base_Test {
 	}
 
 
-	func testCenterView() {
+	func test_equalCenter_View() {
 		toView.addSubview(view)
 
-		pinLayout.center(view:view)
+		pinLayout.equalCenter(view:view)
+
 		assertThat(toView.constraints, hasCount(2))
 
 		let constraintY = constraintAtIndex(0, ofView: toView)
@@ -322,7 +323,8 @@ class PinLayoutTest: PinLayout_Base_Test {
 		toView.addSubview(view)
 		toView.addSubview(secondView)
 
-		pinLayout.center(view:view, toView: secondView)
+		pinLayout.equalCenter(view:view, with: secondView)
+
 		assertThat(toView.constraints, hasCount(2))
 
 		let constraintY = constraintAtIndex(0, ofView: toView)

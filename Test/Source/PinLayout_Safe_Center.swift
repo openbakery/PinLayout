@@ -120,7 +120,7 @@ class PinLayout_Safe_Center: PinLayout_Base_Test {
 		let superview = UIView()
 		superview.addSubview(view)
 
-		let constraints = pinLayout.safeAreaCenter(view: view)
+		let constraints = pinLayout.center(view: view)
 
 		// then
 		assertThat(constraints, hasCount(2))
@@ -138,7 +138,7 @@ class PinLayout_Safe_Center: PinLayout_Base_Test {
 		superview.addSubview(view)
 		superview.addSubview(other)
 
-		let constraints = pinLayout.safeAreaCenter(view: view, with: other)
+		let constraints = pinLayout.center(view: view, with: other)
 
 		// then
 		assertThat(constraints, hasCount(2))
