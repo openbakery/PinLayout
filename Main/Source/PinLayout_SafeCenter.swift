@@ -19,6 +19,12 @@ extension PinLayout {
 	}
 
 	@discardableResult
+	@objc(centerXView:)
+	open func centerX(view: UIView) -> NSLayoutConstraint? {
+		self.centerX(view: view, with: nil, offset: 0)
+	}
+
+	@discardableResult
 	open func centerX(view: UIView, with other: UIView? = nil, offset: CGFloat = 0) -> NSLayoutConstraint? {
 		guard let otherView = self.otherView(view: view, other: other) else {
 			return nil
@@ -32,6 +38,11 @@ extension PinLayout {
 		return self.equalCenterX(view: view)
 	}
 
+	@discardableResult
+	@objc(centerYView:)
+	open func centerY(view: UIView) -> NSLayoutConstraint? {
+		self.centerY(view: view, with: nil, offset: 0)
+	}
 
 	@discardableResult
 	open func centerY(view: UIView, with other: UIView? = nil, offset: CGFloat = 0) -> NSLayoutConstraint? {
