@@ -8,8 +8,7 @@ buildscript {
 	}
 
 	dependencies {
-			classpath "org.openbakery:xcode-plugin:0.21.0.develop.+"
-			//classpath "org.openbakery:xcode-plugin:0.19.2+"
+			classpath "org.openbakery:xcode-plugin:0.22.+"
 	}
 }
 
@@ -20,8 +19,8 @@ apply from: 'https://hq.ciqua.com/gradle/BuildSettings.gradle'
 project.ext.userHome=System.getenv()["HOME"]
 carthage {
   xcframework = true
-  command = project.ext.userHome + "/Tools/carthage/carthage"
 }
+
 
 if (project.hasProperty('buildSettings.version')) {
   project.ext.buildSettingsVersion = project['buildSettings.version']
@@ -51,7 +50,7 @@ apply from: 'https://hq.ciqua.com/gradle/Publish.gradle'
 
 
 xcodebuild {
-  version = "12.2"
+  // version = "12.2"
   scheme = 'PinLayout'
   target = 'PinLayout'
   configuration = 'Debug'
