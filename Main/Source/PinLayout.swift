@@ -413,8 +413,9 @@ open class PinLayout: NSObject, NSCoding {
 	}
 
 
-	@objc open func setEqualConstant(view: UIView, andView secondView: UIView, attribute: PinLayoutConstant) {
-		setEqualConstant(view: view, andView: secondView, attribute: toConstantAttribute(attribute))
+	@discardableResult
+	@objc open func setEqualConstant(view: UIView, andView secondView: UIView, attribute: PinLayoutConstant) -> NSLayoutConstraint? {
+		return setEqualConstant(view: view, andView: secondView, attribute: toConstantAttribute(attribute))
 	}
 
 	
@@ -433,7 +434,7 @@ open class PinLayout: NSObject, NSCoding {
 
 	@discardableResult
 	func setEqualConstant(view: UIView, andView secondView: UIView, attribute: NSLayoutConstraint.Attribute, constant: CGFloat = 0) -> NSLayoutConstraint? {
-		setEqualConstant(view: view, andView: secondView, attribute: attribute, priority: UILayoutPriority(rawValue: 1000), multiplier: 1.0, constant: constant)
+		return setEqualConstant(view: view, andView: secondView, attribute: attribute, priority: UILayoutPriority(rawValue: 1000), multiplier: 1.0, constant: constant)
 	}
 
 	@discardableResult
@@ -446,35 +447,43 @@ open class PinLayout: NSObject, NSCoding {
 
 
 
-	@objc open func setEqualWidthAndHeight(view: UIView) {
+	@discardableResult
+	@objc open func setEqualWidthAndHeight(view: UIView) -> NSLayoutConstraint? {
 		let constraint = NSLayoutConstraint(item: view, attribute: .width, relatedBy: .equal, toItem: view, attribute: .height, multiplier: 1.0, constant: 0.0)
 		view.addConstraint(constraint)
 		self.recordedConstraints?.append(constraint)
+		return constraint
 	}
 
 
-	@objc open func setEqualHeight(view: UIView, andView secondView: UIView) {
-		self.setEqualConstant(view: view, andView: secondView, attribute: .height)
+	@discardableResult
+	@objc open func setEqualHeight(view: UIView, andView secondView: UIView) -> NSLayoutConstraint? {
+		return self.setEqualConstant(view: view, andView: secondView, attribute: .height)
 	}
 
-	@objc open func setEqualHeight(view: UIView, andView secondView: UIView, priority: UILayoutPriority) {
-		self.setEqualConstant(view: view, andView: secondView, attribute: .height, priority: priority, multiplier: 1.0)
+	@discardableResult
+	@objc open func setEqualHeight(view: UIView, andView secondView: UIView, priority: UILayoutPriority) -> NSLayoutConstraint? {
+		return self.setEqualConstant(view: view, andView: secondView, attribute: .height, priority: priority, multiplier: 1.0)
 	}
 
-	@objc open func setEqualHeight(view: UIView, andView secondView: UIView, multiplier: CGFloat) {
-		self.setEqualConstant(view: view, andView: secondView, attribute: .height, priority: UILayoutPriority(rawValue: 1000), multiplier: multiplier)
+	@discardableResult
+	@objc open func setEqualHeight(view: UIView, andView secondView: UIView, multiplier: CGFloat) -> NSLayoutConstraint? {
+		return self.setEqualConstant(view: view, andView: secondView, attribute: .height, priority: UILayoutPriority(rawValue: 1000), multiplier: multiplier)
 	}
 
-	@objc open func setEqualWidth(view: UIView, andView secondView: UIView) {
-		self.setEqualConstant(view: view, andView: secondView, attribute: .width)
+	@discardableResult
+	@objc open func setEqualWidth(view: UIView, andView secondView: UIView) -> NSLayoutConstraint? {
+		return self.setEqualConstant(view: view, andView: secondView, attribute: .width)
 	}
 
-	@objc open func setEqualWidth(view: UIView, andView secondView: UIView, multiplier: CGFloat) {
-		self.setEqualConstant(view: view, andView: secondView, attribute: .width, priority: UILayoutPriority(rawValue: 1000), multiplier: multiplier)
+	@discardableResult
+	@objc open func setEqualWidth(view: UIView, andView secondView: UIView, multiplier: CGFloat) -> NSLayoutConstraint? {
+		return self.setEqualConstant(view: view, andView: secondView, attribute: .width, priority: UILayoutPriority(rawValue: 1000), multiplier: multiplier)
 	}
 
-	@objc open func setEqualWidth(view: UIView, andView secondView: UIView, priority: UILayoutPriority) {
-		self.setEqualConstant(view: view, andView: secondView, attribute: .width, priority: priority, multiplier: 1.0)
+	@discardableResult
+	@objc open func setEqualWidth(view: UIView, andView secondView: UIView, priority: UILayoutPriority) -> NSLayoutConstraint? {
+		return self.setEqualConstant(view: view, andView: secondView, attribute: .width, priority: priority, multiplier: 1.0)
 	}
 
 	@objc(alignView:withView:toEdge:)
