@@ -4,6 +4,7 @@
 //
 
 import Foundation
+import UIKit
 
 extension PinLayout {
 
@@ -25,7 +26,7 @@ extension PinLayout {
 	}
 
 	@discardableResult
-	open func centerX(view: UIView, with other: UIView? = nil, offset: CGFloat = 0) -> NSLayoutConstraint? {
+	public func centerX(view: UIView, with other: UIView? = nil, offset: CGFloat = 0) -> NSLayoutConstraint? {
 		guard let otherView = self.otherView(view: view, other: other) else {
 			return nil
 		}
@@ -45,7 +46,7 @@ extension PinLayout {
 	}
 
 	@discardableResult
-	open func centerY(view: UIView, with other: UIView? = nil, offset: CGFloat = 0) -> NSLayoutConstraint? {
+	public func centerY(view: UIView, with other: UIView? = nil, offset: CGFloat = 0) -> NSLayoutConstraint? {
 		guard let otherView = self.otherView(view: view, other: other) else {
 			return nil
 		}

@@ -1,5 +1,7 @@
 .gradle/
 .idea/
+.swiftpm
+.build
 Cartfile.resolved
 Carthage/
 PinLayout.xcodeproj/project.xcworkspace/
