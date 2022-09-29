@@ -33,6 +33,19 @@ open class Layout: NSObject, NSCoding {
 		case cellMargin
 		case cellIconWidth
 		case margin
+
+		public var value: CGFloat {
+			switch self {
+			case .cellHeight:
+				return 44.0
+			case .cellMargin:
+				return 15.0
+			case .cellIconWidth:
+				return 29.0
+			case .margin:
+				return 8
+			}
+		}
 	}
 
 	@available(iOS, deprecated, message: "Renamed to Constant")
@@ -86,16 +99,7 @@ open class Layout: NSObject, NSCoding {
 
 	@objc(valueFor:)
 	open func value(for defaults: Defaults) -> CGFloat {
-		switch (defaults) {
-		case .cellHeight:
-			return 44.0
-		case .cellMargin:
-			return 15.0
-		case .cellIconWidth:
-			return 29.0
-		case .margin:
-			return 8
-		}
+		return defaults.value
 	}
 
 	@objc(pinView: toEdge:relatedBy:) @discardableResult open func pin(view: UIView, to edge: Edge, relatedBy relation: NSLayoutConstraint.Relation) -> NSLayoutConstraint? {
