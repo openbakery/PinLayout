@@ -11,12 +11,12 @@ import PinLayout
 
 class ViewController: UIViewController {
 
-	let layout = PinLayout()
+	let layout = Layout()
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		self.view.backgroundColor = UIColor.white
-		
+
 
 		let button = UIButton()
 		button.setTitle("Press Me", for: .normal)
@@ -24,7 +24,7 @@ class ViewController: UIViewController {
 		button.setTitleColor(UIColor.red, for: .highlighted)
 		view.addSubview(button)
 
-		
+
 		layout.pin(view:button, to:.topSafeArea, gap:44.0)
 		layout.equalCenterX(view: button)
 

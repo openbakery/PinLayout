@@ -6,7 +6,7 @@
 import Foundation
 import UIKit
 
-extension PinLayout {
+extension Layout {
 
 	@objc(equalCenterView:)
 	@discardableResult

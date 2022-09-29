@@ -6,7 +6,7 @@
 import Foundation
 import UIKit
 
-extension PinLayout {
+extension Layout {
 
 	private func otherView(view: UIView, other: UIView?) -> UIView? {
 		view.translatesAutoresizingMaskIntoConstraints = false

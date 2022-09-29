@@ -25,7 +25,7 @@ carthage {
 if (project.hasProperty('buildSettings.version')) {
   project.ext.buildSettingsVersion = project['buildSettings.version']
 } else {
-  project.ext.buildSettingsVersion = "21.0.0"
+  project.ext.buildSettingsVersion = "22.0.0"
 }
 
 buildSettings {

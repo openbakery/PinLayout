@@ -13,13 +13,13 @@ class BasePinLayoutTest : XCTestCase {
 
 	var view : UIView!
 	var toView : UIView!
-	var pinLayout: PinLayout!
+	var pinLayout: Layout!
 
 	override func setUp() {
 		super.setUp()
 		view = UIView()
 		toView = UIView()
-		pinLayout = PinLayout()
+		pinLayout = Layout()
 	}
 
 	override func tearDown() {

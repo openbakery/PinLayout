@@ -5,13 +5,15 @@
 import Foundation
 import UIKit
 
+@available(iOS, unavailable, message: "Renamed to Layout")
+public typealias PinLayout = Layout
 
 @objc(OBPinLayout)
-open class PinLayout: NSObject, NSCoding {
+open class Layout: NSObject, NSCoding {
 
 	let top = NSLayoutConstraint.Attribute.top
 
-	public var recordedConstraints: [NSLayoutConstraint]?
+	public var recorder: LayoutConstraintsRecorder?
 
 	@objc public override init() {
 	}
@@ -23,20 +25,28 @@ open class PinLayout: NSObject, NSCoding {
 	}
 
 
-	@objc(OBPinLayoutDefaults) public enum PinLayoutDefaults: Int {
+	@available(iOS, unavailable, message: "Renamed to Defaults")
+	public typealias PinLayoutDefaults = Defaults
+
+	@objc(OBPinLayoutDefaults) public enum Defaults: Int {
 		case cellHeight = 1
 		case cellMargin
 		case cellIconWidth
 		case margin
 	}
 
+	@available(iOS, unavailable, message: "Renamed to Constant")
+	public typealias PinLayoutConstant = Constant
 
-	@objc(OBPinLayoutConstant) public enum PinLayoutConstant: Int {
+	@objc(OBPinLayoutConstant) public enum Constant: Int {
 		case width = 1
 		case height
 	}
 
-	@objc(OBPinLayoutEdge) public enum PinLayoutHelperEdge: Int {
+	@available(iOS, unavailable, message: "Renamed to Edge")
+	public typealias  PinLayoutEdge = Edge
+
+	@objc(OBPinLayoutEdge) public enum Edge: Int {
 		case left = 1
 		case right
 		case top
@@ -75,7 +85,7 @@ open class PinLayout: NSObject, NSCoding {
 	}
 
 	@objc(valueFor:)
-	open func value(for defaults: PinLayoutDefaults) -> CGFloat {
+	open func value(for defaults: Defaults) -> CGFloat {
 		switch (defaults) {
 		case .cellHeight:
 			return 44.0
@@ -88,7 +98,7 @@ open class PinLayout: NSObject, NSCoding {
 		}
 	}
 
-	@objc(pinView: toEdge:relatedBy:) @discardableResult open func pin(view: UIView, to edge: PinLayoutHelperEdge, relatedBy relation: NSLayoutConstraint.Relation) -> NSLayoutConstraint? {
+	@objc(pinView: toEdge:relatedBy:) @discardableResult open func pin(view: UIView, to edge: Edge, relatedBy relation: NSLayoutConstraint.Relation) -> NSLayoutConstraint? {
 		if let superview = view.superview {
 			return self.pin(view: view, to: edge, of: superview, gap: 0, multiplier: 1.0, relatedBy: relation)
 		}
@@ -98,21 +108,21 @@ open class PinLayout: NSObject, NSCoding {
 
 	@objc(pinView:toEdge:)
 	@discardableResult
-	open func pin(view: UIView, to edge: PinLayoutHelperEdge) -> NSLayoutConstraint? {
+	open func pin(view: UIView, to edge: Edge) -> NSLayoutConstraint? {
 		return self.pin(view: view, to: edge, gap: 0)
 	}
 
 
 	@discardableResult
 	@objc(pinView:toEdge:gap:)
-	open func pin(view: UIView, to edge: PinLayoutHelperEdge, gap: CGFloat) -> NSLayoutConstraint? {
+	open func pin(view: UIView, to edge: Edge, gap: CGFloat) -> NSLayoutConstraint? {
 		return self.pin(view: view, to: edge, gap: gap, relatedBy:.equal)
 	}
 
 
 	@objc(pinView:toEdge:gap:relatedBy:)
 	@discardableResult
-	open func pin(view: UIView, to edge: PinLayoutHelperEdge, gap: CGFloat, relatedBy relation: NSLayoutConstraint.Relation) -> NSLayoutConstraint? {
+	open func pin(view: UIView, to edge: Edge, gap: CGFloat, relatedBy relation: NSLayoutConstraint.Relation) -> NSLayoutConstraint? {
 		if let superview = view.superview {
 			return self.pin(view: view, to: edge, of: superview, gap: gap, multiplier: 1.0, relatedBy: relation)
 		}
@@ -120,7 +130,7 @@ open class PinLayout: NSObject, NSCoding {
 	}
 
 
-	open func pinToGuide(for view: UIView, superview: UIView, edge: PinLayoutHelperEdge, gap: CGFloat) -> NSLayoutConstraint? {
+	open func pinToGuide(for view: UIView, superview: UIView, edge: Edge, gap: CGFloat) -> NSLayoutConstraint? {
 		var constraint : NSLayoutConstraint?
 		view.translatesAutoresizingMaskIntoConstraints = false
 		if #available(iOS 11, *) {
@@ -148,35 +158,35 @@ open class PinLayout: NSObject, NSCoding {
 				break
 			}
 		}
-		
+
 		if let constraint = constraint {
 			constraint.constant = CGFloat(-gap)
 			constraint.isActive = true
-			self.recordedConstraints?.append(constraint)
+			self.recorder?.append(constraint)
 			return constraint
 		}
 		return nil
 	}
 
 	@objc(pinView:toEdge:ofView:)
-	@discardableResult open func pin(view: UIView, to edge: PinLayoutHelperEdge, of ofView: UIView) -> NSLayoutConstraint? {
+	@discardableResult open func pin(view: UIView, to edge: Edge, of ofView: UIView) -> NSLayoutConstraint? {
 		return self.pin(view: view, to: edge, of: ofView, gap: 0.0)
 	}
 
 
 	@objc(pinView:toEdge:ofView:gap:)
-	@discardableResult open func pin(view: UIView, to edge: PinLayoutHelperEdge, of ofView: UIView, gap: CGFloat) -> NSLayoutConstraint? {
+	@discardableResult open func pin(view: UIView, to edge: Edge, of ofView: UIView, gap: CGFloat) -> NSLayoutConstraint? {
 		return self.pin(view: view, to: edge, of: ofView, gap: gap, multiplier: 1.0)
 	}
 
 
-	@objc @discardableResult open func pin(view: UIView, to edge: PinLayoutHelperEdge, of ofView: UIView, gap: CGFloat, multiplier: CGFloat, relatedBy relation: NSLayoutConstraint.Relation = .equal) -> NSLayoutConstraint? {
+	@objc @discardableResult open func pin(view: UIView, to edge: Edge, of ofView: UIView, gap: CGFloat, multiplier: CGFloat, relatedBy relation: NSLayoutConstraint.Relation = .equal) -> NSLayoutConstraint? {
 		if let commonSuperView = self.findSuperViewFor(view, ofView) {
-			
+
 			if let constraint = self.pinToGuide(for: view, superview: commonSuperView, edge: edge, gap: gap) {
 				return constraint
 			}
-			
+
 			view.translatesAutoresizingMaskIntoConstraints = false
 
 			var firstView = view
@@ -202,18 +212,18 @@ open class PinLayout: NSObject, NSCoding {
 
 			let constraint = NSLayoutConstraint(item: firstView, attribute: attribute, relatedBy: relation, toItem: secondView, attribute: toAttribute, multiplier: CGFloat(multiplier), constant: CGFloat(gap))
 			commonSuperView.addConstraint(constraint)
-			recordedConstraints?.append(constraint)
+			recorder?.append(constraint)
 			return constraint
 		}
 		return nil;
 	}
 
 	@objc(pinView:toEdge:withGuide:)
-	@discardableResult open func pin(view: UIView, to edge: PinLayoutHelperEdge, withGuide guide: UILayoutSupport) -> NSLayoutConstraint? {
+	@discardableResult open func pin(view: UIView, to edge: Edge, withGuide guide: UILayoutSupport) -> NSLayoutConstraint? {
 		return self.pin(view: view, to: edge, withGuide: guide, gap: 0)
 	}
 
-	@objc @discardableResult open func pin(view: UIView, to edge: PinLayoutHelperEdge, withGuide guide: UILayoutSupport, gap: CGFloat) -> NSLayoutConstraint? {
+	@objc @discardableResult open func pin(view: UIView, to edge: Edge, withGuide guide: UILayoutSupport, gap: CGFloat) -> NSLayoutConstraint? {
 		if let superview = view.superview {
 			return self.pin(view: view, to: edge, of: superview, withGuide: guide, gap: gap)
 		}
@@ -221,12 +231,12 @@ open class PinLayout: NSObject, NSCoding {
 	}
 
 	@objc(pinView:toEdge:ofView:withGuide:)
-	@discardableResult open func pin(view: UIView, to edge: PinLayoutHelperEdge, of ofView: UIView, withGuide guide: UILayoutSupport) -> NSLayoutConstraint? {
+	@discardableResult open func pin(view: UIView, to edge: Edge, of ofView: UIView, withGuide guide: UILayoutSupport) -> NSLayoutConstraint? {
 		return self.pin(view: view, to: edge, of: ofView, withGuide: guide, gap: 0.0)
 	}
 
 	@objc(pinView:toEdge:ofView:withGuide:gap:)
-	@discardableResult open func pin(view: UIView, to edge: PinLayoutHelperEdge, of ofView: UIView, withGuide guide: UILayoutSupport, gap: CGFloat) -> NSLayoutConstraint? {
+	@discardableResult open func pin(view: UIView, to edge: Edge, of ofView: UIView, withGuide guide: UILayoutSupport, gap: CGFloat) -> NSLayoutConstraint? {
 
 		if let commonSuperView = self.findSuperViewFor(view, ofView) {
 			if let constraint = self.pinToGuide(for: view, superview: commonSuperView, edge: edge, gap: gap) {
@@ -240,7 +250,7 @@ open class PinLayout: NSObject, NSCoding {
 			let toAttribute = self.inverseAttribute(attribute)
 			let constraint = NSLayoutConstraint(item: view, attribute: attribute, relatedBy: .equal, toItem: guide, attribute: toAttribute, multiplier: 1.0, constant: CGFloat(gap))
 			commonSuperView.addConstraint(constraint)
-			self.recordedConstraints?.append(constraint)
+			self.recorder?.append(constraint)
 			return constraint
 		}
 		return nil
@@ -273,7 +283,7 @@ open class PinLayout: NSObject, NSCoding {
 	}
 
 
-	func toLayoutAttribute(_ attribute: PinLayoutHelperEdge) -> NSLayoutConstraint.Attribute {
+	func toLayoutAttribute(_ attribute: Edge) -> NSLayoutConstraint.Attribute {
 		switch (attribute) {
 		case .left:
 			return NSLayoutConstraint.Attribute.left
@@ -313,7 +323,7 @@ open class PinLayout: NSObject, NSCoding {
 		}
 	}
 
-	func toConstantAttribute(_ attribute: PinLayoutConstant) -> NSLayoutConstraint.Attribute {
+	func toConstantAttribute(_ attribute: Constant) -> NSLayoutConstraint.Attribute {
 		switch (attribute) {
 		case .height:
 			return NSLayoutConstraint.Attribute.height
@@ -403,22 +413,22 @@ open class PinLayout: NSObject, NSCoding {
 		let constraint = NSLayoutConstraint(item: view, attribute: attribute, relatedBy: relation, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: constant)
 		constraint.priority = priority
 		view.addConstraint(constraint)
-		self.recordedConstraints?.append(constraint)
+		self.recorder?.append(constraint)
 		return constraint
 	}
 
 	@objc
-	open func setEqualConstant(view: UIView, andView secondView: UIView, attribute: PinLayoutConstant, priority: UILayoutPriority, multiplier: CGFloat) {
+	open func setEqualConstant(view: UIView, andView secondView: UIView, attribute: Constant, priority: UILayoutPriority, multiplier: CGFloat) {
 		setEqualConstant(view: view, andView: secondView, attribute: toConstantAttribute(attribute), priority: priority, multiplier: multiplier)
 	}
 
 
 	@discardableResult
-	@objc open func setEqualConstant(view: UIView, andView secondView: UIView, attribute: PinLayoutConstant) -> NSLayoutConstraint? {
+	@objc open func setEqualConstant(view: UIView, andView secondView: UIView, attribute: Constant) -> NSLayoutConstraint? {
 		return setEqualConstant(view: view, andView: secondView, attribute: toConstantAttribute(attribute))
 	}
 
-	
+
 	@discardableResult
 	func setEqualConstant(view: UIView, andView secondView: UIView, attribute: NSLayoutConstraint.Attribute, priority: UILayoutPriority, multiplier: CGFloat, constant: CGFloat = 0) -> NSLayoutConstraint? {
 		if let commonSuperView = self.findSuperViewFor(view, secondView) {
@@ -426,7 +436,7 @@ open class PinLayout: NSObject, NSCoding {
 			view.translatesAutoresizingMaskIntoConstraints = false
 			constraint.priority = priority;
 			commonSuperView.addConstraint(constraint)
-			self.recordedConstraints?.append(constraint)
+			self.recorder?.append(constraint)
 			return constraint
 		}
 		return nil
@@ -451,7 +461,7 @@ open class PinLayout: NSObject, NSCoding {
 	@objc open func setEqualWidthAndHeight(view: UIView) -> NSLayoutConstraint? {
 		let constraint = NSLayoutConstraint(item: view, attribute: .width, relatedBy: .equal, toItem: view, attribute: .height, multiplier: 1.0, constant: 0.0)
 		view.addConstraint(constraint)
-		self.recordedConstraints?.append(constraint)
+		self.recorder?.append(constraint)
 		return constraint
 	}
 
@@ -487,25 +497,25 @@ open class PinLayout: NSObject, NSCoding {
 	}
 
 	@objc(alignView:withView:toEdge:)
-	@discardableResult open func align(view first: UIView, with second: UIView, to edge: PinLayoutHelperEdge) -> NSLayoutConstraint? {
+	@discardableResult open func align(view first: UIView, with second: UIView, to edge: Edge) -> NSLayoutConstraint? {
 		return self.align(view: first, with: second, to: edge, gap: 0)
 	}
 
 
 	@objc(alignView:withView:toEdge:gap:)
-	@discardableResult open func align(view first: UIView, with second: UIView, to edge: PinLayoutHelperEdge, gap: CGFloat) -> NSLayoutConstraint? {
+	@discardableResult open func align(view first: UIView, with second: UIView, to edge: Edge, gap: CGFloat) -> NSLayoutConstraint? {
 		if let superView = self.findSuperViewFor(first, second) {
 			let attribute = toLayoutAttribute(edge)
 			let constraint = NSLayoutConstraint(item: first, attribute: attribute, relatedBy: .equal, toItem: second, attribute: attribute, multiplier: 1.0, constant: gap)
 			superView.addConstraint(constraint)
-			self.recordedConstraints?.append(constraint)
+			self.recorder?.append(constraint)
 			return constraint
 		}
 		return nil
 	}
 
 
-	@objc open func findConstraintForView(_ view: UIView, attribute: PinLayoutConstant) -> NSLayoutConstraint? {
+	@objc open func findConstraintForView(_ view: UIView, attribute: Constant) -> NSLayoutConstraint? {
 		for constraint in view.constraints {
 			if constraint.firstAttribute == toConstantAttribute(attribute) &&
 				 constraint.secondAttribute == .notAnAttribute {
@@ -527,11 +537,11 @@ open class PinLayout: NSObject, NSCoding {
 	}
 
 	/**
-	 * Starts recording all the contraints that are added to the views.
+	 * Starts recording all the constraints that are added to the views.
 	 * Calling this method always starts a new recording, so all previous recorded constraints are lost.
 	 */
-	open func startRecord() {
-		self.recordedConstraints = []
+	open func startRecord(recorder: LayoutConstraintsRecorder = LayoutConstraintsRecorder()) {
+		self.recorder = recorder
 	}
 
 	/**
@@ -539,8 +549,9 @@ open class PinLayout: NSObject, NSCoding {
 	 * @returns the recorded constraints
 	 */
 	open func finishRecord() -> [NSLayoutConstraint] {
-		if let result = self.recordedConstraints {
-			self.recordedConstraints = nil
+		if let recorder = self.recorder {
+			let result = recorder.constraints
+			self.recorder = nil
 			return result
 		}
 		return []

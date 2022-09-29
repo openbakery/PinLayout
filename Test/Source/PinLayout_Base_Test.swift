@@ -13,13 +13,13 @@ class PinLayout_Base_Test: XCTestCase {
 
 	var view : UIView!
 	var toView : UIView!
-	var pinLayout: PinLayout!
+	var pinLayout: Layout!
 
 	override func setUp() {
 		super.setUp()
 		view = UIView()
 		toView = UIView()
-		pinLayout = PinLayout()
+		pinLayout = Layout()
 	}
 
 	override func tearDown() {
@@ -122,5 +122,31 @@ class PinLayout_Base_Test: XCTestCase {
 		return nil;
 	}
 
+	func assertThatFirstItemOf(_ constraint: NSLayoutConstraint, equalToView: UIView, file: StaticString = #filePath, line: UInt = #line) {
+		assertThat(constraint.firstItem, present(), file: file, line: line)
+		if let firstItemView = constraint.firstItem as? UIView {
+			assertThat(firstItemView, equalTo(equalToView), file: file, line: line)
+		} else {
+			XCTFail("firstItem is not a UIView", file: file, line: line)
+		}
+	}
 
+	func assertThatSecondItemOf(_ constraint: NSLayoutConstraint, equalToView: UIView, file: StaticString = #filePath, line: UInt = #line) {
+		assertThat(constraint.secondItem, present(), file: file, line: line)
+		if let secondItemView = constraint.secondItem as? UIView {
+			assertThat(secondItemView, equalTo(equalToView), file: file, line: line)
+		} else {
+			XCTFail("secondItem is not a UIView", file: file, line: line)
+		}
+	}
+
+
+	func constraintAtIndex(_ index: Int, ofView:UIView, file: StaticString = #filePath, line: UInt = #line) -> NSLayoutConstraint {
+		if (ofView.constraints.count > index) {
+			return ofView.constraints[index]
+		}
+		XCTFail("there is no constraint a index: \(index)", file: file, line: line)
+		// return something to make the compiler happy
+		return NSLayoutConstraint(item: ofView, attribute:.top, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 0.0, constant: 0.0)
+	}
 }

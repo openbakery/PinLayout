@@ -14,13 +14,13 @@ protocol TopLayoutGuide {
 }
 
 class MyViewController: UIViewController, TopLayoutGuide {
-	
+
 }
 
 
-class PinLayout_For_isOS10: PinLayout {
+class PinLayout_For_isOS10: Layout {
 
-	override func pinToGuide(for view: UIView, superview: UIView, edge: PinLayoutHelperEdge, gap: CGFloat) -> NSLayoutConstraint? {
+	override func pinToGuide(for view: UIView, superview: UIView, edge: Edge, gap: CGFloat) -> NSLayoutConstraint? {
 		return nil
 	}
 }
@@ -61,8 +61,8 @@ class PinLayout_iOS10_Test :PinLayout_Base_Test {
 		}
 
 	}
-	
-	
+
+
 	func testPinViewToGuide() {
 		let viewController = MyViewController()
 		show(viewController:viewController)

@@ -1,42 +1,49 @@
 //
-// Created by Rene Pirringer on 01.08.16.
+// Created by René Pirringer.
+// Copyright (c) 2022 org.openbakery. All rights reserved.
 //
 
 import Foundation
+import UIKit
 import XCTest
 import Hamcrest
 @testable import PinLayout
 
+class LayoutBuilder_Test: PinLayout_Base_Test {
 
-class PinLayoutTest: PinLayout_Base_Test {
 
-
-	func testPinEdgeTopWithToView() {
+	func test_pin_to_edge() {
 		let superView = UIView()
 		superView.addSubview(view)
 		superView.addSubview(toView)
 
-		pinLayout.pin(view:view, to: .top, of: toView)
+		// when
+		view.layout.pin(.top, to: toView)
 
+		// then
 		assertThat(superView.constraints, presentAnd(hasCount(1)))
-
 		self.checkConstraintWithInverse(.top, onView: superView)
 	}
 
 
 	func testPinEdgeTop() {
 		toView.addSubview(view)
-		pinLayout.pin(view:view, to:.top, of:toView)
 
+		// when
+		view.layout.pin(.top, to:toView)
+
+		// then
 		assertThat(toView.constraints, hasCount(1))
 		self.checkConstraint(.top)
 	}
 
-
 	func testPinEdgeBottom() {
 		toView.addSubview(view)
-		pinLayout.pin(view:view, to: .bottom, of: toView)
 
+		// when
+		view.layout.pin(.bottom, to: toView)
+
+		// the
 		assertThat(toView.constraints, hasCount(1))
 		self.checkConstraint(.bottom)
 	}
@@ -44,24 +51,23 @@ class PinLayoutTest: PinLayout_Base_Test {
 
 	func testPinEdgeLeft() {
 		toView.addSubview(view)
-		pinLayout.pin(view:view, to: .left, of: toView)
 
+		// when
+		view.layout.pin(.left, to: toView)
+
+		// then
 		assertThat(toView.constraints, hasCount(1))
 		self.checkConstraint(.left)
 	}
 
-	func testPinEdgeRight() {
-		toView.addSubview(view)
-		pinLayout.pin(view:view, to: .right, of: toView)
-
-		assertThat(toView.constraints, hasCount(1))
-		self.checkConstraint(.right)
-	}
 
 	func testPinToAllEdges() {
 		toView.addSubview(view)
-		pinLayout.pinToAllEdges(view: view, of: toView)
 
+		// when
+		view.layout.fill()
+
+		// then
 		assertThat(toView.constraints, hasCount(4))
 		self.checkConstraint(.top)
 		self.checkConstraint(.bottom)
@@ -70,23 +76,25 @@ class PinLayoutTest: PinLayout_Base_Test {
 	}
 
 
-
-
 	func testPinEdgeBaseLineTop() {
 		toView.addSubview(view)
-		pinLayout.pin(view:view, to: .topBaseline, of: toView)
 
+		// when
+		view.layout.pin(.topBaseline, to: toView)
+
+		// then
 		assertThat(toView.constraints, hasCount(1))
 		self.checkConstraintWithFirstAttribute(.firstBaseline, andSecond: .top)
 	}
 
-
 	func testPinEdgeBaseLineBottom() {
 		toView.addSubview(view)
-		pinLayout.pin(view:view, to: .bottomBaseline, of: toView)
 
+		// thwn
+		view.layout.pin(.bottomBaseline, to: toView)
+
+		// then
 		assertThat(toView.constraints, hasCount(1))
-
 		let constraint = constraintAtIndex(0, ofView:toView)
 
 		assertThat(constraint.constant, equalTo(0))
@@ -101,8 +109,10 @@ class PinLayoutTest: PinLayout_Base_Test {
 	func testMinHeight() {
 		toView.addSubview(view)
 
-		pinLayout.setMinHeight(of: view, to: 44.0)
+		// when
+		view.layout.minHeight(44.0)
 
+		// then
 		assertThat(view.constraints, hasCount(1))
 
 		let constraint = constraintAtIndex(0, ofView:view)
@@ -119,8 +129,10 @@ class PinLayoutTest: PinLayout_Base_Test {
 	func testMinWidth() {
 		toView.addSubview(view)
 
-		pinLayout.setMinWidth(of: view, to: 144.0)
+		// when
+		view.layout.minWidth(144.0)
 
+		// then
 		assertThat(view.constraints, hasCount(1))
 
 		let constraint = constraintAtIndex(0, ofView:view)
@@ -138,26 +150,28 @@ class PinLayoutTest: PinLayout_Base_Test {
 	func testHeight() {
 		toView.addSubview(view)
 
-		pinLayout.setHeight(of:view, to: 44.0)
+		// when
+		view.layout.height(44)
 
+		// then
 		assertThat(view.constraints, hasCount(1))
 
 		let constraint = constraintAtIndex(0, ofView:view)
 		assertThat(constraint.constant, equalTo(44.0))
 		assertThat(constraint.firstAttribute, equalTo(.height))
 		assertThat(constraint.secondAttribute, equalTo(.notAnAttribute))
-
 		assertThatFirstItemOf(constraint, equalToView: view)
 		assertThat(constraint.secondItem, nilValue())
-
 		assertThat(constraint.relation, equalTo(.equal))
 	}
 
 	func testWidth() {
 		toView.addSubview(view)
 
-		pinLayout.setWidth(of:view, to: 144.0)
+		// when
+		view.layout.width(144)
 
+		// then
 		assertThat(view.constraints, hasCount(1))
 
 		let constraint = constraintAtIndex(0, ofView:view)
@@ -171,126 +185,142 @@ class PinLayoutTest: PinLayout_Base_Test {
 		assertThat(constraint.relation, equalTo(.equal))
 	}
 
+	func test_view_is_horizontal_center() {
+		let superview = UIView()
+		superview.addSubview(view)
 
-	func testVerticalCenterView() {
-		toView.addSubview(view)
+		let constraint = view.layout.centerX()
 
-		pinLayout.equalCenterY(view:view)
-
-		assertThat(toView.constraints, hasCount(1))
-
-		let constraint = constraintAtIndex(0, ofView:toView)
-		assertThat(constraint.constant, equalTo(0.0))
-		assertThat(constraint.firstAttribute, equalTo(.centerY))
-		assertThat(constraint.secondAttribute, equalTo(.centerY))
-
-		assertThatFirstItemOf(constraint, equalToView: view)
-		assertThatSecondItemOf(constraint, equalToView: toView)
-
-		assertThat(constraint.relation, equalTo(.equal))
-
+		// then
+		assertThat(constraint, present())
+		assertThat(constraint?.firstAttribute, equalTo(.centerX))
+		assertThat(constraint?.firstItem, presentAnd(instanceOf(UILayoutGuide.self, and:equalTo(view.safeAreaLayoutGuide))))
+		assertThat(constraint?.secondAttribute, presentAnd(equalTo(.centerX)))
+		assertThat(constraint?.secondItem, presentAnd(instanceOf(UILayoutGuide.self, and:equalTo(superview.safeAreaLayoutGuide))))
+		assertThat(constraint?.constant, presentAnd(equalTo(0)))
+		assertThat(constraint?.isActive, presentAnd(equalTo(true)))
+		assertThat(view.translatesAutoresizingMaskIntoConstraints, equalTo(false))
 	}
 
 
-	func testHorizontalCenterView() {
-		toView.addSubview(view)
+	func test_view_is_horizontal_center_with_offset() {
+		let superview = UIView()
+		superview.addSubview(view)
 
-		pinLayout.equalCenterX(view:view)
+		let constraint = view.layout.centerX(offset: 20)
 
-		assertThat(toView.constraints, hasCount(1))
+		// then
+		assertThat(constraint, present())
+		assertThat(constraint?.constant, presentAnd(equalTo(20)))
+	}
 
-		let constraint = constraintAtIndex(0, ofView:toView)
-		assertThat(constraint.constant, equalTo(0.0))
-		assertThat(constraint.firstAttribute, equalTo(.centerX))
-		assertThat(constraint.secondAttribute, equalTo(.centerX))
+	func test_view_is_horizontal_center_with_other_view() {
+		let superview = UIView()
+		let other = UIView()
+		superview.addSubview(view)
+		superview.addSubview(other)
 
-		assertThatFirstItemOf(constraint, equalToView: view)
-		assertThatSecondItemOf(constraint, equalToView: toView)
+		let constraint = view.layout.centerX(to: other)
 
-		assertThat(constraint.relation, equalTo(.equal))
+		// then
+		assertThat(constraint, present())
+		assertThat(constraint?.firstAttribute, equalTo(.centerX))
+		assertThat(constraint?.firstItem, presentAnd(instanceOf(UILayoutGuide.self, and:equalTo(view.safeAreaLayoutGuide))))
+		assertThat(constraint?.secondAttribute, presentAnd(equalTo(.centerX)))
+		assertThat(constraint?.secondItem, presentAnd(instanceOf(UILayoutGuide.self, and:equalTo(other.safeAreaLayoutGuide))))
+		assertThat(constraint?.constant, presentAnd(equalTo(0)))
+		assertThat(constraint?.isActive, presentAnd(equalTo(true)))
+		assertThat(view.translatesAutoresizingMaskIntoConstraints, equalTo(false))
+	}
+
+	// MARK: center Y
+	func test_view_is_vertical_center() {
+		let superview = UIView()
+		superview.addSubview(view)
+
+		let constraint = view.layout.centerY()
+
+		// then
+		assertThat(constraint, present())
+		assertThat(constraint?.firstAttribute, equalTo(.centerY))
+		assertThat(constraint?.firstItem, presentAnd(instanceOf(UILayoutGuide.self, and:equalTo(view.safeAreaLayoutGuide))))
+		assertThat(constraint?.secondAttribute, presentAnd(equalTo(.centerY)))
+		assertThat(constraint?.secondItem, presentAnd(instanceOf(UILayoutGuide.self, and:equalTo(superview.safeAreaLayoutGuide))))
+		assertThat(constraint?.constant, presentAnd(equalTo(0)))
+		assertThat(constraint?.isActive, presentAnd(equalTo(true)))
+		assertThat(view.translatesAutoresizingMaskIntoConstraints, equalTo(false))
 	}
 
 
-	func test_equalCenter_View() {
-		toView.addSubview(view)
+	func test_view_is_vertical_center_with_offset() {
+		let superview = UIView()
+		superview.addSubview(view)
 
-		pinLayout.equalCenter(view:view)
+		// when
+		let constraint = view.layout.centerY(offset: 20)
 
-		assertThat(toView.constraints, hasCount(2))
-
-		let constraintY = constraintAtIndex(0, ofView: toView)
-		assertThat(constraintY.constant, equalTo(0.0))
-		assertThat(constraintY.firstAttribute, equalTo(.centerY))
-		assertThat(constraintY.secondAttribute, equalTo(.centerY))
-
-		let constraintX = constraintAtIndex(1, ofView: toView)
-		assertThat(constraintX.constant, equalTo(0.0))
-		assertThat(constraintX.firstAttribute, equalTo(.centerX))
-		assertThat(constraintX.secondAttribute, equalTo(.centerX))
+		// then
+		assertThat(constraint, present())
+		assertThat(constraint?.constant, presentAnd(equalTo(20)))
 	}
 
 
-	func testHorizontalCenterTwoView() {
-		let secondView = UIView()
-		toView.addSubview(view)
-		toView.addSubview(secondView)
+	func test_view_is_vertical_center_with_other_view() {
+		let superview = UIView()
+		let other = UIView()
+		superview.addSubview(view)
+		superview.addSubview(other)
 
-		pinLayout.equalCenterX(view:view, toView: secondView)
+		// when
+		let constraint = view.layout.centerY(to: other)
 
-		assertThat(toView.constraints, hasCount(1))
-
-		let constraint = constraintAtIndex(0, ofView:toView)
-		assertThat(constraint.constant, equalTo(0.0))
-		assertThat(constraint.firstAttribute, equalTo(.centerX))
-		assertThat(constraint.secondAttribute, equalTo(.centerX))
-
-		assertThatFirstItemOf(constraint, equalToView: view)
-		assertThatSecondItemOf(constraint, equalToView: secondView)
-
-		assertThat(constraint.relation, equalTo(.equal))
-	}
-
-	func testVerticalCenterTwoView() {
-		let secondView = UIView()
-		toView.addSubview(view)
-		toView.addSubview(secondView)
-
-		pinLayout.equalCenterY(view:view, toView: secondView)
-
-		assertThat(toView.constraints, hasCount(1))
-
-		let constraint = constraintAtIndex(0, ofView:toView)
-		assertThat(constraint.constant, equalTo(0.0))
-		assertThat(constraint.firstAttribute, equalTo(.centerY))
-		assertThat(constraint.secondAttribute, equalTo(.centerY))
-
-		assertThatFirstItemOf(constraint, equalToView: view)
-		assertThatSecondItemOf(constraint, equalToView: secondView)
-
-		assertThat(constraint.relation, equalTo(.equal))
+		// then
+		assertThat(constraint, present())
+		assertThat(constraint?.firstAttribute, equalTo(.centerY))
+		assertThat(constraint?.firstItem, presentAnd(instanceOf(UILayoutGuide.self, and:equalTo(view.safeAreaLayoutGuide))))
+		assertThat(constraint?.secondAttribute, presentAnd(equalTo(.centerY)))
+		assertThat(constraint?.secondItem, presentAnd(instanceOf(UILayoutGuide.self, and:equalTo(other.safeAreaLayoutGuide))))
+		assertThat(constraint?.constant, presentAnd(equalTo(0)))
+		assertThat(constraint?.isActive, presentAnd(equalTo(true)))
+		assertThat(view.translatesAutoresizingMaskIntoConstraints, equalTo(false))
 	}
 
 
-	func testCenterViewWithTwoViews() {
-		let secondView = UIView()
-		toView.addSubview(view)
-		toView.addSubview(secondView)
+	// MARK: - safeCenter
 
-		pinLayout.equalCenter(view:view, with: secondView)
+	func test_saveArea_center() {
+		let superview = UIView()
+		superview.addSubview(view)
 
-		assertThat(toView.constraints, hasCount(2))
+		// when
+		let constraints = view.layout.center()
 
-		let constraintY = constraintAtIndex(0, ofView: toView)
-		assertThat(constraintY.constant, equalTo(0.0))
-		assertThat(constraintY.firstAttribute, equalTo(.centerY))
-		assertThat(constraintY.secondAttribute, equalTo(.centerY))
+		// then
+		assertThat(constraints, hasCount(2))
+		assertThat(constraints.first?.firstAttribute, equalTo(.centerX))
+		assertThat(constraints.last?.firstAttribute, equalTo(.centerY))
 
-		let constraintX = constraintAtIndex(1, ofView: toView)
-		assertThat(constraintX.constant, equalTo(0.0))
-		assertThat(constraintX.firstAttribute, equalTo(.centerX))
-		assertThat(constraintX.secondAttribute, equalTo(.centerX))
+		assertThat(constraints.first?.secondItem, presentAnd(instanceOf(UILayoutGuide.self, and:equalTo(superview.safeAreaLayoutGuide))))
+		assertThat(constraints.last?.secondItem, presentAnd(instanceOf(UILayoutGuide.self, and:equalTo(superview.safeAreaLayoutGuide))))
 	}
 
+
+	func test_saveArea_center_to_other() {
+		let superview = UIView()
+		let other = UIView()
+		superview.addSubview(view)
+		superview.addSubview(other)
+
+		let constraints = view.layout.center(to: other)
+
+		// then
+		assertThat(constraints, hasCount(2))
+		assertThat(constraints.first?.firstAttribute, equalTo(.centerX))
+		assertThat(constraints.last?.firstAttribute, equalTo(.centerY))
+
+		assertThat(constraints.first?.secondItem, presentAnd(instanceOf(UILayoutGuide.self, and:equalTo(other.safeAreaLayoutGuide))))
+		assertThat(constraints.last?.secondItem, presentAnd(instanceOf(UILayoutGuide.self, and:equalTo(other.safeAreaLayoutGuide))))
+	}
 
 
 	func testTwoViewWithSameWidth() {
@@ -298,8 +328,10 @@ class PinLayoutTest: PinLayout_Base_Test {
 		toView.addSubview(view)
 		toView.addSubview(secondView)
 
-		pinLayout.setEqualConstant(view: view, andView: secondView, attribute: .width)
+		// when
+		view.layout.equalWidth(with: secondView)
 
+		// then
 		assertThat(toView.constraints, hasCount(1))
 		if (toView.constraints.count > 0) {
 			let constraint = constraintAtIndex(0, ofView: toView)
@@ -318,7 +350,8 @@ class PinLayoutTest: PinLayout_Base_Test {
 		toView.addSubview(view)
 		toView.addSubview(secondView)
 
-		pinLayout.setEqualConstant(view: view, andView: secondView, attribute: .height)
+		// when
+		view.layout.equalHeight(with: secondView)
 
 		assertThat(toView.constraints, hasCount(1))
 		if (toView.constraints.count > 0) {
@@ -338,12 +371,14 @@ class PinLayoutTest: PinLayout_Base_Test {
 		toView.addSubview(view)
 		toView.addSubview(secondView)
 
-		pinLayout.setEqualConstant(view: view, andView: secondView, attribute: .height, priority:UILayoutPriority(rawValue: 100), multiplier: 1.0)
+		// when
+		view.layout.equalHeight(with: secondView, priority:UILayoutPriority(rawValue: 100))
 
 		assertThat(toView.constraints, hasCount(1))
 		if (toView.constraints.count > 0) {
 			let constraint = constraintAtIndex(0, ofView: toView)
 			assertThat(constraint.priority.rawValue, equalTo(100))
+			assertThat(constraint.multiplier, equalTo(1.0))
 		}
 
 	}
@@ -353,7 +388,9 @@ class PinLayoutTest: PinLayout_Base_Test {
 		toView.addSubview(view)
 		toView.addSubview(secondView)
 
-		pinLayout.setEqualHeight(view: view, andView:secondView)
+
+		// when
+		view.layout.equalHeight(with: secondView)
 
 		assertThat(toView.constraints, hasCount(1))
 		if (toView.constraints.count > 0) {
@@ -372,8 +409,10 @@ class PinLayoutTest: PinLayout_Base_Test {
 		toView.addSubview(view)
 		toView.addSubview(secondView)
 
-		pinLayout.setEqualHeight(view: view, andView:secondView, priority:UILayoutPriority(rawValue: 101))
+		// when
+		view.layout.equalHeight(with: secondView, priority:UILayoutPriority(rawValue: 101))
 
+		// then
 		assertThat(toView.constraints, hasCount(1))
 		if (toView.constraints.count > 0) {
 			let constraint = constraintAtIndex(0, ofView: toView)
@@ -387,7 +426,8 @@ class PinLayoutTest: PinLayout_Base_Test {
 		toView.addSubview(view)
 		toView.addSubview(secondView)
 
-		pinLayout.setEqualWidth(view: view, andView:secondView)
+		// when
+		view.layout.equalWidth(with: secondView)
 
 		assertThat(toView.constraints, hasCount(1))
 		if (toView.constraints.count > 0) {
@@ -405,8 +445,10 @@ class PinLayoutTest: PinLayout_Base_Test {
 		toView.addSubview(view)
 		toView.addSubview(secondView)
 
-		pinLayout.setEqualWidth(view: view, andView:secondView, priority:UILayoutPriority(rawValue: 101))
+		// when
+		view.layout.equalWidth(with: secondView, priority:UILayoutPriority(rawValue: 101))
 
+		// then
 		assertThat(toView.constraints, hasCount(1))
 		if (toView.constraints.count > 0) {
 			let constraint = constraintAtIndex(0, ofView: toView)
@@ -420,8 +462,10 @@ class PinLayoutTest: PinLayout_Base_Test {
 		pinLayout.setHeight(of:view, to: 44.0)
 		pinLayout.setWidth(of:view, to: 44.0)
 
+		// when
+		let constraint = view.layout.findConstraint(attribute:.height)
 
-		let constraint = pinLayout.findConstraintForView(view, attribute:.height)
+		// then
 		assertThat(constraint, present())
 		if let constraintUnwrapped = constraint {
 			assertThat(constraintUnwrapped.firstAttribute, equalTo(.height))
@@ -431,18 +475,27 @@ class PinLayoutTest: PinLayout_Base_Test {
 	}
 
 	func test_pinView_to_bottom_with_relation() {
+		//given
 		toView.addSubview(view)
-		let constraint = pinLayout.pin(view:view, to: .bottom, relatedBy: .greaterThanOrEqual)
+
+		// when
+		let constraint = view.layout.pin(.bottom, relatedBy: .greaterThanOrEqual).first
+
+		// then
 		assertThat(constraint?.relation, presentAnd(equalTo(.greaterThanOrEqual)))
 	}
 
 
 	func test_remove_height_constraint_should_remove_it() {
+		// given
 		toView.addSubview(view)
 		pinLayout.setHeight(of:view, to: 44.0)
 		assertThat(view.constraints, hasCount(1))
 
-		pinLayout.removeAllConstraints(from: view)
+		// when
+		view.layout.removeAllConstraints()
+
+		// then
 		assertThat(view.constraints, hasCount(0))
 	}
 
@@ -451,76 +504,21 @@ class PinLayoutTest: PinLayout_Base_Test {
 		pinLayout.pinToAllEdges(view: view)
 		assertThat(toView.constraints, hasCount(4))
 
-		pinLayout.removeAllConstraints(from: view)
+		// when
+		view.layout.removeAllConstraints()
+
+		// then
 		assertThat(toView.constraints, hasCount(0))
 	}
 
-	func test_record_constraints_records_pin_constraints() {
-		pinLayout.startRecord()
 
-		toView.addSubview(view)
-		pinLayout.pinToAllEdges(view: view)
-		let constraints = pinLayout.finishRecord()
-		assertThat(constraints, hasCount(4))
-	}
-
-	func test_record_constraints_and_finish_resets_recorded_constraints() {
-		pinLayout.startRecord()
-		toView.addSubview(view)
-		pinLayout.pinToAllEdges(view: view)
-		let constraints = pinLayout.finishRecord()
-		assertThat(constraints, hasCount(4))
-		assertThat(pinLayout.finishRecord(), hasCount(0))
-	}
-
-
-	func test_record_constraints_and_start_a_second_time_returns_only_the_new() {
-		pinLayout.startRecord()
-		toView.addSubview(view)
-		pinLayout.pinToAllEdges(view: view)
-		pinLayout.startRecord()
-		pinLayout.pinToAllEdges(view: view)
-		assertThat(pinLayout.finishRecord(), hasCount(4))
-	}
-
-	func test_record_setHeight_constraint() {
-		pinLayout.startRecord()
-		toView.addSubview(view)
-		pinLayout.setHeight(of: view, to: 10)
-		assertThat(pinLayout.finishRecord(), hasCount(1))
-	}
-
-	func test_record_equal_constraint() {
-		pinLayout.startRecord()
-		let secondView = UIView()
-		toView.addSubview(view)
-		toView.addSubview(secondView)
-		pinLayout.setEqualHeight(view: view, andView: secondView)
-		assertThat(pinLayout.finishRecord(), hasCount(1))
-	}
-
-	func test_record_equalWidthAndHeight_constraint() {
-		pinLayout.startRecord()
-		toView.addSubview(view)
-		pinLayout.setEqualWidthAndHeight(view: view)
-		assertThat(pinLayout.finishRecord(), hasCount(1))
-	}
-
-	func test_record_pinWithGuide_constraint() {
-		pinLayout.startRecord()
-		let viewController = UIViewController()
-		show(viewController:viewController)
-		viewController.view.addSubview(view)
-		pinLayout.pin(view: view, to: .top)
-		assertThat(pinLayout.finishRecord(), hasCount(1))
-	}
-
-
-
-	@available(iOS 11, *)
 	func test_pin_leading_with_safeGuide() {
 		toView.addSubview(view)
-		pinLayout.pin(view:view, to:.leadingSafeArea)
+
+		// when
+		view.layout.pin(.leadingSafeArea)
+
+		// then
 		assertThat(view, isPinnedToSafeAreaAnchor(.leading))
 		assertThat(view, not(isPinned(.leading)))
 	}
@@ -528,49 +526,48 @@ class PinLayoutTest: PinLayout_Base_Test {
 	@available(iOS 11, *)
 	func test_pin_leading_with_safeGuide_and_gap() {
 		toView.addSubview(view)
-		if let constraint = pinLayout.pin(view:view, to:.leadingSafeArea) {
-			constraint.constant = 200
-		}
-		assertThat(view, isPinnedToSafeAreaAnchor(.leading, gap: 200))
+
+		// when
+		view.layout.pin(.leadingSafeArea, gap: 200)
+
+		// then
+		assertThat(view, isPinnedToSafeAreaAnchor(.leading, gap: -200))
 		assertThat(view, not(isPinned(.leading)))
 	}
 
-
-	@available(iOS 11, *)
 	func test_pin_trailing_with_safeGuide() {
 		toView.addSubview(view)
-		pinLayout.pin(view:view, to:.trailingSafeArea)
+
+		// when
+		view.layout.pin(.trailingSafeArea)
+
+		// then
 		assertThat(view, isPinnedToSafeAreaAnchor(.trailing))
 		assertThat(view, not(isPinned(.trailing)))
 	}
 
-	@available(iOS 11, *)
+
 	func test_pin_top_with_safeGuide() {
 		toView.addSubview(view)
-		pinLayout.pin(view:view, to:.topSafeArea)
+
+		// when
+		view.layout.pin(.topSafeArea)
+
+		// then
 		assertThat(view, isPinnedToSafeAreaAnchor(.top))
 		assertThat(view, not(isPinned(.top)))
 	}
 
-	@available(iOS 11, *)
 	func test_pin_bottom_with_safeGuide() {
 		toView.addSubview(view)
-		pinLayout.pin(view:view, to:.bottomSafeArea)
+
+		// when
+		view.layout.pin(.bottomSafeArea)
+
+		// then
 		assertThat(view, isPinnedToSafeAreaAnchor(.bottom))
 		assertThat(view, not(isPinned(.bottom)))
 	}
-
-
-
-	func test_record_pin_with_safeGuide_constraint() {
-		pinLayout.startRecord()
-		let viewController = UIViewController()
-		show(viewController:viewController)
-		viewController.view.addSubview(view)
-		pinLayout.pin(view: view, to: .leadingSafeArea)
-		assertThat(pinLayout.finishRecord(), hasCount(1))
-	}
-
 
 
 	func test_align_views_to_top() {
@@ -579,8 +576,10 @@ class PinLayoutTest: PinLayout_Base_Test {
 		superView.addSubview(view)
 		superView.addSubview(toView)
 
-		pinLayout.align(view: view, with: toView, to: .top)
+		// when
+		view.layout.align(with: toView, to: .top)
 
+		// then
 		let constraint = constraintAtIndex(0, ofView:superView)
 		assertThat(constraint.constant, equalTo(0.0))
 		assertThat(constraint.firstAttribute, equalTo(.top))
@@ -593,15 +592,16 @@ class PinLayoutTest: PinLayout_Base_Test {
 
 	}
 
-
 	func test_align_views_to_left() {
 		let superView = UIView()
 
 		superView.addSubview(view)
 		superView.addSubview(toView)
 
-		pinLayout.align(view: view, with: toView, to: .left)
+		// when
+		view.layout.align(with: toView, to: .left)
 
+		// then
 		let constraint = constraintAtIndex(0, ofView:superView)
 		assertThat(constraint.constant, equalTo(0.0))
 		assertThat(constraint.firstAttribute, equalTo(.left))
@@ -619,7 +619,10 @@ class PinLayoutTest: PinLayout_Base_Test {
 		superView.addSubview(view)
 		superView.addSubview(toView)
 
-		pinLayout.align(view: view, with: toView, to: .trailing, gap: 100)
+		// when
+		view.layout.align(with: toView, to: .trailing, gap: 100)
+
+		// then
 
 		let constraint = constraintAtIndex(0, ofView:superView)
 		assertThat(constraint.firstAttribute, equalTo(.trailing))
@@ -636,8 +639,10 @@ class PinLayoutTest: PinLayout_Base_Test {
 		superView.addSubview(view)
 		superView.addSubview(toView)
 
-		pinLayout.pin(view: view, to: .top, of: toView, gap: 10)
+		// when
+		view.layout.pin(.top, to: toView, gap: 10)
 
+		// then
 		assertThat(view, isPinned(.top, toView: toView, gap: 10))
 	}
 
@@ -646,7 +651,8 @@ class PinLayoutTest: PinLayout_Base_Test {
 		superView.addSubview(view)
 		superView.addSubview(toView)
 
-		let constraint = pinLayout.pin(view: view, to: .top, of: toView, gap: 10)
+		// when
+		let constraint = view.layout.pin(.top, to: toView, gap: 10)
 
 
 		// then
@@ -659,5 +665,30 @@ class PinLayoutTest: PinLayout_Base_Test {
 	}
 
 
+	func test_is_pinned_to_view_with_gap_default() {
+		let superView = UIView()
+		superView.addSubview(view)
+		superView.addSubview(toView)
 
+		// when
+		let constraint = view.layout.pin(.top, to: toView, gap: .margin)
+
+
+		// then
+		assertThat(constraint?.constant, presentAnd(equalTo(8)))
+	}
+
+	func test_is_pinned_multiple_to_view_with_gap_default() {
+		let superView = UIView()
+		superView.addSubview(view)
+
+		// when
+		let constraints = view.layout.pin(.top, .bottom, .leading, gap: .margin)
+
+
+		// then
+		for constraint in constraints {
+			assertThat(constraint.constant, presentAnd(equalTo(8)))
+		}
+	}
 }
