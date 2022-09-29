@@ -5,7 +5,7 @@
 import Foundation
 import UIKit
 
-@available(iOS, unavailable, message: "Renamed to Layout")
+@available(iOS, deprecated, message: "Renamed to Layout")
 public typealias PinLayout = Layout
 
 @objc(OBPinLayout)
@@ -25,7 +25,7 @@ open class Layout: NSObject, NSCoding {
 	}
 
 
-	@available(iOS, unavailable, message: "Renamed to Defaults")
+	@available(iOS, deprecated, message: "Renamed to Defaults")
 	public typealias PinLayoutDefaults = Defaults
 
 	@objc(OBPinLayoutDefaults) public enum Defaults: Int {
@@ -35,7 +35,7 @@ open class Layout: NSObject, NSCoding {
 		case margin
 	}
 
-	@available(iOS, unavailable, message: "Renamed to Constant")
+	@available(iOS, deprecated, message: "Renamed to Constant")
 	public typealias PinLayoutConstant = Constant
 
 	@objc(OBPinLayoutConstant) public enum Constant: Int {
@@ -43,7 +43,7 @@ open class Layout: NSObject, NSCoding {
 		case height
 	}
 
-	@available(iOS, unavailable, message: "Renamed to Edge")
+	@available(iOS, deprecated, message: "Renamed to Edge")
 	public typealias  PinLayoutEdge = Edge
 
 	@objc(OBPinLayoutEdge) public enum Edge: Int {
