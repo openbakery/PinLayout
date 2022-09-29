@@ -57,7 +57,7 @@ open class Layout: NSObject, NSCoding {
 	}
 
 	@available(iOS, deprecated, message: "Renamed to Edge")
-	public typealias  PinLayoutEdge = Edge
+	public typealias  PinLayoutHelperEdge = Edge
 
 	@objc(OBPinLayoutEdge) public enum Edge: Int {
 		case left = 1
