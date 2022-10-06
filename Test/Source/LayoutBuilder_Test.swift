@@ -691,4 +691,29 @@ class LayoutBuilder_Test: PinLayout_Base_Test {
 			assertThat(constraint.constant, presentAnd(equalTo(8)))
 		}
 	}
+
+	func test_set_width_and_height_equal() throws {
+		toView.addSubview(view)
+
+		// when
+		view.layout.setEqualWidthAndHeight()
+
+		// then
+		assertThat(view.constraints, hasCount(1))
+
+		guard let constraint = view.constraints.first else {
+			XCTFail("constraint not present")
+			return
+		}
+
+		assertThat(constraint.constant, equalTo(0))
+		assertThat(constraint.firstAttribute, equalTo(.width))
+		assertThat(constraint.secondAttribute, equalTo(.height))
+
+
+		assertThat(constraint.firstItem, presentAnd(instanceOf(UIView.self, and: equalTo(view))))
+		assertThat(constraint.secondItem, presentAnd(instanceOf(UIView.self, and: equalTo(view))))
+
+		assertThat(constraint.relation, equalTo(.equal))
+	}
 }

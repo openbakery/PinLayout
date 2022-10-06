@@ -142,11 +142,11 @@ public class LayoutBuilder {
 	public func height(_ constant: CGFloat) {
 		layout.setHeight(of: view, to: constant)
 	}
-/*
+
 	public func setEqualWidthAndHeight(priority: UILayoutPriority = .required) {
 		layout.setEqualWidthAndHeight(view: view)?.priority = priority
 	}
-*/
+
 
 	@discardableResult
 	public func equalWidth(with other: UIView, priority: UILayoutPriority = .required, multiplier: CGFloat = 1.0) -> NSLayoutConstraint? {
