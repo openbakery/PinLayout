@@ -143,7 +143,7 @@ public class LayoutBuilder {
 		layout.setHeight(of: view, to: constant)
 	}
 
-	public func setEqualWidthAndHeight(priority: UILayoutPriority = .required) {
+	public func equalWidthAndHeight(priority: UILayoutPriority = .required) {
 		layout.setEqualWidthAndHeight(view: view)?.priority = priority
 	}
 

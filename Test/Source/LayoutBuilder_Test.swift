@@ -696,7 +696,7 @@ class LayoutBuilder_Test: PinLayout_Base_Test {
 		toView.addSubview(view)
 
 		// when
-		view.layout.setEqualWidthAndHeight()
+		view.layout.equalWidthAndHeight()
 
 		// then
 		assertThat(view.constraints, hasCount(1))
