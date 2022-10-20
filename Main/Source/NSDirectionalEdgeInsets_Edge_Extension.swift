@@ -10,9 +10,9 @@ public extension NSDirectionalEdgeInsets {
 	func value(edge: Layout.Edge) -> CGFloat? {
 		let value : CGFloat
 		switch edge {
-		case .leading:
+		case .leading, .leadingReadable, .leadingSafeArea:
 			value = self.leading
-		case .trailing:
+		case .trailing, .trailingReadable, .trailingSafeArea:
 			value = self.trailing
 		case .top:
 			value = self.top

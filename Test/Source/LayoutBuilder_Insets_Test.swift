@@ -39,6 +39,28 @@ class LayoutBuilder_Insets_Test: PinLayout_Base_Test {
 		assertThat(view, isPinned(.leading, gap: insets.leading))
 	}
 
+	func test_pin_leadingReadable_with_inset_and_gap() {
+		toView.addSubview(view)
+		let insets = createDirectionalInsets()
+
+		// when
+		view.layout.pin(.leadingReadable, insets: insets,  gap: 200)
+
+		// then
+		assertThat(view, isPinnedToReadableAnchor(.leading, gap: insets.leading))
+	}
+
+	func test_pin_leadingSafeArea_with_inset_and_gap() {
+		toView.addSubview(view)
+		let insets = createDirectionalInsets()
+
+		// when
+		view.layout.pin(.leadingSafeArea, insets: insets,  gap: 200)
+
+		// then
+		assertThat(view, isPinnedToSafeAreaAnchor(.leading, gap: -insets.leading))
+	}
+
 	func test_pin_trailing_with_inset_and_gap() {
 		toView.addSubview(view)
 		let insets = createDirectionalInsets()
@@ -48,6 +70,28 @@ class LayoutBuilder_Insets_Test: PinLayout_Base_Test {
 
 		// then
 		assertThat(view, isPinned(.trailing, gap: insets.trailing))
+	}
+
+	func test_pin_trailingReadable_with_inset_and_gap() {
+		toView.addSubview(view)
+		let insets = createDirectionalInsets()
+
+		// when
+		view.layout.pin(.trailingReadable, insets: insets,  gap: 200)
+
+		// then
+		assertThat(view, isPinnedToReadableAnchor(.trailing, gap: insets.trailing))
+	}
+
+	func test_pin_trailingSafeArea_with_inset_and_gap() {
+		toView.addSubview(view)
+		let insets = createDirectionalInsets()
+
+		// when
+		view.layout.pin(.trailingSafeArea, insets: insets,  gap: 200)
+
+		// then
+		assertThat(view, isPinnedToSafeAreaAnchor(.trailing, gap: -insets.trailing))
 	}
 
 	func test_pin_top_inset_and_gap() {
