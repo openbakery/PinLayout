@@ -28,6 +28,17 @@ class LayoutBuilder_Insets_Test: PinLayout_Base_Test {
 		assertThat(view, isPinned(.leading, gap: insets.leading))
 	}
 
+	func test_pin_leading_with_inset_and_gap_defaults() {
+		toView.addSubview(view)
+		let insets = createDirectionalInsets()
+
+		// when
+		view.layout.pin(.leading, insets: insets,  gap: .margin)
+
+		// then
+		assertThat(view, isPinned(.leading, gap: insets.leading))
+	}
+
 	func test_pin_trailing_with_inset_and_gap() {
 		toView.addSubview(view)
 		let insets = createDirectionalInsets()

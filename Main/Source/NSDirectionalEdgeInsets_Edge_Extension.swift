@@ -8,17 +8,22 @@ import Foundation
 public extension NSDirectionalEdgeInsets {
 
 	func value(edge: Layout.Edge) -> CGFloat? {
+		let value : CGFloat
 		switch edge {
 		case .leading:
-			return self.leading
+			value = self.leading
 		case .trailing:
-			return self.trailing
+			value = self.trailing
 		case .top:
-			return self.top
+			value = self.top
 		case .bottom:
-			return self.bottom
+			value = self.bottom
 		default:
 			return nil
 		}
+		if value == 0 {
+			return nil
+		}
+		return value
 	}
 }

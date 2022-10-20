@@ -45,10 +45,10 @@ public class LayoutBuilder {
 	}
 
 	@discardableResult
-	public func pin(_ edges: Layout.Edge..., gap: Layout.Defaults, priority: UILayoutPriority = .required) -> [NSLayoutConstraint] {
+	public func pin(_ edges: Layout.Edge..., insets: NSDirectionalEdgeInsets = .zero, gap: Layout.Defaults, priority: UILayoutPriority = .required) -> [NSLayoutConstraint] {
 		var result = [NSLayoutConstraint]()
 		for edge in edges {
-			let gapValue = value(edge: edge, for: gap)
+			let gapValue =  insets.value(edge: edge) ?? value(edge: edge, for: gap)
 			if let constraint = layout.pin(view: view, to: edge, gap: gapValue) {
 				constraint.priority = priority
 				result.append(constraint)
