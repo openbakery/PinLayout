@@ -14,6 +14,7 @@
 		355B211828F73913C596D498 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 355B20D6C7D688C99CD23129 /* LaunchScreen.storyboard */; };
 		355B22D632B4EB413E57AB70 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355B2CD3C63C48E5B91AADC3 /* AppDelegate.swift */; };
 		355B23A5308C9D9FDC0A0C93 /* PinLayout_Safe_Center.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355B2584C2C27AECAC1C4AA5 /* PinLayout_Safe_Center.swift */; };
+		355B25D42844C697086CE1B6 /* NSDirectionalEdgeInsets_Edge_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355B299A274CB8A2E70751D8 /* NSDirectionalEdgeInsets_Edge_Extension.swift */; };
 		355B262022C67FE64614E81E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 355B2E12FCFE60C32F9115E3 /* Assets.xcassets */; };
 		355B27DDB266BE9A31A843C7 /* PinLayout_SameWith_Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355B221FB5BB7999B39E1475 /* PinLayout_SameWith_Test.swift */; };
 		355B288177C3C6720C754AB2 /* Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355B274A8110C0F8E98B222C /* Layout.swift */; };
@@ -22,6 +23,7 @@
 		355B2CC210E1717BB5C78656 /* Layout_SafeCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355B25ACE74641A30BFC9A28 /* Layout_SafeCenter.swift */; };
 		355B2DB65EED796E43DD3603 /* PinLayout.h in Headers */ = {isa = PBXBuildFile; fileRef = 355B22DCF7EA5B11594D9593 /* PinLayout.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		355B2ECEC0BDA7DC3663115B /* LayoutBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355B22F815897CA423A20BB5 /* LayoutBuilder.swift */; };
+		355B2EF60E28E3074739C828 /* LayoutBuilder_Insets_Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355B26AF6C10E360F2712BAF /* LayoutBuilder_Insets_Test.swift */; };
 		A71E3B1E25A867C900F02CC6 /* Hamcrest.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = A71E3B1D25A867C900F02CC6 /* Hamcrest.xcframework */; };
 		A71E3B2625A8688000F02CC6 /* PinLayout_AutoResizing_Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71E3B2325A8688000F02CC6 /* PinLayout_AutoResizing_Test.swift */; };
 		A71E3B2725A8688000F02CC6 /* PinLayout_Base_Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71E3B2425A8688000F02CC6 /* PinLayout_Base_Test.swift */; };
@@ -94,11 +96,13 @@
 		355B23CF9FBCDE18FBF33952 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.info; path = Info.plist; sourceTree = "<group>"; };
 		355B2584C2C27AECAC1C4AA5 /* PinLayout_Safe_Center.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinLayout_Safe_Center.swift; sourceTree = "<group>"; };
 		355B25ACE74641A30BFC9A28 /* Layout_SafeCenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Layout_SafeCenter.swift; sourceTree = "<group>"; };
+		355B26AF6C10E360F2712BAF /* LayoutBuilder_Insets_Test.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayoutBuilder_Insets_Test.swift; sourceTree = "<group>"; };
 		355B274A8110C0F8E98B222C /* Layout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Layout.swift; sourceTree = "<group>"; };
 		355B27C8B0B4765D939CED54 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.info; path = Info.plist; sourceTree = "<group>"; };
 		355B286E9FE666995CFB80C6 /* LayoutBuilder_Test.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayoutBuilder_Test.swift; sourceTree = "<group>"; };
 		355B292729B41FEECAE8DA7D /* LayoutConstraintsRecorder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayoutConstraintsRecorder.swift; sourceTree = "<group>"; };
 		355B298205A6C83F31C3704C /* LayoutBuilder_Recorder_Test.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayoutBuilder_Recorder_Test.swift; sourceTree = "<group>"; };
+		355B299A274CB8A2E70751D8 /* NSDirectionalEdgeInsets_Edge_Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDirectionalEdgeInsets_Edge_Extension.swift; sourceTree = "<group>"; };
 		355B2C6D12D766AA75FDEE0C /* PinLayoutTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinLayoutTest.swift; sourceTree = "<group>"; };
 		355B2CD3C63C48E5B91AADC3 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		355B2E12FCFE60C32F9115E3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -162,6 +166,7 @@
 				355B22F815897CA423A20BB5 /* LayoutBuilder.swift */,
 				355B2048827EDF988CD3FDF6 /* UIView_LayoutBuilderExtension.swift */,
 				355B292729B41FEECAE8DA7D /* LayoutConstraintsRecorder.swift */,
+				355B299A274CB8A2E70751D8 /* NSDirectionalEdgeInsets_Edge_Extension.swift */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -211,6 +216,7 @@
 				355B221FB5BB7999B39E1475 /* PinLayout_SameWith_Test.swift */,
 				355B286E9FE666995CFB80C6 /* LayoutBuilder_Test.swift */,
 				355B298205A6C83F31C3704C /* LayoutBuilder_Recorder_Test.swift */,
+				355B26AF6C10E360F2712BAF /* LayoutBuilder_Insets_Test.swift */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -453,6 +459,7 @@
 				355B2ECEC0BDA7DC3663115B /* LayoutBuilder.swift in Sources */,
 				355B20FA8017BC6488A20B8E /* UIView_LayoutBuilderExtension.swift in Sources */,
 				355B204BCD708E0D44EC8EE1 /* LayoutConstraintsRecorder.swift in Sources */,
+				355B25D42844C697086CE1B6 /* NSDirectionalEdgeInsets_Edge_Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -478,6 +485,7 @@
 				355B27DDB266BE9A31A843C7 /* PinLayout_SameWith_Test.swift in Sources */,
 				355B20263DB7875050FFC419 /* LayoutBuilder_Test.swift in Sources */,
 				355B2BCC6481E9729431931D /* LayoutBuilder_Recorder_Test.swift in Sources */,
+				355B2EF60E28E3074739C828 /* LayoutBuilder_Insets_Test.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

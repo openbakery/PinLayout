@@ -28,15 +28,20 @@ public class LayoutBuilder {
 	}
 
 	@discardableResult
-	public func pin(_ edges: Layout.Edge..., gap: CGFloat = 0, priority: UILayoutPriority = .required, relatedBy: NSLayoutConstraint.Relation = .equal) -> [NSLayoutConstraint] {
+	public func pin(_ edges: Layout.Edge..., insets: NSDirectionalEdgeInsets = .zero, gap: CGFloat = 0, priority: UILayoutPriority = .required, relatedBy: NSLayoutConstraint.Relation = .equal) -> [NSLayoutConstraint] {
 		var result = [NSLayoutConstraint]()
 		for edge in edges {
-			if let constraint = layout.pin(view: view, to: edge, gap: gap, relatedBy: relatedBy) {
+			let gapValue =  insets.value(edge: edge) ?? gap
+			if let constraint = layout.pin(view: view, to: edge, gap: gapValue, relatedBy: relatedBy) {
 				constraint.priority = priority
 				result.append(constraint)
 			}
 		}
 		return result
+	}
+
+	private func gap(edge: Layout.Edge, insets: NSDirectionalEdgeInsets, default defaultValue: CGFloat) -> CGFloat {
+		return insets.value(edge: edge) ?? defaultValue
 	}
 
 	@discardableResult
