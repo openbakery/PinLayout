@@ -21,6 +21,7 @@
 		355B2A9E684A842FC7DC9046 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355B22F6E3D2252F9ADCBD1F /* ViewController.swift */; };
 		355B2BCC6481E9729431931D /* LayoutBuilder_Recorder_Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355B298205A6C83F31C3704C /* LayoutBuilder_Recorder_Test.swift */; };
 		355B2CC210E1717BB5C78656 /* Layout_SafeCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355B25ACE74641A30BFC9A28 /* Layout_SafeCenter.swift */; };
+		355B2D24AB91EB6A21D925B0 /* NSLayoutConstraint_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355B2EAD5F16421E33BC3A84 /* NSLayoutConstraint_Extension.swift */; };
 		355B2DB65EED796E43DD3603 /* PinLayout.h in Headers */ = {isa = PBXBuildFile; fileRef = 355B22DCF7EA5B11594D9593 /* PinLayout.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		355B2ECEC0BDA7DC3663115B /* LayoutBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355B22F815897CA423A20BB5 /* LayoutBuilder.swift */; };
 		355B2EF60E28E3074739C828 /* LayoutBuilder_Insets_Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355B26AF6C10E360F2712BAF /* LayoutBuilder_Insets_Test.swift */; };
@@ -106,6 +107,7 @@
 		355B2C6D12D766AA75FDEE0C /* PinLayoutTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinLayoutTest.swift; sourceTree = "<group>"; };
 		355B2CD3C63C48E5B91AADC3 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		355B2E12FCFE60C32F9115E3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		355B2EAD5F16421E33BC3A84 /* NSLayoutConstraint_Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSLayoutConstraint_Extension.swift; sourceTree = "<group>"; };
 		355B2ED3033704BF995C2953 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.info; path = Info.plist; sourceTree = "<group>"; };
 		A71E3B1D25A867C900F02CC6 /* Hamcrest.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = Hamcrest.xcframework; path = Carthage/Build/Hamcrest.xcframework; sourceTree = "<group>"; };
 		A71E3B2325A8688000F02CC6 /* PinLayout_AutoResizing_Test.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinLayout_AutoResizing_Test.swift; sourceTree = "<group>"; };
@@ -167,6 +169,7 @@
 				355B2048827EDF988CD3FDF6 /* UIView_LayoutBuilderExtension.swift */,
 				355B292729B41FEECAE8DA7D /* LayoutConstraintsRecorder.swift */,
 				355B299A274CB8A2E70751D8 /* NSDirectionalEdgeInsets_Edge_Extension.swift */,
+				355B2EAD5F16421E33BC3A84 /* NSLayoutConstraint_Extension.swift */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -460,6 +463,7 @@
 				355B20FA8017BC6488A20B8E /* UIView_LayoutBuilderExtension.swift in Sources */,
 				355B204BCD708E0D44EC8EE1 /* LayoutConstraintsRecorder.swift in Sources */,
 				355B25D42844C697086CE1B6 /* NSDirectionalEdgeInsets_Edge_Extension.swift in Sources */,
+				355B2D24AB91EB6A21D925B0 /* NSLayoutConstraint_Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

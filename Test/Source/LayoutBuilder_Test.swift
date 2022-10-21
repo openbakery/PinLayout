@@ -531,7 +531,7 @@ class LayoutBuilder_Test: PinLayout_Base_Test {
 		view.layout.pin(.leadingSafeArea, gap: 200)
 
 		// then
-		assertThat(view, isPinnedToSafeAreaAnchor(.leading, gap: -200))
+		assertThat(view, isPinnedToSafeAreaAnchor(.leading, gap: 200))
 		assertThat(view, not(isPinned(.leading)))
 	}
 

@@ -13,10 +13,10 @@ public extension NSDirectionalEdgeInsets {
 		case .leading, .leadingReadable, .leadingSafeArea:
 			value = self.leading
 		case .trailing, .trailingReadable, .trailingSafeArea:
-			value = -self.trailing
-		case .top:
+			value = self.trailing
+		case .top, .topSafeArea:
 			value = self.top
-		case .bottom:
+		case .bottom, .bottomSafeArea:
 			value = self.bottom
 		default:
 			return nil

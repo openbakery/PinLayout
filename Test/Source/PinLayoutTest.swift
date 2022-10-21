@@ -531,7 +531,7 @@ class PinLayoutTest: PinLayout_Base_Test {
 		if let constraint = pinLayout.pin(view:view, to:.leadingSafeArea) {
 			constraint.constant = 200
 		}
-		assertThat(view, isPinnedToSafeAreaAnchor(.leading, gap: 200))
+		assertThat(view, isPinnedToSafeAreaAnchor(.leading, gap: -200))
 		assertThat(view, not(isPinned(.leading)))
 	}
 
@@ -552,6 +552,18 @@ class PinLayoutTest: PinLayout_Base_Test {
 		assertThat(view, not(isPinned(.top)))
 	}
 
+	func test_pin_top_with_safeGuide_constant() {
+		toView.addSubview(view)
+		pinLayout.pin(view:view, to:.topSafeArea, gap: 20)
+
+		let constraint = toView.constraints.first
+		assertThat(constraint?.firstAttribute, presentAnd(equalTo(.top)))
+		assertThat(constraint?.secondAttribute, presentAnd(equalTo(.top)))
+		assertThat(constraint?.constant, presentAnd(equalTo(-20)))
+		assertThat(view, isPinnedToSafeAreaAnchor(.top, gap: 20))
+		assertThat(view, not(isPinned(.top)))
+	}
+
 	@available(iOS 11, *)
 	func test_pin_bottom_with_safeGuide() {
 		toView.addSubview(view)
@@ -561,6 +573,17 @@ class PinLayoutTest: PinLayout_Base_Test {
 	}
 
 
+	func test_pin_bottom_with_safeGuide_constant() {
+		toView.addSubview(view)
+		pinLayout.pin(view:view, to:.bottomSafeArea, gap: 20)
+
+		let constraint = toView.constraints.first
+		assertThat(constraint?.firstAttribute, presentAnd(equalTo(.bottom)))
+		assertThat(constraint?.secondAttribute, presentAnd(equalTo(.bottom)))
+		assertThat(constraint?.constant, presentAnd(equalTo(20)))
+		assertThat(view, isPinnedToSafeAreaAnchor(.bottom, gap: 20))
+		assertThat(view, not(isPinned(.bottom)))
+	}
 
 	func test_record_pin_with_safeGuide_constraint() {
 		pinLayout.startRecord()

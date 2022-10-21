@@ -164,7 +164,12 @@ open class Layout: NSObject, NSCoding {
 		}
 
 		if let constraint = constraint {
-			constraint.constant = CGFloat(-gap)
+			switch edge {
+			case .trailing, .trailingReadable, .trailingSafeArea, .bottom, .bottomSafeArea:
+				constraint.constant = gap
+			default:
+				constraint.constant = -gap
+			}
 			constraint.isActive = true
 			self.recorder?.append(constraint)
 			return constraint
