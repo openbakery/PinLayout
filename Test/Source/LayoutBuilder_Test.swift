@@ -547,6 +547,17 @@ class LayoutBuilder_Test: PinLayout_Base_Test {
 	}
 
 
+	func test_pin_trailing_with_gap() {
+		toView.addSubview(view)
+
+		// when
+		view.layout.pin(.trailing, gap: .cellMargin)
+
+		// then
+		let constraint = toView.constraints.first
+		assertThat(constraint?.constant, presentAnd(equalTo(Layout.Defaults.cellMargin.value)))
+	}
+
 	func test_pin_top_with_safeGuide() {
 		toView.addSubview(view)
 

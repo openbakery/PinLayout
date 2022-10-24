@@ -48,7 +48,7 @@ public class LayoutBuilder {
 	public func pin(_ edges: Layout.Edge..., insets: NSDirectionalEdgeInsets = .zero, gap: Layout.Defaults, priority: UILayoutPriority = .required) -> [NSLayoutConstraint] {
 		var result = [NSLayoutConstraint]()
 		for edge in edges {
-			let gapValue =  insets.value(edge: edge) ?? value(edge: edge, for: gap)
+			let gapValue =  insets.value(edge: edge) ?? layout.value(for: gap)
 			if let constraint = layout.pin(view: view, to: edge, gap: gapValue) {
 				constraint.priority = priority
 				result.append(constraint)
@@ -56,19 +56,6 @@ public class LayoutBuilder {
 		}
 		return result
 	}
-
-	public func value(edge: Layout.Edge, for gap: Layout.Defaults) -> CGFloat {
-		let gapValue = layout.value(for: gap)
-		switch edge {
-		case .trailingReadable,
-				 .trailing,
-				 .trailingSafeArea:
-			return -gapValue
-		default:
-			return gapValue
-		}
-	}
-
 
 
 	@discardableResult
