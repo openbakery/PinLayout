@@ -141,7 +141,9 @@ public class LayoutBuilder {
 
 	@discardableResult
 	public func equalWidthAndHeight(priority: UILayoutPriority = .required) -> NSLayoutConstraint {
-		return layout.setEqualWidthAndHeight(view: view)?.priority = priority
+		let result = layout.setEqualWidthAndHeight(view: view)
+		result.priority = priority
+		return result
 	}
 
 
