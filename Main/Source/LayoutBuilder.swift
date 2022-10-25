@@ -119,24 +119,29 @@ public class LayoutBuilder {
 	}
 
 
-	public func minHeight(_ constant: CGFloat) {
-		layout.setMinHeight(of: view, to: constant)
+	@discardableResult
+	public func minHeight(_ constant: CGFloat) -> NSLayoutConstraint {
+		return layout.setMinHeight(of: view, to: constant)
 	}
 
-	public func minWidth(_ constant: CGFloat) {
-		layout.setMinWidth(of: view, to: constant)
+	@discardableResult
+	public func minWidth(_ constant: CGFloat) -> NSLayoutConstraint {
+		return layout.setMinWidth(of: view, to: constant)
 	}
 
-	public func width(_ constant: CGFloat) {
-		layout.setWidth(of: view, to: constant)
+	@discardableResult
+	public func width(_ constant: CGFloat) -> NSLayoutConstraint {
+		return layout.setWidth(of: view, to: constant)
 	}
 
-	public func height(_ constant: CGFloat) {
-		layout.setHeight(of: view, to: constant)
+	@discardableResult
+	public func height(_ constant: CGFloat) -> NSLayoutConstraint {
+		return layout.setHeight(of: view, to: constant)
 	}
 
-	public func equalWidthAndHeight(priority: UILayoutPriority = .required) {
-		layout.setEqualWidthAndHeight(view: view)?.priority = priority
+	@discardableResult
+	public func equalWidthAndHeight(priority: UILayoutPriority = .required) -> NSLayoutConstraint {
+		return layout.setEqualWidthAndHeight(view: view)?.priority = priority
 	}
 
 

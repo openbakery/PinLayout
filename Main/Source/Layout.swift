@@ -467,7 +467,7 @@ open class Layout: NSObject, NSCoding {
 
 
 	@discardableResult
-	@objc open func setEqualWidthAndHeight(view: UIView) -> NSLayoutConstraint? {
+	@objc open func setEqualWidthAndHeight(view: UIView) -> NSLayoutConstraint {
 		let constraint = NSLayoutConstraint(item: view, attribute: .width, relatedBy: .equal, toItem: view, attribute: .height, multiplier: 1.0, constant: 0.0)
 		view.addConstraint(constraint)
 		self.recorder?.append(constraint)
