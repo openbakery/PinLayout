@@ -33,6 +33,7 @@ open class Layout: NSObject, NSCoding {
 		case cellMargin
 		case cellIconWidth
 		case margin
+		case contentViewCellMargin
 
 		public var value: CGFloat {
 			switch self {
@@ -44,6 +45,8 @@ open class Layout: NSObject, NSCoding {
 				return 29.0
 			case .margin:
 				return 8
+			case .contentViewCellMargin:
+				return Defaults.cellMargin.value - Defaults.margin.value
 			}
 		}
 	}
