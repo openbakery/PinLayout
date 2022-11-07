@@ -17,15 +17,18 @@ public class LayoutBuilder {
 	}
 
 	/// stretches the view and fill all available space
-	public func fill() {
-		self.pin(.leading, .trailing, .top, .bottom)
+	@discardableResult
+	public func fill() -> [NSLayoutConstraint] {
+		return self.pin(.leading, .trailing, .top, .bottom)
 	}
 
+	@discardableResult
 	public func pin(_ edges: Layout.Edge...) -> [NSLayoutConstraint] {
 		var result = [NSLayoutConstraint]()
 		for edge in edges {
-			layout.pin(view: view, to: edge)
-			result.append(constraint)
+			if let constraint = layout.pin(view: view, to: edge) {
+				result.append(constraint)
+			}
 		}
 		return result
 	}
