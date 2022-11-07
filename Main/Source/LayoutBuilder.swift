@@ -21,10 +21,13 @@ public class LayoutBuilder {
 		self.pin(.leading, .trailing, .top, .bottom)
 	}
 
-	public func pin(_ edges: Layout.Edge...) {
+	public func pin(_ edges: Layout.Edge...) -> [NSLayoutConstraint] {
+		var result = [NSLayoutConstraint]()
 		for edge in edges {
 			layout.pin(view: view, to: edge)
+			result.append(constraint)
 		}
+		return result
 	}
 
 	@discardableResult
