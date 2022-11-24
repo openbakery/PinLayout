@@ -5,9 +5,6 @@
 import Foundation
 import UIKit
 
-@available(iOS, deprecated, message: "Renamed to Layout")
-public typealias PinLayout = Layout
-
 @objc(OBPinLayout)
 open class Layout: NSObject, NSCoding {
 
@@ -470,8 +467,9 @@ open class Layout: NSObject, NSCoding {
 
 
 	@discardableResult
-	@objc open func setEqualWidthAndHeight(view: UIView) -> NSLayoutConstraint {
+	@objc open func setEqualWidthAndHeight(view: UIView, priority: UILayoutPriority = .required) -> NSLayoutConstraint {
 		let constraint = NSLayoutConstraint(item: view, attribute: .width, relatedBy: .equal, toItem: view, attribute: .height, multiplier: 1.0, constant: 0.0)
+		constraint.priority = priority
 		view.addConstraint(constraint)
 		self.recorder?.append(constraint)
 		return constraint

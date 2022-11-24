@@ -10,9 +10,5 @@ public extension UIView {
 		return LayoutBuilder(view: self)
 	}
 
-	func layout(_ recorder: LayoutConstraintsRecorder) -> LayoutBuilder {
-		return LayoutBuilder(view: self, recorder: recorder)
-	}
-
 }
 

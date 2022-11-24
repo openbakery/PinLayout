@@ -34,6 +34,7 @@ extension Layout {
 			let constraint = view.safeAreaLayoutGuide.centerXAnchor.constraint(equalTo: otherView.safeAreaLayoutGuide.centerXAnchor)
 			constraint.isActive = true
 			constraint.constant = offset
+			recorder?.append(constraint)
 			return constraint
 		}
 		return self.equalCenterX(view: view)
@@ -54,6 +55,7 @@ extension Layout {
 			let constraint = view.safeAreaLayoutGuide.centerYAnchor.constraint(equalTo: otherView.safeAreaLayoutGuide.centerYAnchor)
 			constraint.isActive = true
 			constraint.constant = offset
+			recorder?.append(constraint)
 			return constraint
 		}
 		return self.equalCenterY(view: view)

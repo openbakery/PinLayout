@@ -110,10 +110,11 @@ class LayoutBuilder_Test: PinLayout_Base_Test {
 		toView.addSubview(view)
 
 		// when
-		view.layout.minHeight(44.0)
+		let constraints = view.layout.minHeight(44.0).constraints
 
 		// then
 		assertThat(view.constraints, hasCount(1))
+		assertThat(constraints, hasCount(1))
 
 		let constraint = constraintAtIndex(0, ofView:view)
 		assertThat(constraint.constant, equalTo(44.0))
@@ -130,10 +131,11 @@ class LayoutBuilder_Test: PinLayout_Base_Test {
 		toView.addSubview(view)
 
 		// when
-		view.layout.minWidth(144.0)
+		let constraints = view.layout.minWidth(144.0).constraints
 
 		// then
 		assertThat(view.constraints, hasCount(1))
+		assertThat(constraints, hasCount(1))
 
 		let constraint = constraintAtIndex(0, ofView:view)
 		assertThat(constraint.constant, equalTo(144.0))
@@ -169,10 +171,11 @@ class LayoutBuilder_Test: PinLayout_Base_Test {
 		toView.addSubview(view)
 
 		// when
-		view.layout.width(144)
+		let constraints = view.layout.width(144).constraints
 
 		// then
 		assertThat(view.constraints, hasCount(1))
+		assertThat(constraints, hasCount(1))
 
 		let constraint = constraintAtIndex(0, ofView:view)
 		assertThat(constraint.constant, equalTo(144.0))
@@ -189,7 +192,7 @@ class LayoutBuilder_Test: PinLayout_Base_Test {
 		let superview = UIView()
 		superview.addSubview(view)
 
-		let constraint = view.layout.centerX()
+		let constraint = view.layout.centerX().constraints.first
 
 		// then
 		assertThat(constraint, present())
@@ -207,7 +210,7 @@ class LayoutBuilder_Test: PinLayout_Base_Test {
 		let superview = UIView()
 		superview.addSubview(view)
 
-		let constraint = view.layout.centerX(offset: 20)
+		let constraint = view.layout.centerX(offset: 20).constraints.first
 
 		// then
 		assertThat(constraint, present())
@@ -220,7 +223,7 @@ class LayoutBuilder_Test: PinLayout_Base_Test {
 		superview.addSubview(view)
 		superview.addSubview(other)
 
-		let constraint = view.layout.centerX(to: other)
+		let constraint = view.layout.centerX(to: other).constraints.first
 
 		// then
 		assertThat(constraint, present())
@@ -238,7 +241,7 @@ class LayoutBuilder_Test: PinLayout_Base_Test {
 		let superview = UIView()
 		superview.addSubview(view)
 
-		let constraint = view.layout.centerY()
+		let constraint = view.layout.centerY().constraints.first
 
 		// then
 		assertThat(constraint, present())
@@ -257,7 +260,7 @@ class LayoutBuilder_Test: PinLayout_Base_Test {
 		superview.addSubview(view)
 
 		// when
-		let constraint = view.layout.centerY(offset: 20)
+		let constraint = view.layout.centerY(offset: 20).constraints.first
 
 		// then
 		assertThat(constraint, present())
@@ -272,7 +275,7 @@ class LayoutBuilder_Test: PinLayout_Base_Test {
 		superview.addSubview(other)
 
 		// when
-		let constraint = view.layout.centerY(to: other)
+		let constraint = view.layout.centerY(to: other).constraints.first
 
 		// then
 		assertThat(constraint, present())
@@ -293,7 +296,7 @@ class LayoutBuilder_Test: PinLayout_Base_Test {
 		superview.addSubview(view)
 
 		// when
-		let constraints = view.layout.center()
+		let constraints = view.layout.center().constraints
 
 		// then
 		assertThat(constraints, hasCount(2))
@@ -311,7 +314,7 @@ class LayoutBuilder_Test: PinLayout_Base_Test {
 		superview.addSubview(view)
 		superview.addSubview(other)
 
-		let constraints = view.layout.center(to: other)
+		let constraints = view.layout.center(to: other).constraints
 
 		// then
 		assertThat(constraints, hasCount(2))
@@ -479,7 +482,7 @@ class LayoutBuilder_Test: PinLayout_Base_Test {
 		toView.addSubview(view)
 
 		// when
-		let constraint = view.layout.pin(.bottom, relatedBy: .greaterThanOrEqual).first
+		let constraint = view.layout.pin(.bottom, relatedBy: .greaterThanOrEqual).constraints.first
 
 		// then
 		assertThat(constraint?.relation, presentAnd(equalTo(.greaterThanOrEqual)))
@@ -663,7 +666,7 @@ class LayoutBuilder_Test: PinLayout_Base_Test {
 		superView.addSubview(toView)
 
 		// when
-		let constraint = view.layout.pin(.top, to: toView, gap: 10)
+		let constraint = view.layout.pin(.top, to: toView, gap: 10).constraints.first
 
 
 		// then
@@ -682,7 +685,7 @@ class LayoutBuilder_Test: PinLayout_Base_Test {
 		superView.addSubview(toView)
 
 		// when
-		let constraint = view.layout.pin(.top, to: toView, gap: .margin)
+		let constraint = view.layout.pin(.top, to: toView, gap: .margin).constraints.first
 
 
 		// then
@@ -694,7 +697,7 @@ class LayoutBuilder_Test: PinLayout_Base_Test {
 		superView.addSubview(view)
 
 		// when
-		let constraints = view.layout.pin(.top, .bottom, .leading, gap: .margin)
+		let constraints = view.layout.pin(.top, .bottom, .leading, gap: .margin).constraints
 
 
 		// then

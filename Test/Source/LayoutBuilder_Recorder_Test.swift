@@ -11,26 +11,14 @@ import Hamcrest
 
 class LayoutBuilder_Recorder_Test: PinLayout_Base_Test  {
 
-	var recorder: LayoutConstraintsRecorder!
-
-	override func setUp() {
-		super.setUp()
-		recorder = LayoutConstraintsRecorder()
-	}
-
-	override func tearDown() {
-		recorder = nil
-		super.tearDown()
-	}
-
 	func test_record_constraints_records_pin_constraints() {
 		toView.addSubview(view)
 
 		// when
-		view.layout(recorder).fill()
+		let constraints = view.layout.fill().constraints
 
 		// then
-		assertThat(recorder.constraints, hasCount(4))
+		assertThat(constraints, hasCount(4))
 	}
 
 
@@ -38,10 +26,10 @@ class LayoutBuilder_Recorder_Test: PinLayout_Base_Test  {
 		toView.addSubview(view)
 
 		// when
-		view.layout(recorder).height(10)
+		let constraints = view.layout.height(10).constraints
 
 		// then
-		assertThat(recorder.constraints, hasCount(1))
+		assertThat(constraints, hasCount(1))
 	}
 
 	func test_record_equal_constraint() {
@@ -51,20 +39,20 @@ class LayoutBuilder_Recorder_Test: PinLayout_Base_Test  {
 		toView.addSubview(secondView)
 
 		// when
-		view.layout(recorder).equalHeight(with: view)
+		let constraints = view.layout.equalHeight(with: view).constraints
 
 		// then
-		assertThat(recorder.constraints, hasCount(1))
+		assertThat(constraints, hasCount(1))
 	}
 
 	func test_record_equalWidthAndHeight_constraint() {
 		toView.addSubview(view)
 
 		// when
-		view.layout(recorder).equalWidthAndHeight(with: view)
+		let constraints = view.layout.equalWidthAndHeight(with: view).constraints
 
 		// then
-		assertThat(recorder.constraints, hasCount(2))
+		assertThat(constraints, hasCount(2))
 	}
 
 	func test_record_pinWithGuide_constraint() {
@@ -73,10 +61,10 @@ class LayoutBuilder_Recorder_Test: PinLayout_Base_Test  {
 		viewController.view.addSubview(view)
 
 		// when
-		view.layout(recorder).pin(.top)
+		let constraints = view.layout.pin(.top).constraints
 
 		// then
-		assertThat(recorder.constraints, hasCount(1))
+		assertThat(constraints, hasCount(1))
 	}
 
 	func test_record_pin_with_safeGuide_constraint() {
@@ -85,10 +73,10 @@ class LayoutBuilder_Recorder_Test: PinLayout_Base_Test  {
 		viewController.view.addSubview(view)
 
 		// when
-		view.layout(recorder).pin(.leadingSafeArea)
+		let constraints = view.layout.pin(.leadingSafeArea).constraints
 
 		// then
-		assertThat(recorder.constraints, hasCount(1))
+		assertThat(constraints, hasCount(1))
 	}
 
 
