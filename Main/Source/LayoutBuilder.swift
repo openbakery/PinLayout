@@ -175,8 +175,10 @@ public class LayoutBuilder {
 		layout.removeAllConstraints(from: view)
 	}
 
-	public func align(with: UIView, to: Layout.Edge, gap: CGFloat = 0) {
+	@discardableResult
+	public func align(with: UIView, to: Layout.Edge, gap: CGFloat = 0) -> LayoutBuilder {
 		layout.align(view: view, with: with, to: to, gap: gap)
+		return self
 	}
 }
 
