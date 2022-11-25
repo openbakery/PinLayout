@@ -74,7 +74,7 @@ class PinLayoutTest: PinLayout_Base_Test {
 
 	func testPinEdgeBaseLineTop() {
 		toView.addSubview(view)
-		pinLayout.pin(view:view, to: .topBaseline, of: toView)
+		pinLayout.pin(view:view, to: .firstBaseline, of: toView)
 
 		assertThat(toView.constraints, hasCount(1))
 		self.checkConstraintWithFirstAttribute(.firstBaseline, andSecond: .top)
@@ -83,7 +83,7 @@ class PinLayoutTest: PinLayout_Base_Test {
 
 	func testPinEdgeBaseLineBottom() {
 		toView.addSubview(view)
-		pinLayout.pin(view:view, to: .bottomBaseline, of: toView)
+		pinLayout.pin(view:view, to: .lastBaseline, of: toView)
 
 		assertThat(toView.constraints, hasCount(1))
 

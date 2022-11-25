@@ -80,7 +80,7 @@ class LayoutBuilder_Test: PinLayout_Base_Test {
 		toView.addSubview(view)
 
 		// when
-		view.layout.pin(.topBaseline, to: toView)
+		view.layout.pin(.firstBaseline, to: toView)
 
 		// then
 		assertThat(toView.constraints, hasCount(1))
@@ -91,7 +91,7 @@ class LayoutBuilder_Test: PinLayout_Base_Test {
 		toView.addSubview(view)
 
 		// thwn
-		view.layout.pin(.bottomBaseline, to: toView)
+		view.layout.pin(.lastBaseline, to: toView)
 
 		// then
 		assertThat(toView.constraints, hasCount(1))

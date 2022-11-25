@@ -66,8 +66,8 @@ open class Layout: NSObject, NSCoding {
 		case bottom
 		case leading
 		case trailing
-		case topBaseline
-		case bottomBaseline
+		case firstBaseline
+		case lastBaseline
 		case leadingSafeArea
 		case trailingSafeArea
 		case topSafeArea
@@ -306,9 +306,9 @@ open class Layout: NSObject, NSCoding {
 			return NSLayoutConstraint.Attribute.leading
 		case .trailing, .trailingSafeArea, .trailingReadable:
 			return NSLayoutConstraint.Attribute.trailing
-		case .topBaseline:
+		case .firstBaseline:
 			return NSLayoutConstraint.Attribute.firstBaseline
-		case .bottomBaseline:
+		case .lastBaseline:
 			return NSLayoutConstraint.Attribute.lastBaseline
 		}
 	}
