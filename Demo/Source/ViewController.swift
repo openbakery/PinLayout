@@ -14,84 +14,82 @@ class ViewController: UIViewController {
 	let layout = Layout()
 	let button = UIButton()
 
+	public enum Guide: CustomStringConvertible {
+		case none, readable, safeArea
+
+		public var description: String {
+			switch self {
+			case .none:
+				return "None"
+			case .readable:
+				return "Readable"
+			case .safeArea:
+				return "SafeArea"
+			}
+		}
+
+		public var next: Guide {
+			switch self {
+			case .none:
+				return .readable
+			case .readable:
+				return .safeArea
+			case .safeArea:
+				return .none
+			}
+		}
+
+		public var edges: [Layout.Edge] {
+			switch self {
+			case .none:
+				return [.leading, .trailing, .top, .bottom]
+			case .readable:
+				return [.leadingReadable, .trailingReadable, .top, .bottom]
+			case .safeArea:
+				return [.leadingSafeArea, .trailingSafeArea, .topSafeArea, .bottomSafeArea]
+			}
+		}
+	}
+
+	var guide: Guide = .none
+
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		self.view.backgroundColor = UIColor.white
+		self.view.backgroundColor = UIColor.green
 
-		button.backgroundColor = .blue
-		button.setTitle("Press Me", for: .normal)
 		button.setTitleColor(UIColor.black, for: .normal)
 		button.setTitleColor(UIColor.red, for: .highlighted)
+		button.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
+		createViews()
+	}
+
+	func createViews() {
+		for view in self.view.subviews {
+			view.removeFromSuperview()
+		}
+		createView(color: .white)
+		let insets = NSDirectionalEdgeInsets(top: 44, leading: 44, bottom: 44, trailing: 44)
+		createView(color: UIColor(white: 0.0, alpha: 0.2), insets: insets)
+
+		button.setTitle(self.guide.description, for: .normal)
 		view.addSubview(button)
-
-		readable()
-		readableInsets()
-		saveArea()
-		saveAreaInsets()
-		normal()
-		normalInsets()
-
+		button.layout.center()
 	}
 
-	func normal() {
-		let child = UIView()
-		self.view.addSubview(child)
-		child.backgroundColor = .clear
-		child.layer.borderColor = UIColor.green.cgColor
-		child.layer.borderWidth = 1
-		layout.pin(view:child, to:.top, gap:20)
-		layout.pin(view:child, to:.bottom, gap:20.0)
-		layout.pin(view:child, to:.leading, gap:20.0)
-		layout.pin(view:child, to:.trailing, gap:20.0)
+	@objc
+	func buttonPressed() {
+		self.guide = self.guide.next
+		createViews()
 	}
 
-	func normalInsets() {
-		let child = UIView()
-		self.view.addSubview(child)
-		child.backgroundColor = .clear
-		child.layer.borderColor = UIColor.green.cgColor
-		child.layer.borderWidth = 1
-		let insets = NSDirectionalEdgeInsets(top: 22, leading: 22, bottom: 22, trailing: 22)
-		child.layout.pin(.top, .bottom, .leading, .trailing, insets: insets)
+	func createView(color: UIColor, insets: NSDirectionalEdgeInsets = .zero) {
+		let view = UIView()
+		view.backgroundColor = color
+		self.view.addSubview(view)
+		for edge in self.guide.edges {
+			view.layout.pin(edge, insets: insets)
+		}
 	}
 
-	func readable() {
-		layout.pin(view:button, to:.top, gap:44.0)
-		layout.pin(view:button, to:.bottom, gap:44.0)
-		layout.pin(view:button, to:.leadingReadable, gap:44.0)
-		layout.pin(view:button, to:.trailingReadable, gap:44.0)
-	}
-
-	func readableInsets() {
-		let child = UIView()
-		self.view.addSubview(child)
-		child.backgroundColor = .clear
-		child.layer.borderColor = UIColor.blue.cgColor
-		child.layer.borderWidth = 1
-		let insets = NSDirectionalEdgeInsets(top: 42, leading: 42, bottom: 42, trailing: 42)
-		child.layout.pin(.top, .bottom, .leadingReadable, .trailingReadable, insets: insets)
-	}
-
-	func saveArea() {
-		let child = UIView()
-		self.view.addSubview(child)
-		child.backgroundColor = .clear
-		child.layer.borderColor = UIColor.red.cgColor
-		child.layer.borderWidth = 1
-		layout.pin(view:child, to:.topSafeArea, gap:44.0)
-		layout.pin(view:child, to:.bottomSafeArea, gap:44.0)
-		layout.pin(view:child, to:.leadingSafeArea, gap:44.0)
-		layout.pin(view:child, to:.trailingSafeArea, gap:44.0)
-	}
-
-	func saveAreaInsets() {
-		let child = UIView()
-		self.view.addSubview(child)
-		child.backgroundColor = .clear
-		child.layer.borderColor = UIColor.red.cgColor
-		child.layer.borderWidth = 1
-		let insets = NSDirectionalEdgeInsets(top: 42, leading: 42, bottom: 42, trailing: 42)
-		child.layout.pin(.topSafeArea, .bottomSafeArea, .leadingSafeArea, .trailingSafeArea, insets: insets)
-	}
 }
 
