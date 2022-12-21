@@ -4,6 +4,7 @@
 //
 
 import Foundation
+import UIKit
 
 public class LayoutBuilder {
 
@@ -130,14 +131,14 @@ public class LayoutBuilder {
 	}
 
 	@discardableResult
-	public func width(_ constant: CGFloat) -> LayoutBuilder {
-		layout.setWidth(of: view, to: constant)
+	public func width(_ constant: CGFloat, priority: UILayoutPriority = .required) -> LayoutBuilder {
+		layout.setWidth(of: view, to: constant, priority: priority)
 		return self
 	}
 
 	@discardableResult
-	public func height(_ constant: CGFloat) -> LayoutBuilder {
-		layout.setHeight(of: view, to: constant)
+	public func height(_ constant: CGFloat, priority: UILayoutPriority = .required) -> LayoutBuilder {
+		layout.setHeight(of: view, to: constant, priority: priority)
 		return self
 	}
 

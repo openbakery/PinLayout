@@ -4,6 +4,7 @@
 //
 
 import Foundation
+import UIKit
 
 extension NSLayoutConstraint.Attribute {
 	func constantValue(_ value: CGFloat) -> CGFloat {

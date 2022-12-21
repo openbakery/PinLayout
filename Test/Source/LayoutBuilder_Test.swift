@@ -167,6 +167,19 @@ class LayoutBuilder_Test: PinLayout_Base_Test {
 		assertThat(constraint.relation, equalTo(.equal))
 	}
 
+	func test_height_with_priority() {
+		toView.addSubview(view)
+
+		// when
+		view.layout.height(44, priority: .defaultLow)
+
+		// then
+		assertThat(view.constraints, hasCount(1))
+
+		let constraint = constraintAtIndex(0, ofView:view)
+		assertThat(constraint.priority, equalTo(.defaultLow))
+	}
+
 	func testWidth() {
 		toView.addSubview(view)
 
@@ -186,6 +199,19 @@ class LayoutBuilder_Test: PinLayout_Base_Test {
 		assertThat(constraint.secondItem, nilValue())
 
 		assertThat(constraint.relation, equalTo(.equal))
+	}
+
+	func test_width_with_priority() {
+		toView.addSubview(view)
+
+		// when
+		view.layout.width(44, priority: .defaultLow)
+
+		// then
+		assertThat(view.constraints, hasCount(1))
+
+		let constraint = constraintAtIndex(0, ofView:view)
+		assertThat(constraint.priority, equalTo(.defaultLow))
 	}
 
 	func test_view_is_horizontal_center() {

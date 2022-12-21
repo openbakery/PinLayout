@@ -4,6 +4,7 @@
 //
 
 import Foundation
+import UIKit
 
 public class LayoutConstraintsRecorder {
 	public var constraints = [NSLayoutConstraint]()

@@ -74,6 +74,7 @@ class ViewController: UIViewController {
 		button.setTitle(self.guide.description, for: .normal)
 		view.addSubview(button)
 		button.layout.center()
+
 	}
 
 	@objc
