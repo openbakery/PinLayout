@@ -19,6 +19,7 @@ let package = Package(
 		.target(
 			name: "PinLayout",
 			dependencies: [],
+			path: "/",
 			sources: [
 				"Main/Source",
 			],
