@@ -19,21 +19,16 @@ let package = Package(
 		.target(
 			name: "PinLayout",
 			dependencies: [],
-			exclude: [
-				"Demo",
-				"Test",
-				"Cartfile.private",
-				"gradle",
-				"gradlew"
-			],
+			path: "Main",
 			sources: [
-				"Main/Source",
+				"Source",
 			]
 		),
 		.testTarget(
 			name: "PinLayoutTests",
 			dependencies: ["PinLayout", "SwiftHamcrest"],
-			path: "Test/Source"
+			path: "Test",
+			path: "Source"
 		),
 	]
 )
