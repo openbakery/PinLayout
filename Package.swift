@@ -22,7 +22,7 @@ let package = Package(
 			path: "Main/Source",
 			exclude: [
 				"Demo",
-				"Test"
+				"Test",
 				"Cartfile.private"
 			]
 
