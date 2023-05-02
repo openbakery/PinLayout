@@ -29,8 +29,7 @@ let package = Package(
 			],
 			sources: [
 				"Main/Source",
-			],
-
+			]
 		),
 		.testTarget(
 			name: "PinLayoutTests",
