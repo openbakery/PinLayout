@@ -19,7 +19,13 @@ let package = Package(
 		.target(
 			name: "PinLayout",
 			dependencies: [],
-			path: "Main/Source"
+			path: "Main/Source",
+			exclude: [
+				"Demo",
+				"Test"
+				"Cartfile.private"
+			]
+
 		),
 		.testTarget(
 			name: "PinLayoutTests",
