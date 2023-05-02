@@ -19,11 +19,15 @@ let package = Package(
 		.target(
 			name: "PinLayout",
 			dependencies: [],
-			path: "Main/Source",
+			sources: [
+				"Main/Source",
+			],
 			exclude: [
 				"Demo",
 				"Test",
-				"Cartfile.private"
+				"Cartfile.private",
+				"gradle",
+				"gradlew"
 			]
 
 		),
