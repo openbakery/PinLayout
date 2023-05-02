@@ -28,7 +28,9 @@ let package = Package(
 			name: "PinLayoutTests",
 			dependencies: ["PinLayout", "SwiftHamcrest"],
 			path: "Test",
-			path: "Source"
+			sources: [
+				"Source",
+			]
 		),
 	]
 )
