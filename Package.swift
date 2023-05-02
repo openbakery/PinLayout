@@ -19,7 +19,6 @@ let package = Package(
 		.target(
 			name: "PinLayout",
 			dependencies: [],
-			path: "/",
 			exclude: [
 				"Demo",
 				"Test",
