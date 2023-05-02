@@ -20,16 +20,16 @@ let package = Package(
 			name: "PinLayout",
 			dependencies: [],
 			path: "/",
-			sources: [
-				"Main/Source",
-			],
 			exclude: [
 				"Demo",
 				"Test",
 				"Cartfile.private",
 				"gradle",
 				"gradlew"
-			]
+			],
+			sources: [
+				"Main/Source",
+			],
 
 		),
 		.testTarget(
