@@ -17,7 +17,7 @@ public class LayoutBuilder {
 		self.layout.recorder = LayoutConstraintsRecorder()
 	}
 
-	public var constraints : [NSLayoutConstraint] {
+	public var constraints: [NSLayoutConstraint] {
 		self.layout.recorder?.constraints ?? []
 	}
 
@@ -179,6 +179,12 @@ public class LayoutBuilder {
 	@discardableResult
 	public func align(with: UIView, to: Layout.Edge, gap: CGFloat = 0) -> LayoutBuilder {
 		layout.align(view: view, with: with, to: to, gap: gap)
+		return self
+	}
+
+	@discardableResult
+	public func stack(onTopOf other: UIView, gap: CGFloat = 0) -> LayoutBuilder {
+		layout.stack(view: view, onTopOf: other, gap: gap)
 		return self
 	}
 }

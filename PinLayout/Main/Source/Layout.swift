@@ -524,6 +524,18 @@ open class Layout: NSObject, NSCoding {
 		return nil
 	}
 
+	@discardableResult open func stack(view first: UIView, onTopOf second: UIView, gap: CGFloat = 0) -> NSLayoutConstraint? {
+		if let superView = self.findSuperViewFor(first, second) {
+			let firstAttribute = toLayoutAttribute(.bottom)
+			let secondAttribute = toLayoutAttribute(.top)
+			let constraint = NSLayoutConstraint(item: first, attribute: firstAttribute, relatedBy: .equal, toItem: second, attribute: secondAttribute, multiplier: 1.0, constant: -gap)
+			superView.addConstraint(constraint)
+			self.recorder?.append(constraint)
+			return constraint
+		}
+		return nil
+	}
+
 
 	@objc open func findConstraintForView(_ view: UIView, attribute: Constant) -> NSLayoutConstraint? {
 		for constraint in view.constraints {

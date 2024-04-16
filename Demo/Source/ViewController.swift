@@ -67,9 +67,27 @@ class ViewController: UIViewController {
 		for view in self.view.subviews {
 			view.removeFromSuperview()
 		}
+
 		createView(color: .white)
 		let insets = NSDirectionalEdgeInsets(top: 44, leading: 44, bottom: 44, trailing: 44)
-		createView(color: UIColor(white: 0.0, alpha: 0.2), insets: insets)
+
+		if guide == .none {
+			let first = UIView()
+			first.backgroundColor = UIColor(white: 0.0, alpha: 0.2)
+			let second = UIView()
+			second.backgroundColor = UIColor(white: 0.0, alpha: 0.4)
+			self.view.addSubview(first)
+			self.view.addSubview(second)
+
+			first.layout.pin(.top, .leading, .trailing, insets: insets)
+
+			first.layout.stack(onTopOf: second, gap: 0)
+				.equalHeight(with: second)
+
+			second.layout.pin(.leading, .trailing, .bottom, insets: insets)
+		} else {
+			createView(color: UIColor(white: 0.0, alpha: 0.2), insets: insets)
+		}
 
 		button.setTitle(self.guide.description, for: .normal)
 		view.addSubview(button)
@@ -84,11 +102,11 @@ class ViewController: UIViewController {
 	}
 
 	func createView(color: UIColor, insets: NSDirectionalEdgeInsets = .zero) {
-		let view = UIView()
-		view.backgroundColor = color
-		self.view.addSubview(view)
+		let subview = UIView()
+		subview.backgroundColor = color
+		self.view.addSubview(subview)
 		for edge in self.guide.edges {
-			view.layout.pin(edge, insets: insets)
+			subview.layout.pin(edge, insets: insets)
 		}
 	}
 

@@ -588,12 +588,11 @@ class PinLayoutTest: PinLayout_Base_Test {
 	func test_record_pin_with_safeGuide_constraint() {
 		pinLayout.startRecord()
 		let viewController = UIViewController()
-		show(viewController:viewController)
+		show(viewController: viewController)
 		viewController.view.addSubview(view)
 		pinLayout.pin(view: view, to: .leadingSafeArea)
 		assertThat(pinLayout.finishRecord(), hasCount(1))
 	}
-
 
 
 	func test_align_views_to_top() {
@@ -604,7 +603,7 @@ class PinLayoutTest: PinLayout_Base_Test {
 
 		pinLayout.align(view: view, with: toView, to: .top)
 
-		let constraint = constraintAtIndex(0, ofView:superView)
+		let constraint = constraintAtIndex(0, ofView: superView)
 		assertThat(constraint.constant, equalTo(0.0))
 		assertThat(constraint.firstAttribute, equalTo(.top))
 		assertThat(constraint.secondAttribute, equalTo(.top))
@@ -671,7 +670,6 @@ class PinLayoutTest: PinLayout_Base_Test {
 
 		let constraint = pinLayout.pin(view: view, to: .top, of: toView, gap: 10)
 
-
 		// then
 		assertThat(constraint?.constant, presentAnd(equalTo(10)))
 		assertThat(constraint?.firstAttribute, equalTo(.top))
@@ -680,6 +678,27 @@ class PinLayoutTest: PinLayout_Base_Test {
 		assertThat(constraint?.secondAttribute, presentAnd(equalTo(.bottom)))
 		assertThat(constraint?.secondItem, presentAnd(instanceOf(UIView.self, and:equalTo(toView))))
 	}
+
+
+	func test_stack_first_view_to_bottom_of_second() {
+		let superView = UIView()
+
+		superView.addSubview(view)
+		superView.addSubview(toView)
+
+		pinLayout.stack(view: view, onTopOf: toView)
+
+		let constraint = constraintAtIndex(0, ofView: superView)
+		assertThat(constraint.constant, equalTo(0.0))
+		assertThat(constraint.firstAttribute, equalTo(.bottom))
+		assertThat(constraint.secondAttribute, equalTo(.top))
+
+		assertThatFirstItemOf(constraint, equalToView: view)
+		assertThatSecondItemOf(constraint, equalToView: toView)
+
+		assertThat(constraint.relation, equalTo(.equal))
+	}
+
 
 
 

@@ -756,4 +756,44 @@ class LayoutBuilder_Test: PinLayout_Base_Test {
 
 		assertThat(constraint.relation, equalTo(.equal))
 	}
+
+
+	func test_first_view_is_on_top_of_second() {
+		let superView = UIView()
+
+		superView.addSubview(view)
+		superView.addSubview(toView)
+
+		// when
+		view.layout.stack(onTopOf: toView)
+
+		// then
+		let constraint = constraintAtIndex(0, ofView: superView)
+		assertThat(constraint.constant, equalTo(0.0))
+		assertThat(constraint.firstAttribute, equalTo(.bottom))
+		assertThat(constraint.secondAttribute, equalTo(.top))
+
+		assertThatFirstItemOf(constraint, equalToView: view)
+		assertThatSecondItemOf(constraint, equalToView: toView)
+
+		assertThat(constraint.relation, equalTo(.equal))
+
+	}
+
+
+	func test_first_view_is_on_top_of_second_with_gap() {
+		let superView = UIView()
+
+		superView.addSubview(view)
+		superView.addSubview(toView)
+
+		// when
+		view.layout.stack(onTopOf: toView, gap: 11)
+
+		// then
+		let constraint = constraintAtIndex(0, ofView: superView)
+		assertThat(constraint.constant, equalTo(-11.0))
+	}
+
+
 }

@@ -1,0 +1,17 @@
+disabled_rules:
+  - switch_case_alignment
+
+type_name:
+  allowed_symbols: ["_"] # these are allowed in type names
+
+
+vertical_whitespace:
+  max_empty_lines: 3
+
+line_length:
+  warning: 180
+  error: 360
+
+file_length:
+  warning: 1500
+  error: 3000
