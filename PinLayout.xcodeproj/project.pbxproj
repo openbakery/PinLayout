@@ -264,9 +264,8 @@
 		A7AF81311E1A416000BCF7B4 = {
 			isa = PBXGroup;
 			children = (
+				A7CF34452BCEA125004727AA /* PinLayout */,
 				A7AF813C1E1A416000BCF7B4 /* Products */,
-				355B2AFBCB8035FD08FABBB1 /* Main */,
-				355B2D861EEB25ECE5245CEB /* Test */,
 				A7AF81551E1A443D00BCF7B4 /* Frameworks */,
 				355B2486E4F09AD0B951011C /* Demo */,
 			);
@@ -309,6 +308,15 @@
 				A7BE8D372254FFAB00BCC009 /* ContraintAlignMatcher.swift */,
 			);
 			path = Matchers;
+			sourceTree = "<group>";
+		};
+		A7CF34452BCEA125004727AA /* PinLayout */ = {
+			isa = PBXGroup;
+			children = (
+				355B2AFBCB8035FD08FABBB1 /* Main */,
+				355B2D861EEB25ECE5245CEB /* Test */,
+			);
+			path = PinLayout;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -667,7 +675,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = Main/Resource/Info.plist;
+				INFOPLIST_FILE = PinLayout/Main/Resource/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -693,7 +701,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = Main/Resource/Info.plist;
+				INFOPLIST_FILE = PinLayout/Main/Resource/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -716,7 +724,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/",
 				);
-				INFOPLIST_FILE = Test/Resource/Info.plist;
+				INFOPLIST_FILE = PinLayout/Test/Resource/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -737,7 +745,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/",
 				);
-				INFOPLIST_FILE = Test/Resource/Info.plist;
+				INFOPLIST_FILE = PinLayout/Test/Resource/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
