@@ -95,12 +95,10 @@
 		355B22F6E3D2252F9ADCBD1F /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		355B22F815897CA423A20BB5 /* LayoutBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayoutBuilder.swift; sourceTree = "<group>"; };
 		355B22FA348442A6B9595866 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Demo/Resource/PinLayoutDemo/Base.lproj/LaunchScreen.storyboard; sourceTree = SOURCE_ROOT; };
-		355B23CF9FBCDE18FBF33952 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.info; path = Info.plist; sourceTree = "<group>"; };
 		355B2584C2C27AECAC1C4AA5 /* PinLayout_Safe_Center.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinLayout_Safe_Center.swift; sourceTree = "<group>"; };
 		355B25ACE74641A30BFC9A28 /* Layout_SafeCenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Layout_SafeCenter.swift; sourceTree = "<group>"; };
 		355B26AF6C10E360F2712BAF /* LayoutBuilder_Insets_Test.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayoutBuilder_Insets_Test.swift; sourceTree = "<group>"; };
 		355B274A8110C0F8E98B222C /* Layout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Layout.swift; sourceTree = "<group>"; };
-		355B27C8B0B4765D939CED54 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.info; path = Info.plist; sourceTree = "<group>"; };
 		355B286E9FE666995CFB80C6 /* LayoutBuilder_Test.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayoutBuilder_Test.swift; sourceTree = "<group>"; };
 		355B292729B41FEECAE8DA7D /* LayoutConstraintsRecorder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayoutConstraintsRecorder.swift; sourceTree = "<group>"; };
 		355B298205A6C83F31C3704C /* LayoutBuilder_Recorder_Test.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayoutBuilder_Recorder_Test.swift; sourceTree = "<group>"; };
@@ -109,7 +107,6 @@
 		355B2CD3C63C48E5B91AADC3 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		355B2E12FCFE60C32F9115E3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		355B2EAD5F16421E33BC3A84 /* NSLayoutConstraint_Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSLayoutConstraint_Extension.swift; sourceTree = "<group>"; };
-		355B2ED3033704BF995C2953 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.info; path = Info.plist; sourceTree = "<group>"; };
 		A71E3B1D25A867C900F02CC6 /* Hamcrest.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = Hamcrest.xcframework; path = Carthage/Build/Hamcrest.xcframework; sourceTree = "<group>"; };
 		A71E3B2325A8688000F02CC6 /* PinLayout_AutoResizing_Test.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinLayout_AutoResizing_Test.swift; sourceTree = "<group>"; };
 		A71E3B2425A8688000F02CC6 /* PinLayout_Base_Test.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinLayout_Base_Test.swift; sourceTree = "<group>"; };
@@ -190,7 +187,6 @@
 			children = (
 				355B20D6C7D688C99CD23129 /* LaunchScreen.storyboard */,
 				355B2E12FCFE60C32F9115E3 /* Assets.xcassets */,
-				355B2ED3033704BF995C2953 /* Info.plist */,
 			);
 			path = Resource;
 			sourceTree = "<group>";
@@ -229,7 +225,6 @@
 		355B2A58D4A6C6C125E25C13 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
-				355B23CF9FBCDE18FBF33952 /* Info.plist */,
 				A7CF34432BCE9F5D004727AA /* PrivacyInfo.xcprivacy */,
 			);
 			path = Resource;
@@ -256,7 +251,6 @@
 		355B2FA7F0AF2F1F92B32871 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
-				355B27C8B0B4765D939CED54 /* Info.plist */,
 			);
 			path = Resource;
 			sourceTree = "<group>";
@@ -395,8 +389,9 @@
 		A7AF81321E1A416000BCF7B4 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				BuildIndependentTargetsInParallel = YES;
 				LastSwiftUpdateCheck = 0820;
-				LastUpgradeCheck = 1340;
+				LastUpgradeCheck = 1530;
 				ORGANIZATIONNAME = org.openbakery;
 				TargetAttributes = {
 					A7AF813A1E1A416000BCF7B4 = {
@@ -578,6 +573,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -592,6 +588,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -642,6 +639,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -650,6 +648,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
@@ -675,13 +674,14 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = PinLayout/Main/Resource/Info.plist;
+				ENABLE_MODULE_VERIFIER = YES;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
+				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu99 gnu++11";
 				PRODUCT_BUNDLE_IDENTIFIER = org.openbakery.PinLayout;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -701,13 +701,14 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = PinLayout/Main/Resource/Info.plist;
+				ENABLE_MODULE_VERIFIER = YES;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
+				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu99 gnu++11";
 				PRODUCT_BUNDLE_IDENTIFIER = org.openbakery.PinLayout;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -724,7 +725,6 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/",
 				);
-				INFOPLIST_FILE = PinLayout/Test/Resource/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -745,7 +745,6 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/",
 				);
-				INFOPLIST_FILE = PinLayout/Test/Resource/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -763,11 +762,11 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = ED5DV56QPQ;
-				INFOPLIST_FILE = Demo/Resource/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = org.openbakery.PinLayoutDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -780,11 +779,11 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = ED5DV56QPQ;
-				INFOPLIST_FILE = Demo/Resource/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = org.openbakery.PinLayoutDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
