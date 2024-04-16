@@ -1,0 +1,43 @@
+#!/bin/sh
+#
+
+
+PROJECT=PinLayout.xcodeproj
+SCHEME=PinLayoutDemo
+BUNDLE_ID=org.openbakery.PinLayoutDemo
+APPLICATION_NAME=PinLayoutDemo.app
+
+
+OPTIONS="-showBuildTimingSummary -derivedDataPath ./build -disable-concurrent-destination-testing" #-quiet"
+
+SIMULATOR_ID=E3D997E5-7AF5-4D3C-9A1E-31B96E8380E6
+
+# add logic to open the simulator when is is not running
+open -a simulator
+xcrun simctl boot $SIMULATOR_ID
+
+
+	#-quiet \
+
+xcodebuild -scheme $SCHEME -configuration Debug \
+-UseNewBuildSystem=YES \
+-derivedDataPath ./build -disable-concurrent-destination-testing \
+-destination platform="iOS Simulator,id=$SIMULATOR_ID" \
+	-parallel-testing-enabled=NO \
+	-enableAddressSanitizer NO -enableThreadSanitizer NO -enableUndefinedBehaviorSanitizer NO \
+  COMPILER_INDEX_STORE_ENABLE=NO \
+	ARCH=arm64 \
+	CODE_SIGN_IDENTITY= \
+	CODE_SIGNING_REQUIRED=NO \
+	CODE_SIGNING_ALLOWED=NO \
+	build
+# | xcpretty
+
+if [ $? != 0 ]; then
+  echo "Build failed"
+  exit 1
+fi
+
+xcrun simctl install $SIMULATOR_ID ./build/Build/Products/Debug-iphonesimulator/$APPLICATION_NAME
+xcrun simctl launch $SIMULATOR_ID $BUNDLE_ID
+

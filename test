@@ -1,0 +1,53 @@
+#!/bin/sh
+#
+
+
+PROJECT=PinLayout.xcodeproj
+SCHEME=PinLayout
+
+OPTIONS="-showBuildTimingSummary -derivedDataPath ./build -disable-concurrent-destination-testing" #-quiet"
+
+SIMULATOR_ID=E3D997E5-7AF5-4D3C-9A1E-31B96E8380E6
+
+
+
+#############################################################
+CLASS_TO_TEST=""
+TEST_TARGET="PinLayout-Tests"
+#############################################################
+echo "Target: $TEST_TARGET"
+echo "Scheme: $SCHEME"
+
+
+#open -a simulator
+xcrun simctl boot $SIMULATOR_ID
+
+
+xcodebuild build-for-testing -scheme $SCHEME -configuration Debug \
+-UseNewBuildSystem=YES \
+-derivedDataPath ./build -disable-concurrent-destination-testing \
+-destination platform="iOS Simulator,id=$SIMULATOR_ID" \
+	-parallel-testing-enabled=NO \
+	-enableAddressSanitizer NO -enableThreadSanitizer NO -enableUndefinedBehaviorSanitizer NO \
+  -enableCodeCoverage NO COMPILER_INDEX_STORE_ENABLE=NO \
+	ARCH=arm64 \
+	CODE_SIGN_IDENTITY= \
+	CODE_SIGNING_REQUIRED=NO \
+	CODE_SIGNING_ALLOWED=NO \
+
+if [ $? != 0 ]; then
+  echo "Build failed"
+  exit 1
+fi
+
+
+xcodebuild test-without-building -scheme $SCHEME -configuration Debug \
+-UseNewBuildSystem=YES \
+-derivedDataPath ./build -disable-concurrent-destination-testing \
+-destination platform="iOS Simulator,id=$SIMULATOR_ID" \
+	-parallel-testing-enabled=NO \
+	-enableAddressSanitizer NO -enableThreadSanitizer NO -enableUndefinedBehaviorSanitizer NO \
+  -enableCodeCoverage NO COMPILER_INDEX_STORE_ENABLE=NO \
+	ARCH=arm64 | xcpretty
+
+
