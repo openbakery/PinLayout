@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -44,6 +44,7 @@
 		A7BE8D3C2254FFAB00BCC009 /* ContraintAlignMatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7BE8D372254FFAB00BCC009 /* ContraintAlignMatcher.swift */; };
 		A7BE8D3D2254FFAB00BCC009 /* ConstraintConstantMatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7BE8D382254FFAB00BCC009 /* ConstraintConstantMatcher.swift */; };
 		A7BE8D3E2254FFAB00BCC009 /* ConstraintMatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7BE8D392254FFAB00BCC009 /* ConstraintMatcher.swift */; };
+		A7CF34442BCE9F5D004727AA /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = A7CF34432BCE9F5D004727AA /* PrivacyInfo.xcprivacy */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -127,6 +128,7 @@
 		A7BE8D372254FFAB00BCC009 /* ContraintAlignMatcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContraintAlignMatcher.swift; sourceTree = "<group>"; };
 		A7BE8D382254FFAB00BCC009 /* ConstraintConstantMatcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConstraintConstantMatcher.swift; sourceTree = "<group>"; };
 		A7BE8D392254FFAB00BCC009 /* ConstraintMatcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConstraintMatcher.swift; sourceTree = "<group>"; };
+		A7CF34432BCE9F5D004727AA /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -228,6 +230,7 @@
 			isa = PBXGroup;
 			children = (
 				355B23CF9FBCDE18FBF33952 /* Info.plist */,
+				A7CF34432BCE9F5D004727AA /* PrivacyInfo.xcprivacy */,
 			);
 			path = Resource;
 			sourceTree = "<group>";
@@ -430,6 +433,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A7CF34442BCE9F5D004727AA /* PrivacyInfo.xcprivacy in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -580,7 +584,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -638,7 +642,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
