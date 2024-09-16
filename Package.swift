@@ -10,10 +10,7 @@ let package = Package(
 		.library(name: "PinLayout", targets: ["PinLayout"])
 	],
 	dependencies: [
-		.package(
-			url: "https://github.com/nschum/SwiftHamcrest/",
-			.upToNextMajor(from: "2.2.0")
-		)
+		.package(url: "https://github.com/nschum/SwiftHamcrest/", .upToNextMajor(from: "2.2.0") )
 	],
 	targets: [
 		.target(
@@ -26,7 +23,10 @@ let package = Package(
 		),
 		.testTarget(
 			name: "PinLayoutTests",
-			dependencies: ["PinLayout", "SwiftHamcrest"],
+			dependencies: [
+				"PinLayout",
+				.product(name: "Hamcrest", package: "SwiftHamcrest")
+			],
 			path: "PinLayout",
 			sources: [
 				"Test/Source"

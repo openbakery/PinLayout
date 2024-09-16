@@ -45,6 +45,7 @@
 		A7BE8D3D2254FFAB00BCC009 /* ConstraintConstantMatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7BE8D382254FFAB00BCC009 /* ConstraintConstantMatcher.swift */; };
 		A7BE8D3E2254FFAB00BCC009 /* ConstraintMatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7BE8D392254FFAB00BCC009 /* ConstraintMatcher.swift */; };
 		A7CF34442BCE9F5D004727AA /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = A7CF34432BCE9F5D004727AA /* PrivacyInfo.xcprivacy */; };
+		A7E4FA542C9869F70078318E /* HamcrestSwiftTesting in Frameworks */ = {isa = PBXBuildFile; productRef = A7E4FA532C9869F70078318E /* HamcrestSwiftTesting */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -143,6 +144,7 @@
 			files = (
 				A7AF81571E1A443E00BCF7B4 /* XCTest.framework in Frameworks */,
 				A7AF81451E1A416000BCF7B4 /* PinLayout.framework in Frameworks */,
+				A7E4FA542C9869F70078318E /* HamcrestSwiftTesting in Frameworks */,
 				A71E3B1E25A867C900F02CC6 /* Hamcrest.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -422,6 +424,9 @@
 				Base,
 			);
 			mainGroup = A7AF81311E1A416000BCF7B4;
+			packageReferences = (
+				A7E4FA522C9869F70078318E /* XCRemoteSwiftPackageReference "SwiftHamcrest" */,
+			);
 			productRefGroup = A7AF813C1E1A416000BCF7B4 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -836,6 +841,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		A7E4FA522C9869F70078318E /* XCRemoteSwiftPackageReference "SwiftHamcrest" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/nschum/SwiftHamcrest";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.3.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		A7E4FA532C9869F70078318E /* HamcrestSwiftTesting */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A7E4FA522C9869F70078318E /* XCRemoteSwiftPackageReference "SwiftHamcrest" */;
+			productName = HamcrestSwiftTesting;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = A7AF81321E1A416000BCF7B4 /* Project object */;
 }

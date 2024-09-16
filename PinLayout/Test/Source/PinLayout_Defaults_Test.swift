@@ -5,27 +5,30 @@
 
 
 import Foundation
-import XCTest
+import Testing
 import Hamcrest
-@testable import PinLayout
+import HamcrestSwiftTesting
+import PinLayout
 
-class PinLayout_Defaults_Test : PinLayout_Base_Test {
+struct PinLayout_Defaults_Test {
+
+	let pinLayout = Layout()
 
 
-	func test_cell_height() {
-		assertThat(pinLayout.value(for:.cellHeight), equalTo(44.0))
+	@Test func test_cell_height() {
+		#assertThat(pinLayout.value(for:.cellHeight), equalTo(44.0))
 	}
 
-	func test_cell_margin() {
-		assertThat(pinLayout.value(for:.cellMargin), equalTo(15.0))
+	@Test func test_cell_margin() {
+		#assertThat(pinLayout.value(for:.cellMargin), equalTo(15.0))
 	}
 
-	func test_cell_icon_width() {
-		assertThat(pinLayout.value(for:.cellIconWidth), equalTo(29.0))
+	@Test func test_cell_icon_width() {
+		#assertThat(pinLayout.value(for:.cellIconWidth), equalTo(29.0))
 	}
 
-	func test_margin() {
-		assertThat(pinLayout.value(for:.margin), equalTo(8.0))
+	@Test func test_margin() {
+		#assertThat(pinLayout.value(for:.margin), equalTo(8.0))
 	}
 
 }

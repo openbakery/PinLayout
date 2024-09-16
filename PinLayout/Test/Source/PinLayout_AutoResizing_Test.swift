@@ -4,34 +4,38 @@
 //
 
 import Foundation
-import XCTest
+import Testing
 import Hamcrest
-@testable import PinLayout
+import HamcrestSwiftTesting
+import PinLayout
 
-class PinLayout_AutoResizing_Test : PinLayout_Base_Test {
+@MainActor
+struct PinLayout_AutoResizing_SwiftTest {
+	let view = UIView()
+	let toView = UIView()
+	let pinLayout = Layout()
 
 
-
-	func test_disables_translatesAutoresizingMaskIntoConstraints() {
+	@Test func disables_translatesAutoresizingMaskIntoConstraints() {
 		let superView = UIView()
 		superView.addSubview(view)
 		pinLayout.pin(view:view, to: .top)
-		assertThat(view.translatesAutoresizingMaskIntoConstraints, equalTo(false))
+
+		#assertThat(view.translatesAutoresizingMaskIntoConstraints, equalTo(false))
 	}
 
-	func test_not_disables_translatesAutoresizingMaskIntoConstraints_on_superview() {
+	@Test func not_disables_translatesAutoresizingMaskIntoConstraints_on_superview() {
 		let superView = UIView()
 		superView.addSubview(view)
 		pinLayout.pin(view:view, to: .top)
-		assertThat(superView.translatesAutoresizingMaskIntoConstraints, equalTo(true))
+		#assertThat(superView.translatesAutoresizingMaskIntoConstraints, equalTo(true))
 	}
 
-
-	func test_for_tableCells_contentView_translatesAutoresizingMaskIntoConstraints_is_not_set_to_false() {
+	@Test func for_tableCells_contentView_translatesAutoresizingMaskIntoConstraints_is_not_set_to_false() {
 		let cell = UITableViewCell()
 		cell.addSubview(view)
 		pinLayout.pin(view:cell, to: .top, of: toView)
-		assertThat(cell.translatesAutoresizingMaskIntoConstraints, equalTo(true))
+		#assertThat(cell.translatesAutoresizingMaskIntoConstraints, equalTo(true))
 	}
 
 }
