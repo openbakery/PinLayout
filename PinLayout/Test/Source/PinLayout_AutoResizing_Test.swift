@@ -8,6 +8,7 @@ import Testing
 import Hamcrest
 import HamcrestSwiftTesting
 import PinLayout
+import UIKit
 
 @MainActor
 struct PinLayout_AutoResizing_SwiftTest {

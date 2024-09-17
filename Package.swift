@@ -25,7 +25,8 @@ let package = Package(
 			name: "PinLayoutTests",
 			dependencies: [
 				"PinLayout",
-				.product(name: "Hamcrest", package: "SwiftHamcrest")
+				.product(name: "Hamcrest", package: "SwiftHamcrest"),
+				.product(name: "HamcrestSwiftTesting", package: "SwiftHamcrest")
 			],
 			path: "PinLayout",
 			sources: [
