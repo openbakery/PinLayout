@@ -3,48 +3,18 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 54;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		355B20263DB7875050FFC419 /* LayoutBuilder_Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355B286E9FE666995CFB80C6 /* LayoutBuilder_Test.swift */; };
-		355B204BCD708E0D44EC8EE1 /* LayoutConstraintsRecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355B292729B41FEECAE8DA7D /* LayoutConstraintsRecorder.swift */; };
-		355B20FA8017BC6488A20B8E /* UIView_LayoutBuilderExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355B2048827EDF988CD3FDF6 /* UIView_LayoutBuilderExtension.swift */; };
-		355B2100CDC6C6F6F437A4C6 /* Layout_Center.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355B228E94B4FBC7597FC521 /* Layout_Center.swift */; };
 		355B211828F73913C596D498 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 355B20D6C7D688C99CD23129 /* LaunchScreen.storyboard */; };
-		355B22D632B4EB413E57AB70 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355B2CD3C63C48E5B91AADC3 /* AppDelegate.swift */; };
-		355B23A5308C9D9FDC0A0C93 /* PinLayout_Safe_Center.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355B2584C2C27AECAC1C4AA5 /* PinLayout_Safe_Center.swift */; };
-		355B25D42844C697086CE1B6 /* NSDirectionalEdgeInsets_Edge_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355B299A274CB8A2E70751D8 /* NSDirectionalEdgeInsets_Edge_Extension.swift */; };
 		355B262022C67FE64614E81E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 355B2E12FCFE60C32F9115E3 /* Assets.xcassets */; };
-		355B27DDB266BE9A31A843C7 /* PinLayout_SameWith_Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355B221FB5BB7999B39E1475 /* PinLayout_SameWith_Test.swift */; };
-		355B288177C3C6720C754AB2 /* Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355B274A8110C0F8E98B222C /* Layout.swift */; };
-		355B2A9E684A842FC7DC9046 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355B22F6E3D2252F9ADCBD1F /* ViewController.swift */; };
-		355B2BCC6481E9729431931D /* LayoutBuilder_Recorder_Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355B298205A6C83F31C3704C /* LayoutBuilder_Recorder_Test.swift */; };
-		355B2CC210E1717BB5C78656 /* Layout_SafeCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355B25ACE74641A30BFC9A28 /* Layout_SafeCenter.swift */; };
-		355B2D24AB91EB6A21D925B0 /* NSLayoutConstraint_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355B2EAD5F16421E33BC3A84 /* NSLayoutConstraint_Extension.swift */; };
-		355B2DB65EED796E43DD3603 /* PinLayout.h in Headers */ = {isa = PBXBuildFile; fileRef = 355B22DCF7EA5B11594D9593 /* PinLayout.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		355B2ECEC0BDA7DC3663115B /* LayoutBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355B22F815897CA423A20BB5 /* LayoutBuilder.swift */; };
-		355B2EF60E28E3074739C828 /* LayoutBuilder_Insets_Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355B26AF6C10E360F2712BAF /* LayoutBuilder_Insets_Test.swift */; };
-		A71E3B2625A8688000F02CC6 /* PinLayout_AutoResizing_Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71E3B2325A8688000F02CC6 /* PinLayout_AutoResizing_Test.swift */; };
-		A71E3B2725A8688000F02CC6 /* PinLayout_Base_Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71E3B2425A8688000F02CC6 /* PinLayout_Base_Test.swift */; };
-		A71E3B2825A8688000F02CC6 /* PinLayout_Defaults_Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71E3B2525A8688000F02CC6 /* PinLayout_Defaults_Test.swift */; };
-		A71E3B2D25A86A5C00F02CC6 /* PinLayout_Center_Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71E3B2C25A86A5C00F02CC6 /* PinLayout_Center_Test.swift */; };
 		A76C3AA92CAAB2C40023BB91 /* Hamcrest.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = A71E3B1D25A867C900F02CC6 /* Hamcrest.xcframework */; };
 		A76C3AAA2CAAB2C40023BB91 /* Hamcrest.xcframework in CopyFiles */ = {isa = PBXBuildFile; fileRef = A71E3B1D25A867C900F02CC6 /* Hamcrest.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A7AF81451E1A416000BCF7B4 /* PinLayout.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7AF813B1E1A416000BCF7B4 /* PinLayout.framework */; };
 		A7AF81571E1A443E00BCF7B4 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7AF81561E1A443E00BCF7B4 /* XCTest.framework */; };
 		A7AF817F1E1A55A000BCF7B4 /* PinLayout.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7AF813B1E1A416000BCF7B4 /* PinLayout.framework */; };
 		A7AF81801E1A55A000BCF7B4 /* PinLayout.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A7AF813B1E1A416000BCF7B4 /* PinLayout.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		A7AF81891E1A5AA200BCF7B4 /* PinLayoutTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355B2C6D12D766AA75FDEE0C /* PinLayoutTest.swift */; };
-		A7BE8D2E2254FE7900BCC009 /* BasePinLayoutTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7BE8D2B2254FE7900BCC009 /* BasePinLayoutTest.swift */; };
-		A7BE8D2F2254FE7900BCC009 /* PinLayout_Readable_Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7BE8D2C2254FE7900BCC009 /* PinLayout_Readable_Test.swift */; };
-		A7BE8D302254FE7900BCC009 /* PinLayout_iOS10_Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7BE8D2D2254FE7900BCC009 /* PinLayout_iOS10_Test.swift */; };
-		A7BE8D322254FF7800BCC009 /* XCTestCaseViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7BE8D312254FF7800BCC009 /* XCTestCaseViewControllerExtension.swift */; };
-		A7BE8D3A2254FFAB00BCC009 /* ConstraintAnchorMatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7BE8D352254FFAB00BCC009 /* ConstraintAnchorMatcher.swift */; };
-		A7BE8D3B2254FFAB00BCC009 /* ConstraintEqualMatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7BE8D362254FFAB00BCC009 /* ConstraintEqualMatcher.swift */; };
-		A7BE8D3C2254FFAB00BCC009 /* ContraintAlignMatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7BE8D372254FFAB00BCC009 /* ContraintAlignMatcher.swift */; };
-		A7BE8D3D2254FFAB00BCC009 /* ConstraintConstantMatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7BE8D382254FFAB00BCC009 /* ConstraintConstantMatcher.swift */; };
-		A7BE8D3E2254FFAB00BCC009 /* ConstraintMatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7BE8D392254FFAB00BCC009 /* ConstraintMatcher.swift */; };
 		A7CF34442BCE9F5D004727AA /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = A7CF34432BCE9F5D004727AA /* PrivacyInfo.xcprivacy */; };
 		A7E4FA542C9869F70078318E /* HamcrestSwiftTesting in Frameworks */ = {isa = PBXBuildFile; productRef = A7E4FA532C9869F70078318E /* HamcrestSwiftTesting */; };
 /* End PBXBuildFile section */
@@ -91,46 +61,32 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		355B2048827EDF988CD3FDF6 /* UIView_LayoutBuilderExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIView_LayoutBuilderExtension.swift; sourceTree = "<group>"; };
-		355B221FB5BB7999B39E1475 /* PinLayout_SameWith_Test.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinLayout_SameWith_Test.swift; sourceTree = "<group>"; };
-		355B228E94B4FBC7597FC521 /* Layout_Center.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Layout_Center.swift; sourceTree = "<group>"; };
-		355B22DCF7EA5B11594D9593 /* PinLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PinLayout.h; sourceTree = "<group>"; };
-		355B22F6E3D2252F9ADCBD1F /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		355B22F815897CA423A20BB5 /* LayoutBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayoutBuilder.swift; sourceTree = "<group>"; };
 		355B22FA348442A6B9595866 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Demo/Resource/PinLayoutDemo/Base.lproj/LaunchScreen.storyboard; sourceTree = SOURCE_ROOT; };
-		355B2584C2C27AECAC1C4AA5 /* PinLayout_Safe_Center.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinLayout_Safe_Center.swift; sourceTree = "<group>"; };
-		355B25ACE74641A30BFC9A28 /* Layout_SafeCenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Layout_SafeCenter.swift; sourceTree = "<group>"; };
-		355B26AF6C10E360F2712BAF /* LayoutBuilder_Insets_Test.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayoutBuilder_Insets_Test.swift; sourceTree = "<group>"; };
-		355B274A8110C0F8E98B222C /* Layout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Layout.swift; sourceTree = "<group>"; };
-		355B286E9FE666995CFB80C6 /* LayoutBuilder_Test.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayoutBuilder_Test.swift; sourceTree = "<group>"; };
-		355B292729B41FEECAE8DA7D /* LayoutConstraintsRecorder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayoutConstraintsRecorder.swift; sourceTree = "<group>"; };
-		355B298205A6C83F31C3704C /* LayoutBuilder_Recorder_Test.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayoutBuilder_Recorder_Test.swift; sourceTree = "<group>"; };
-		355B299A274CB8A2E70751D8 /* NSDirectionalEdgeInsets_Edge_Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDirectionalEdgeInsets_Edge_Extension.swift; sourceTree = "<group>"; };
-		355B2C6D12D766AA75FDEE0C /* PinLayoutTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinLayoutTest.swift; sourceTree = "<group>"; };
-		355B2CD3C63C48E5B91AADC3 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		355B2E12FCFE60C32F9115E3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		355B2EAD5F16421E33BC3A84 /* NSLayoutConstraint_Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSLayoutConstraint_Extension.swift; sourceTree = "<group>"; };
 		A71E3B1D25A867C900F02CC6 /* Hamcrest.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = Hamcrest.xcframework; path = Carthage/Build/Hamcrest.xcframework; sourceTree = "<group>"; };
-		A71E3B2325A8688000F02CC6 /* PinLayout_AutoResizing_Test.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinLayout_AutoResizing_Test.swift; sourceTree = "<group>"; };
-		A71E3B2425A8688000F02CC6 /* PinLayout_Base_Test.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinLayout_Base_Test.swift; sourceTree = "<group>"; };
-		A71E3B2525A8688000F02CC6 /* PinLayout_Defaults_Test.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinLayout_Defaults_Test.swift; sourceTree = "<group>"; };
-		A71E3B2C25A86A5C00F02CC6 /* PinLayout_Center_Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinLayout_Center_Test.swift; sourceTree = "<group>"; };
 		A7AF813B1E1A416000BCF7B4 /* PinLayout.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PinLayout.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7AF81441E1A416000BCF7B4 /* PinLayoutTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PinLayoutTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7AF81561E1A443E00BCF7B4 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Platforms/iPhoneOS.platform/Developer/Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		A7AF815F1E1A52A800BCF7B4 /* PinLayoutDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PinLayoutDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7B646742BCFCC7500339AA4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A7BE8D2B2254FE7900BCC009 /* BasePinLayoutTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasePinLayoutTest.swift; sourceTree = "<group>"; };
-		A7BE8D2C2254FE7900BCC009 /* PinLayout_Readable_Test.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinLayout_Readable_Test.swift; sourceTree = "<group>"; };
-		A7BE8D2D2254FE7900BCC009 /* PinLayout_iOS10_Test.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinLayout_iOS10_Test.swift; sourceTree = "<group>"; };
-		A7BE8D312254FF7800BCC009 /* XCTestCaseViewControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XCTestCaseViewControllerExtension.swift; sourceTree = "<group>"; };
-		A7BE8D352254FFAB00BCC009 /* ConstraintAnchorMatcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConstraintAnchorMatcher.swift; sourceTree = "<group>"; };
-		A7BE8D362254FFAB00BCC009 /* ConstraintEqualMatcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConstraintEqualMatcher.swift; sourceTree = "<group>"; };
-		A7BE8D372254FFAB00BCC009 /* ContraintAlignMatcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContraintAlignMatcher.swift; sourceTree = "<group>"; };
-		A7BE8D382254FFAB00BCC009 /* ConstraintConstantMatcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConstraintConstantMatcher.swift; sourceTree = "<group>"; };
-		A7BE8D392254FFAB00BCC009 /* ConstraintMatcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConstraintMatcher.swift; sourceTree = "<group>"; };
 		A7CF34432BCE9F5D004727AA /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		A769E0782DCDE1E700A8A09E /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			publicHeaders = (
+				PinLayout.h,
+			);
+			target = A7AF813A1E1A416000BCF7B4 /* PinLayout */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		A769E0512DCDE1E500A8A09E /* Source */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Source; sourceTree = "<group>"; };
+		A769E06E2DCDE1E700A8A09E /* Source */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (A769E0782DCDE1E700A8A09E /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = Source; sourceTree = "<group>"; };
+		A769E07B2DCDE1EF00A8A09E /* Source */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Source; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		A7AF81371E1A416000BCF7B4 /* Frameworks */ = {
@@ -162,26 +118,10 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		355B23CD0A0BA1C959880055 /* Source */ = {
-			isa = PBXGroup;
-			children = (
-				355B22DCF7EA5B11594D9593 /* PinLayout.h */,
-				355B228E94B4FBC7597FC521 /* Layout_Center.swift */,
-				355B25ACE74641A30BFC9A28 /* Layout_SafeCenter.swift */,
-				355B274A8110C0F8E98B222C /* Layout.swift */,
-				355B22F815897CA423A20BB5 /* LayoutBuilder.swift */,
-				355B2048827EDF988CD3FDF6 /* UIView_LayoutBuilderExtension.swift */,
-				355B292729B41FEECAE8DA7D /* LayoutConstraintsRecorder.swift */,
-				355B299A274CB8A2E70751D8 /* NSDirectionalEdgeInsets_Edge_Extension.swift */,
-				355B2EAD5F16421E33BC3A84 /* NSLayoutConstraint_Extension.swift */,
-			);
-			path = Source;
-			sourceTree = "<group>";
-		};
 		355B2486E4F09AD0B951011C /* Demo */ = {
 			isa = PBXGroup;
 			children = (
-				355B276EDB6D415EBA34E726 /* Source */,
+				A769E07B2DCDE1EF00A8A09E /* Source */,
 				355B259251E9123ED76F08B7 /* Resource */,
 			);
 			path = Demo;
@@ -196,37 +136,6 @@
 			path = Resource;
 			sourceTree = "<group>";
 		};
-		355B276EDB6D415EBA34E726 /* Source */ = {
-			isa = PBXGroup;
-			children = (
-				355B22F6E3D2252F9ADCBD1F /* ViewController.swift */,
-				355B2CD3C63C48E5B91AADC3 /* AppDelegate.swift */,
-			);
-			path = Source;
-			sourceTree = "<group>";
-		};
-		355B278D8126DFFDA017F00E /* Source */ = {
-			isa = PBXGroup;
-			children = (
-				A7BE8D332254FF8100BCC009 /* Extension */,
-				A7BE8D342254FF8E00BCC009 /* Matchers */,
-				A7BE8D2B2254FE7900BCC009 /* BasePinLayoutTest.swift */,
-				A71E3B2325A8688000F02CC6 /* PinLayout_AutoResizing_Test.swift */,
-				A71E3B2425A8688000F02CC6 /* PinLayout_Base_Test.swift */,
-				A71E3B2C25A86A5C00F02CC6 /* PinLayout_Center_Test.swift */,
-				A71E3B2525A8688000F02CC6 /* PinLayout_Defaults_Test.swift */,
-				A7BE8D2D2254FE7900BCC009 /* PinLayout_iOS10_Test.swift */,
-				A7BE8D2C2254FE7900BCC009 /* PinLayout_Readable_Test.swift */,
-				355B2C6D12D766AA75FDEE0C /* PinLayoutTest.swift */,
-				355B2584C2C27AECAC1C4AA5 /* PinLayout_Safe_Center.swift */,
-				355B221FB5BB7999B39E1475 /* PinLayout_SameWith_Test.swift */,
-				355B286E9FE666995CFB80C6 /* LayoutBuilder_Test.swift */,
-				355B298205A6C83F31C3704C /* LayoutBuilder_Recorder_Test.swift */,
-				355B26AF6C10E360F2712BAF /* LayoutBuilder_Insets_Test.swift */,
-			);
-			path = Source;
-			sourceTree = "<group>";
-		};
 		355B2A58D4A6C6C125E25C13 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
@@ -239,7 +148,7 @@
 		355B2AFBCB8035FD08FABBB1 /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				355B23CD0A0BA1C959880055 /* Source */,
+				A769E06E2DCDE1E700A8A09E /* Source */,
 				355B2A58D4A6C6C125E25C13 /* Resource */,
 			);
 			path = Main;
@@ -248,7 +157,7 @@
 		355B2D861EEB25ECE5245CEB /* Test */ = {
 			isa = PBXGroup;
 			children = (
-				355B278D8126DFFDA017F00E /* Source */,
+				A769E0512DCDE1E500A8A09E /* Source */,
 				355B2FA7F0AF2F1F92B32871 /* Resource */,
 			);
 			path = Test;
@@ -290,26 +199,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		A7BE8D332254FF8100BCC009 /* Extension */ = {
-			isa = PBXGroup;
-			children = (
-				A7BE8D312254FF7800BCC009 /* XCTestCaseViewControllerExtension.swift */,
-			);
-			path = Extension;
-			sourceTree = "<group>";
-		};
-		A7BE8D342254FF8E00BCC009 /* Matchers */ = {
-			isa = PBXGroup;
-			children = (
-				A7BE8D352254FFAB00BCC009 /* ConstraintAnchorMatcher.swift */,
-				A7BE8D382254FFAB00BCC009 /* ConstraintConstantMatcher.swift */,
-				A7BE8D362254FFAB00BCC009 /* ConstraintEqualMatcher.swift */,
-				A7BE8D392254FFAB00BCC009 /* ConstraintMatcher.swift */,
-				A7BE8D372254FFAB00BCC009 /* ContraintAlignMatcher.swift */,
-			);
-			path = Matchers;
-			sourceTree = "<group>";
-		};
 		A7CF34452BCEA125004727AA /* PinLayout */ = {
 			isa = PBXGroup;
 			children = (
@@ -326,7 +215,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				355B2DB65EED796E43DD3603 /* PinLayout.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -345,6 +233,9 @@
 			buildRules = (
 			);
 			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				A769E06E2DCDE1E700A8A09E /* Source */,
 			);
 			name = PinLayout;
 			productName = PinLayout;
@@ -365,6 +256,9 @@
 			dependencies = (
 				A7AF81471E1A416000BCF7B4 /* PBXTargetDependency */,
 			);
+			fileSystemSynchronizedGroups = (
+				A769E0512DCDE1E500A8A09E /* Source */,
+			);
 			name = PinLayoutTests;
 			productName = PinLayoutTests;
 			productReference = A7AF81441E1A416000BCF7B4 /* PinLayoutTests.xctest */;
@@ -383,6 +277,9 @@
 			);
 			dependencies = (
 				A7AF81821E1A55A000BCF7B4 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				A769E07B2DCDE1EF00A8A09E /* Source */,
 			);
 			name = PinLayoutDemo;
 			productName = PinLayoutDemo;
@@ -472,14 +369,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				355B2100CDC6C6F6F437A4C6 /* Layout_Center.swift in Sources */,
-				355B2CC210E1717BB5C78656 /* Layout_SafeCenter.swift in Sources */,
-				355B288177C3C6720C754AB2 /* Layout.swift in Sources */,
-				355B2ECEC0BDA7DC3663115B /* LayoutBuilder.swift in Sources */,
-				355B20FA8017BC6488A20B8E /* UIView_LayoutBuilderExtension.swift in Sources */,
-				355B204BCD708E0D44EC8EE1 /* LayoutConstraintsRecorder.swift in Sources */,
-				355B25D42844C697086CE1B6 /* NSDirectionalEdgeInsets_Edge_Extension.swift in Sources */,
-				355B2D24AB91EB6A21D925B0 /* NSLayoutConstraint_Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -487,25 +376,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A7BE8D3A2254FFAB00BCC009 /* ConstraintAnchorMatcher.swift in Sources */,
-				A7BE8D322254FF7800BCC009 /* XCTestCaseViewControllerExtension.swift in Sources */,
-				A7BE8D302254FE7900BCC009 /* PinLayout_iOS10_Test.swift in Sources */,
-				A7BE8D2E2254FE7900BCC009 /* BasePinLayoutTest.swift in Sources */,
-				A71E3B2D25A86A5C00F02CC6 /* PinLayout_Center_Test.swift in Sources */,
-				A7BE8D3B2254FFAB00BCC009 /* ConstraintEqualMatcher.swift in Sources */,
-				A7BE8D3E2254FFAB00BCC009 /* ConstraintMatcher.swift in Sources */,
-				A71E3B2725A8688000F02CC6 /* PinLayout_Base_Test.swift in Sources */,
-				A71E3B2825A8688000F02CC6 /* PinLayout_Defaults_Test.swift in Sources */,
-				A7AF81891E1A5AA200BCF7B4 /* PinLayoutTest.swift in Sources */,
-				A71E3B2625A8688000F02CC6 /* PinLayout_AutoResizing_Test.swift in Sources */,
-				A7BE8D2F2254FE7900BCC009 /* PinLayout_Readable_Test.swift in Sources */,
-				A7BE8D3D2254FFAB00BCC009 /* ConstraintConstantMatcher.swift in Sources */,
-				A7BE8D3C2254FFAB00BCC009 /* ContraintAlignMatcher.swift in Sources */,
-				355B23A5308C9D9FDC0A0C93 /* PinLayout_Safe_Center.swift in Sources */,
-				355B27DDB266BE9A31A843C7 /* PinLayout_SameWith_Test.swift in Sources */,
-				355B20263DB7875050FFC419 /* LayoutBuilder_Test.swift in Sources */,
-				355B2BCC6481E9729431931D /* LayoutBuilder_Recorder_Test.swift in Sources */,
-				355B2EF60E28E3074739C828 /* LayoutBuilder_Insets_Test.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -513,8 +383,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				355B2A9E684A842FC7DC9046 /* ViewController.swift in Sources */,
-				355B22D632B4EB413E57AB70 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -772,7 +640,6 @@
 		A7AF817A1E1A52A800BCF7B4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = ED5DV56QPQ;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -789,7 +656,6 @@
 		A7AF817B1E1A52A800BCF7B4 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = ED5DV56QPQ;
 				LD_RUNPATH_SEARCH_PATHS = (
