@@ -7,3 +7,4 @@ Carthage/
 PinLayout.xcodeproj/project.xcworkspace/
 PinLayout.xcodeproj/xcuserdata/
 build/
+.DS_Store
