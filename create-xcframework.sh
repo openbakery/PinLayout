@@ -30,11 +30,11 @@ xcodebuild archive \
 xcodebuild -create-xcframework \
     -archive $ARCHIVE_DIRECTORY/PinLayout-iOS.xcarchive -framework PinLayout.framework \
     -archive $ARCHIVE_DIRECTORY/PinLayout-iOS_Simulator.xcarchive -framework PinLayout.framework \
-    -output build/archive/PinLayout.xcframework
+    -output build/xcframework/PinLayout.xcframework
 
 mkdir build/xcframework
 
-cp LICENSE build/archive
-cd build/archive
+cp LICENSE build/xcframework
+cd build/xcframework
 
 zip -r ../xcframework/PinLayout-$VERSION.zip PinLayout.xcframework LICENSE
