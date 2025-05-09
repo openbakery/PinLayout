@@ -25,11 +25,12 @@
 		355B2DB65EED796E43DD3603 /* PinLayout.h in Headers */ = {isa = PBXBuildFile; fileRef = 355B22DCF7EA5B11594D9593 /* PinLayout.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		355B2ECEC0BDA7DC3663115B /* LayoutBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355B22F815897CA423A20BB5 /* LayoutBuilder.swift */; };
 		355B2EF60E28E3074739C828 /* LayoutBuilder_Insets_Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355B26AF6C10E360F2712BAF /* LayoutBuilder_Insets_Test.swift */; };
-		A71E3B1E25A867C900F02CC6 /* Hamcrest.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = A71E3B1D25A867C900F02CC6 /* Hamcrest.xcframework */; };
 		A71E3B2625A8688000F02CC6 /* PinLayout_AutoResizing_Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71E3B2325A8688000F02CC6 /* PinLayout_AutoResizing_Test.swift */; };
 		A71E3B2725A8688000F02CC6 /* PinLayout_Base_Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71E3B2425A8688000F02CC6 /* PinLayout_Base_Test.swift */; };
 		A71E3B2825A8688000F02CC6 /* PinLayout_Defaults_Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71E3B2525A8688000F02CC6 /* PinLayout_Defaults_Test.swift */; };
 		A71E3B2D25A86A5C00F02CC6 /* PinLayout_Center_Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71E3B2C25A86A5C00F02CC6 /* PinLayout_Center_Test.swift */; };
+		A76C3AA92CAAB2C40023BB91 /* Hamcrest.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = A71E3B1D25A867C900F02CC6 /* Hamcrest.xcframework */; };
+		A76C3AAA2CAAB2C40023BB91 /* Hamcrest.xcframework in CopyFiles */ = {isa = PBXBuildFile; fileRef = A71E3B1D25A867C900F02CC6 /* Hamcrest.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A7AF81451E1A416000BCF7B4 /* PinLayout.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7AF813B1E1A416000BCF7B4 /* PinLayout.framework */; };
 		A7AF81571E1A443E00BCF7B4 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7AF81561E1A443E00BCF7B4 /* XCTest.framework */; };
 		A7AF817F1E1A55A000BCF7B4 /* PinLayout.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7AF813B1E1A416000BCF7B4 /* PinLayout.framework */; };
@@ -82,6 +83,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				A76C3AAA2CAAB2C40023BB91 /* Hamcrest.xcframework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -141,9 +143,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A76C3AA92CAAB2C40023BB91 /* Hamcrest.xcframework in Frameworks */,
 				A7AF81571E1A443E00BCF7B4 /* XCTest.framework in Frameworks */,
 				A7AF81451E1A416000BCF7B4 /* PinLayout.framework in Frameworks */,
-				A71E3B1E25A867C900F02CC6 /* Hamcrest.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
