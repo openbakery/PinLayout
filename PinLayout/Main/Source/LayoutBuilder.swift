@@ -162,9 +162,9 @@ public class LayoutBuilder {
 	}
 
 	@discardableResult
-	public func equalWidthAndHeight(with: UIView) -> LayoutBuilder {
-		self.equalWidth(with: view)
-		self.equalHeight(with: view)
+	public func equalWidthAndHeight(with: UIView, priority: UILayoutPriority = .required, multiplier: CGFloat = 1.0) -> LayoutBuilder {
+		self.equalWidth(with: view, priority: priority, multiplier: multiplier)
+		self.equalHeight(with: view, priority: priority, multiplier: multiplier)
 		return self
 	}
 
