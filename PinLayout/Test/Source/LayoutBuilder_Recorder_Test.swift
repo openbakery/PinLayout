@@ -49,7 +49,7 @@ class LayoutBuilder_Recorder_Test: PinLayout_Base_Test  {
 		toView.addSubview(view)
 
 		// when
-		let constraints = view.layout.equalWidthAndHeight(with: view).constraints
+		let constraints = view.layout.equalSize(with: view).constraints
 
 		// then
 		assertThat(constraints, hasCount(2))
