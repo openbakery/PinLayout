@@ -150,14 +150,14 @@ public class LayoutBuilder {
 
 
 	@discardableResult
-	public func equalWidth(with other: UIView, priority: UILayoutPriority = .required, multiplier: CGFloat = 1.0) -> LayoutBuilder {
-		layout.setEqualConstant(view: view, andView: other, attribute: .width, priority: priority, multiplier: multiplier)
+	public func equalWidth(with other: UIView, priority: UILayoutPriority = .required, multiplier: CGFloat = 1.0, constant: CGFloat = 0) -> LayoutBuilder {
+		layout.setEqualConstant(view: view, andView: other, attribute: .width, priority: priority, multiplier: multiplier, constant: constant)
 		return self
 	}
 
 	@discardableResult
-	public func equalHeight(with other: UIView, priority: UILayoutPriority = .required, multiplier: CGFloat = 1.0) -> LayoutBuilder {
-		layout.setEqualConstant(view: view, andView: other, attribute: .height, priority: priority, multiplier: multiplier)
+	public func equalHeight(with other: UIView, priority: UILayoutPriority = .required, multiplier: CGFloat = 1.0, constant: CGFloat = 0) -> LayoutBuilder {
+		layout.setEqualConstant(view: view, andView: other, attribute: .height, priority: priority, multiplier: multiplier, constant: constant)
 		return self
 	}
 

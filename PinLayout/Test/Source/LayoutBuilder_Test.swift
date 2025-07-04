@@ -795,5 +795,32 @@ class LayoutBuilder_Test: PinLayout_Base_Test {
 		assertThat(constraint.constant, equalTo(-11.0))
 	}
 
+	func test_equalWidth_with_constant() throws {
+		let secondView = UIView()
+		toView.addSubview(view)
+		toView.addSubview(secondView)
 
+		// when
+		view.layout.equalWidth(with: secondView, constant: 100)
+
+		// then
+		assertThat(toView.constraints, hasCount(1))
+		let constraint = try XCTUnwrap(toView.constraints.first)
+		assertThat(constraint.constant, equalTo(100))
+	}
+
+	func test_equalHeigth_with_constant() throws {
+		let secondView = UIView()
+		toView.addSubview(view)
+		toView.addSubview(secondView)
+
+		// when
+		view.layout.equalHeight(with: secondView, constant: 99)
+
+		// then
+		assertThat(toView.constraints, hasCount(1))
+		let constraint = try XCTUnwrap(toView.constraints.first)
+		assertThat(constraint.constant, equalTo(99))
+
+	}
 }

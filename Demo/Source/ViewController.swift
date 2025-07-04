@@ -76,8 +76,11 @@ class ViewController: UIViewController {
 			first.backgroundColor = UIColor(white: 0.0, alpha: 0.2)
 			let second = UIView()
 			second.backgroundColor = UIColor(white: 0.0, alpha: 0.4)
+			let third = UIView()
+			third.backgroundColor = .yellow
 			self.view.addSubview(first)
 			self.view.addSubview(second)
+			self.view.addSubview(third)
 
 			first.layout.pin(.top, .leading, .trailing, insets: insets)
 
@@ -85,6 +88,12 @@ class ViewController: UIViewController {
 				.equalHeight(with: second)
 
 			second.layout.pin(.leading, .trailing, .bottom, insets: insets)
+
+			third.layout
+				.center()
+				.equalHeight(with: first, constant: -100)
+				.equalWidth(with: first, constant: -100)
+
 		} else {
 			createView(color: UIColor(white: 0.0, alpha: 0.2), insets: insets)
 		}
