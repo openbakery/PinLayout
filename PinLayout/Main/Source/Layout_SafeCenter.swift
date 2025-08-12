@@ -26,18 +26,16 @@ extension Layout {
 	}
 
 	@discardableResult
-	public func centerX(view: UIView, with other: UIView? = nil, offset: CGFloat = 0) -> NSLayoutConstraint? {
+	public func centerX(view: UIView, with other: UIView? = nil, offset: CGFloat = 0, priority: UILayoutPriority = .required) -> NSLayoutConstraint? {
 		guard let otherView = self.otherView(view: view, other: other) else {
 			return nil
 		}
-		if #available(iOS 11, *) {
-			let constraint = view.safeAreaLayoutGuide.centerXAnchor.constraint(equalTo: otherView.safeAreaLayoutGuide.centerXAnchor)
-			constraint.isActive = true
-			constraint.constant = offset
-			recorder?.append(constraint)
-			return constraint
-		}
-		return self.equalCenterX(view: view)
+		let constraint = view.safeAreaLayoutGuide.centerXAnchor.constraint(equalTo: otherView.safeAreaLayoutGuide.centerXAnchor)
+		constraint.isActive = true
+		constraint.constant = offset
+		constraint.priority = priority
+		recorder?.append(constraint)
+		return constraint
 	}
 
 	@discardableResult
@@ -47,18 +45,16 @@ extension Layout {
 	}
 
 	@discardableResult
-	public func centerY(view: UIView, with other: UIView? = nil, offset: CGFloat = 0) -> NSLayoutConstraint? {
+	public func centerY(view: UIView, with other: UIView? = nil, offset: CGFloat = 0, priority: UILayoutPriority = .required) -> NSLayoutConstraint? {
 		guard let otherView = self.otherView(view: view, other: other) else {
 			return nil
 		}
-		if #available(iOS 11, *) {
-			let constraint = view.safeAreaLayoutGuide.centerYAnchor.constraint(equalTo: otherView.safeAreaLayoutGuide.centerYAnchor)
-			constraint.isActive = true
-			constraint.constant = offset
-			recorder?.append(constraint)
-			return constraint
-		}
-		return self.equalCenterY(view: view)
+		let constraint = view.safeAreaLayoutGuide.centerYAnchor.constraint(equalTo: otherView.safeAreaLayoutGuide.centerYAnchor)
+		constraint.isActive = true
+		constraint.constant = offset
+		constraint.priority = priority
+		recorder?.append(constraint)
+		return constraint
 	}
 
 	@objc(centerView:)

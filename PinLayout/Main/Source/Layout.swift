@@ -137,31 +137,23 @@ open class Layout: NSObject, NSCoding {
 	open func pinToGuide(for view: UIView, superview: UIView, edge: Edge, gap: CGFloat) -> NSLayoutConstraint? {
 		var constraint : NSLayoutConstraint?
 		view.translatesAutoresizingMaskIntoConstraints = false
-		if #available(iOS 11, *) {
-			switch edge {
-			case .leadingSafeArea:
-				constraint = superview.safeAreaLayoutGuide.leadingAnchor.constraint(equalTo: view.leadingAnchor)
-			case .trailingSafeArea:
-				constraint = superview.safeAreaLayoutGuide.trailingAnchor.constraint(equalTo: view.trailingAnchor)
-			case .topSafeArea:
-				constraint = superview.safeAreaLayoutGuide.topAnchor.constraint(equalTo: view.topAnchor)
-			case .bottomSafeArea:
-				constraint = superview.safeAreaLayoutGuide.bottomAnchor.constraint(equalTo: view.bottomAnchor)
-			default:
-				break
-			}
+		switch edge {
+		case .leadingSafeArea:
+			constraint = superview.safeAreaLayoutGuide.leadingAnchor.constraint(equalTo: view.leadingAnchor)
+		case .trailingSafeArea:
+			constraint = superview.safeAreaLayoutGuide.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+		case .topSafeArea:
+			constraint = superview.safeAreaLayoutGuide.topAnchor.constraint(equalTo: view.topAnchor)
+		case .bottomSafeArea:
+			constraint = superview.safeAreaLayoutGuide.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+		case .leadingReadable:
+			constraint = superview.readableContentGuide.leadingAnchor.constraint(equalTo: view.leadingAnchor)
+		case .trailingReadable:
+			constraint = superview.readableContentGuide.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+		default:
+			break
 		}
 
-		if #available(iOS 9, *) {
-			switch edge {
-			case .leadingReadable:
-				constraint = superview.readableContentGuide.leadingAnchor.constraint(equalTo: view.leadingAnchor)
-			case .trailingReadable:
-				constraint = superview.readableContentGuide.trailingAnchor.constraint(equalTo: view.trailingAnchor)
-			default:
-				break
-			}
-		}
 
 		if let constraint = constraint {
 			switch edge {

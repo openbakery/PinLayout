@@ -37,9 +37,12 @@ public class LayoutBuilder {
 	}
 
 	@discardableResult
-	public func pin(_ edges: Layout.Edge..., insets: NSDirectionalEdgeInsets = .zero, gap: CGFloat = 0, priority: UILayoutPriority = .required, relatedBy: NSLayoutConstraint.Relation = .equal) -> LayoutBuilder {
+	public func pin(
+		_ edges: Layout.Edge..., insets: NSDirectionalEdgeInsets = .zero, gap: CGFloat = 0, priority: UILayoutPriority = .required,
+		relatedBy: NSLayoutConstraint.Relation = .equal
+	) -> LayoutBuilder {
 		for edge in edges {
-			let gapValue =  insets.value(edge: edge) ?? gap
+			let gapValue = insets.value(edge: edge) ?? gap
 			if let constraint = layout.pin(view: view, to: edge, gap: gapValue, relatedBy: relatedBy) {
 				constraint.priority = priority
 			}
@@ -52,9 +55,11 @@ public class LayoutBuilder {
 	}
 
 	@discardableResult
-	public func pin(_ edges: Layout.Edge..., insets: NSDirectionalEdgeInsets = .zero, gap: Layout.Defaults, priority: UILayoutPriority = .required) -> LayoutBuilder {
+	public func pin(_ edges: Layout.Edge..., insets: NSDirectionalEdgeInsets = .zero, gap: Layout.Defaults, priority: UILayoutPriority = .required)
+		-> LayoutBuilder
+	{
 		for edge in edges {
-			let gapValue =  insets.value(edge: edge) ?? layout.value(for: gap)
+			let gapValue = insets.value(edge: edge) ?? layout.value(for: gap)
 			if let constraint = layout.pin(view: view, to: edge, gap: gapValue) {
 				constraint.priority = priority
 			}
@@ -64,7 +69,7 @@ public class LayoutBuilder {
 
 
 	@discardableResult
-	public func pin(_ edge: Layout.Edge, to view: UIView,  gap: Layout.Defaults, priority: UILayoutPriority = .required) -> LayoutBuilder {
+	public func pin(_ edge: Layout.Edge, to view: UIView, gap: Layout.Defaults, priority: UILayoutPriority = .required) -> LayoutBuilder {
 		let gapValue = layout.value(for: gap)
 		return self.pin(edge, to: view, gap: gapValue, priority: priority)
 	}
@@ -77,8 +82,8 @@ public class LayoutBuilder {
 	}
 
 	@discardableResult
-	public func centerX(offset: CGFloat = 0) -> LayoutBuilder {
-		layout.centerX(view: view, offset: offset)
+	public func centerX(offset: CGFloat = 0, priority: UILayoutPriority = .required) -> LayoutBuilder {
+		layout.centerX(view: view, offset: offset, priority: priority)
 		return self
 	}
 
@@ -90,8 +95,8 @@ public class LayoutBuilder {
 	}
 
 	@discardableResult
-	public func centerY(offset: CGFloat = 0) -> LayoutBuilder {
-		layout.centerY(view: view, offset: offset)
+	public func centerY(offset: CGFloat = 0, priority: UILayoutPriority = .required) -> LayoutBuilder {
+		layout.centerY(view: view, offset: offset, priority: priority)
 		return self
 	}
 
@@ -188,4 +193,3 @@ public class LayoutBuilder {
 		return self
 	}
 }
-

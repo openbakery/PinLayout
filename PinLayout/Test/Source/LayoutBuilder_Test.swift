@@ -243,6 +243,17 @@ class LayoutBuilder_Test: PinLayout_Base_Test {
 		assertThat(constraint?.constant, presentAnd(equalTo(20)))
 	}
 
+	func test_view_is_horizontal_center_with_priority() {
+		let superview = UIView()
+		superview.addSubview(view)
+
+		let constraint = view.layout.centerX(priority: .defaultLow).constraints.first
+
+		// then
+		assertThat(constraint, present())
+		assertThat(constraint?.priority, presentAnd(equalTo(.defaultLow)))
+	}
+	
 	func test_view_is_horizontal_center_with_other_view() {
 		let superview = UIView()
 		let other = UIView()
@@ -293,6 +304,16 @@ class LayoutBuilder_Test: PinLayout_Base_Test {
 		assertThat(constraint?.constant, presentAnd(equalTo(20)))
 	}
 
+	func test_view_is_vertical_center_with_priority() {
+		let superview = UIView()
+		superview.addSubview(view)
+
+		let constraint = view.layout.centerY(priority: .defaultLow).constraints.first
+
+		// then
+		assertThat(constraint, present())
+		assertThat(constraint?.priority, presentAnd(equalTo(.defaultLow)))
+	}
 
 	func test_view_is_vertical_center_with_other_view() {
 		let superview = UIView()

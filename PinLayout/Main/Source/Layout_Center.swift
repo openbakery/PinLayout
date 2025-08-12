@@ -38,8 +38,8 @@ extension Layout {
 
 	@objc
 	@discardableResult
-	open func equalCenterX(view: UIView, toView secondView: UIView, offset: CGFloat = 0) -> NSLayoutConstraint? {
-		self.setEqualConstant(view: view, andView: secondView, attribute: .centerX, constant: offset)
+	open func equalCenterX(view: UIView, toView secondView: UIView, offset: CGFloat = 0, priority: UILayoutPriority = .required) -> NSLayoutConstraint? {
+		self.setEqualConstant(view: view, andView: secondView, attribute: .centerX, priority: priority, multiplier: 1, constant: offset)
 	}
 
 
