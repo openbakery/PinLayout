@@ -15,6 +15,10 @@ struct PinLayout_AutoResizing_SwiftTest {
 	let view = UIView()
 	let toView = UIView()
 	let pinLayout = Layout()
+	
+	init() async throws {
+		HamcrestSwiftTesting.enable()
+	}	
 
 
 	@Test func disables_translatesAutoresizingMaskIntoConstraints() {

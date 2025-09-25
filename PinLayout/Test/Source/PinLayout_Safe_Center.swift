@@ -24,9 +24,9 @@ class PinLayout_Safe_Center: PinLayout_Base_Test {
 		// then
 		assertThat(constraint, present())
 		assertThat(constraint?.firstAttribute, equalTo(.centerX))
-		assertThat(constraint?.firstItem, presentAnd(instanceOf(UILayoutGuide.self, and:equalTo(view.safeAreaLayoutGuide))))
+		assertThat(constraint?.firstItem, presentAnd(instanceOfAnd(equalTo(view))))
 		assertThat(constraint?.secondAttribute, presentAnd(equalTo(.centerX)))
-		assertThat(constraint?.secondItem, presentAnd(instanceOf(UILayoutGuide.self, and:equalTo(superview.safeAreaLayoutGuide))))
+		assertThat(constraint?.secondItem, presentAnd(instanceOfAnd(equalTo(superview))))
 		assertThat(constraint?.constant, presentAnd(equalTo(0)))
 		assertThat(constraint?.isActive, presentAnd(equalTo(true)))
 		assertThat(view.translatesAutoresizingMaskIntoConstraints, equalTo(false))
@@ -55,9 +55,9 @@ class PinLayout_Safe_Center: PinLayout_Base_Test {
 		// then
 		assertThat(constraint, present())
 		assertThat(constraint?.firstAttribute, equalTo(.centerX))
-		assertThat(constraint?.firstItem, presentAnd(instanceOf(UILayoutGuide.self, and:equalTo(view.safeAreaLayoutGuide))))
+		assertThat(constraint?.firstItem, presentAnd(instanceOfAnd(equalTo(view))))
 		assertThat(constraint?.secondAttribute, presentAnd(equalTo(.centerX)))
-		assertThat(constraint?.secondItem, presentAnd(instanceOf(UILayoutGuide.self, and:equalTo(other.safeAreaLayoutGuide))))
+		assertThat(constraint?.secondItem, presentAnd(instanceOfAnd(equalTo(other))))
 		assertThat(constraint?.constant, presentAnd(equalTo(0)))
 		assertThat(constraint?.isActive, presentAnd(equalTo(true)))
 		assertThat(view.translatesAutoresizingMaskIntoConstraints, equalTo(false))
@@ -73,9 +73,9 @@ class PinLayout_Safe_Center: PinLayout_Base_Test {
 		// then
 		assertThat(constraint, present())
 		assertThat(constraint?.firstAttribute, equalTo(.centerY))
-		assertThat(constraint?.firstItem, presentAnd(instanceOf(UILayoutGuide.self, and:equalTo(view.safeAreaLayoutGuide))))
+		assertThat(constraint?.firstItem, presentAnd(instanceOfAnd(equalTo(view))))
 		assertThat(constraint?.secondAttribute, presentAnd(equalTo(.centerY)))
-		assertThat(constraint?.secondItem, presentAnd(instanceOf(UILayoutGuide.self, and:equalTo(superview.safeAreaLayoutGuide))))
+		assertThat(constraint?.secondItem, presentAnd(instanceOfAnd(equalTo(superview))))
 		assertThat(constraint?.constant, presentAnd(equalTo(0)))
 		assertThat(constraint?.isActive, presentAnd(equalTo(true)))
 		assertThat(view.translatesAutoresizingMaskIntoConstraints, equalTo(false))
@@ -105,9 +105,9 @@ class PinLayout_Safe_Center: PinLayout_Base_Test {
 		// then
 		assertThat(constraint, present())
 		assertThat(constraint?.firstAttribute, equalTo(.centerY))
-		assertThat(constraint?.firstItem, presentAnd(instanceOf(UILayoutGuide.self, and:equalTo(view.safeAreaLayoutGuide))))
+		assertThat(constraint?.firstItem, presentAnd(instanceOfAnd(equalTo(view))))
 		assertThat(constraint?.secondAttribute, presentAnd(equalTo(.centerY)))
-		assertThat(constraint?.secondItem, presentAnd(instanceOf(UILayoutGuide.self, and:equalTo(other.safeAreaLayoutGuide))))
+		assertThat(constraint?.secondItem, presentAnd(instanceOfAnd(equalTo(other))))
 		assertThat(constraint?.constant, presentAnd(equalTo(0)))
 		assertThat(constraint?.isActive, presentAnd(equalTo(true)))
 		assertThat(view.translatesAutoresizingMaskIntoConstraints, equalTo(false))
@@ -127,8 +127,8 @@ class PinLayout_Safe_Center: PinLayout_Base_Test {
 		assertThat(constraints.first?.firstAttribute, equalTo(.centerX))
 		assertThat(constraints.last?.firstAttribute, equalTo(.centerY))
 
-		assertThat(constraints.first?.secondItem, presentAnd(instanceOf(UILayoutGuide.self, and:equalTo(superview.safeAreaLayoutGuide))))
-		assertThat(constraints.last?.secondItem, presentAnd(instanceOf(UILayoutGuide.self, and:equalTo(superview.safeAreaLayoutGuide))))
+		assertThat(constraints.first?.secondItem, presentAnd(instanceOfAnd(equalTo(superview))))
+		assertThat(constraints.last?.secondItem, presentAnd(instanceOfAnd(equalTo(superview))))
 	}
 
 
@@ -145,8 +145,8 @@ class PinLayout_Safe_Center: PinLayout_Base_Test {
 		assertThat(constraints.first?.firstAttribute, equalTo(.centerX))
 		assertThat(constraints.last?.firstAttribute, equalTo(.centerY))
 
-		assertThat(constraints.first?.secondItem, presentAnd(instanceOf(UILayoutGuide.self, and:equalTo(other.safeAreaLayoutGuide))))
-		assertThat(constraints.last?.secondItem, presentAnd(instanceOf(UILayoutGuide.self, and:equalTo(other.safeAreaLayoutGuide))))
+		assertThat(constraints.first?.secondItem, presentAnd(instanceOfAnd(equalTo(other))))
+		assertThat(constraints.last?.secondItem, presentAnd(instanceOfAnd(equalTo(other))))
 	}
 
 

@@ -30,7 +30,7 @@ extension Layout {
 		guard let otherView = self.otherView(view: view, other: other) else {
 			return nil
 		}
-		let constraint = view.safeAreaLayoutGuide.centerXAnchor.constraint(equalTo: otherView.safeAreaLayoutGuide.centerXAnchor)
+		let constraint = view.centerXAnchor.constraint(equalTo: otherView.centerXAnchor)
 		constraint.isActive = true
 		constraint.constant = offset
 		constraint.priority = priority
@@ -49,7 +49,7 @@ extension Layout {
 		guard let otherView = self.otherView(view: view, other: other) else {
 			return nil
 		}
-		let constraint = view.safeAreaLayoutGuide.centerYAnchor.constraint(equalTo: otherView.safeAreaLayoutGuide.centerYAnchor)
+		let constraint = view.centerYAnchor.constraint(equalTo: otherView.centerYAnchor)
 		constraint.isActive = true
 		constraint.constant = offset
 		constraint.priority = priority
