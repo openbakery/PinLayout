@@ -34,16 +34,16 @@ open class Layout: NSObject, NSCoding {
 
 		public var value: CGFloat {
 			switch self {
-			case .cellHeight:
-				return 44.0
-			case .cellMargin:
-				return 15.0
-			case .cellIconWidth:
-				return 29.0
-			case .margin:
-				return 8
-			case .contentViewCellMargin:
-				return Defaults.cellMargin.value - Defaults.margin.value
+				case .cellHeight:
+					return 44.0
+				case .cellMargin:
+					return 15.0
+				case .cellIconWidth:
+					return 29.0
+				case .margin:
+					return 8
+				case .contentViewCellMargin:
+					return Defaults.cellMargin.value - Defaults.margin.value
 			}
 		}
 	}
@@ -57,7 +57,7 @@ open class Layout: NSObject, NSCoding {
 	}
 
 	@available(iOS, deprecated, message: "Renamed to Edge")
-	public typealias  PinLayoutHelperEdge = Edge
+	public typealias PinLayoutHelperEdge = Edge
 
 	@objc(OBPinLayoutEdge) public enum Edge: Int {
 		case left = 1
@@ -102,7 +102,9 @@ open class Layout: NSObject, NSCoding {
 		return defaults.value
 	}
 
-	@objc(pinView: toEdge:relatedBy:) @discardableResult open func pin(view: UIView, to edge: Edge, relatedBy relation: NSLayoutConstraint.Relation) -> NSLayoutConstraint? {
+	@objc(pinView:toEdge:relatedBy:) @discardableResult open func pin(view: UIView, to edge: Edge, relatedBy relation: NSLayoutConstraint.Relation)
+		-> NSLayoutConstraint?
+	{
 		if let superview = view.superview {
 			return self.pin(view: view, to: edge, of: superview, gap: 0, multiplier: 1.0, relatedBy: relation)
 		}
@@ -120,7 +122,7 @@ open class Layout: NSObject, NSCoding {
 	@discardableResult
 	@objc(pinView:toEdge:gap:)
 	open func pin(view: UIView, to edge: Edge, gap: CGFloat) -> NSLayoutConstraint? {
-		return self.pin(view: view, to: edge, gap: gap, relatedBy:.equal)
+		return self.pin(view: view, to: edge, gap: gap, relatedBy: .equal)
 	}
 
 
@@ -135,32 +137,32 @@ open class Layout: NSObject, NSCoding {
 
 
 	open func pinToGuide(for view: UIView, superview: UIView, edge: Edge, gap: CGFloat) -> NSLayoutConstraint? {
-		var constraint : NSLayoutConstraint?
+		var constraint: NSLayoutConstraint?
 		view.translatesAutoresizingMaskIntoConstraints = false
 		switch edge {
-		case .leadingSafeArea:
-			constraint = superview.safeAreaLayoutGuide.leadingAnchor.constraint(equalTo: view.leadingAnchor)
-		case .trailingSafeArea:
-			constraint = superview.safeAreaLayoutGuide.trailingAnchor.constraint(equalTo: view.trailingAnchor)
-		case .topSafeArea:
-			constraint = superview.safeAreaLayoutGuide.topAnchor.constraint(equalTo: view.topAnchor)
-		case .bottomSafeArea:
-			constraint = superview.safeAreaLayoutGuide.bottomAnchor.constraint(equalTo: view.bottomAnchor)
-		case .leadingReadable:
-			constraint = superview.readableContentGuide.leadingAnchor.constraint(equalTo: view.leadingAnchor)
-		case .trailingReadable:
-			constraint = superview.readableContentGuide.trailingAnchor.constraint(equalTo: view.trailingAnchor)
-		default:
-			break
+			case .leadingSafeArea:
+				constraint = superview.safeAreaLayoutGuide.leadingAnchor.constraint(equalTo: view.leadingAnchor)
+			case .trailingSafeArea:
+				constraint = superview.safeAreaLayoutGuide.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+			case .topSafeArea:
+				constraint = superview.safeAreaLayoutGuide.topAnchor.constraint(equalTo: view.topAnchor)
+			case .bottomSafeArea:
+				constraint = superview.safeAreaLayoutGuide.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+			case .leadingReadable:
+				constraint = superview.readableContentGuide.leadingAnchor.constraint(equalTo: view.leadingAnchor)
+			case .trailingReadable:
+				constraint = superview.readableContentGuide.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+			default:
+				break
 		}
 
 
 		if let constraint = constraint {
 			switch edge {
-			case .trailing, .trailingReadable, .trailingSafeArea, .bottom, .bottomSafeArea:
-				constraint.constant = gap
-			default:
-				constraint.constant = -gap
+				case .trailing, .trailingReadable, .trailingSafeArea, .bottom, .bottomSafeArea:
+					constraint.constant = gap
+				default:
+					constraint.constant = -gap
 			}
 			constraint.isActive = true
 			self.recorder?.append(constraint)
@@ -181,7 +183,9 @@ open class Layout: NSObject, NSCoding {
 	}
 
 
-	@objc @discardableResult open func pin(view: UIView, to edge: Edge, of ofView: UIView, gap: CGFloat, multiplier: CGFloat, relatedBy relation: NSLayoutConstraint.Relation = .equal) -> NSLayoutConstraint? {
+	@objc @discardableResult open func pin(
+		view: UIView, to edge: Edge, of ofView: UIView, gap: CGFloat, multiplier: CGFloat, relatedBy relation: NSLayoutConstraint.Relation = .equal
+	) -> NSLayoutConstraint? {
 		if let commonSuperView = self.findSuperViewFor(view, ofView) {
 
 			if let constraint = self.pinToGuide(for: view, superview: commonSuperView, edge: edge, gap: gap) {
@@ -211,7 +215,9 @@ open class Layout: NSObject, NSCoding {
 				firstView = ofView
 			}
 
-			let constraint = NSLayoutConstraint(item: firstView, attribute: attribute, relatedBy: relation, toItem: secondView, attribute: toAttribute, multiplier: CGFloat(multiplier), constant: CGFloat(gap))
+			let constraint = NSLayoutConstraint(
+				item: firstView, attribute: attribute, relatedBy: relation, toItem: secondView, attribute: toAttribute, multiplier: CGFloat(multiplier),
+				constant: CGFloat(gap))
 			commonSuperView.addConstraint(constraint)
 			recorder?.append(constraint)
 			return constraint
@@ -249,7 +255,8 @@ open class Layout: NSObject, NSCoding {
 			view.translatesAutoresizingMaskIntoConstraints = false
 			let attribute = toLayoutAttribute(edge)
 			let toAttribute = self.inverseAttribute(attribute)
-			let constraint = NSLayoutConstraint(item: view, attribute: attribute, relatedBy: .equal, toItem: guide, attribute: toAttribute, multiplier: 1.0, constant: CGFloat(gap))
+			let constraint = NSLayoutConstraint(
+				item: view, attribute: attribute, relatedBy: .equal, toItem: guide, attribute: toAttribute, multiplier: 1.0, constant: CGFloat(gap))
 			commonSuperView.addConstraint(constraint)
 			self.recorder?.append(constraint)
 			return constraint
@@ -263,19 +270,19 @@ open class Layout: NSObject, NSCoding {
 		self.pinToAllEdges(view: view, gap: 0)
 	}
 
-	@objc(pinToAllEdges: ofView:)
+	@objc(pinToAllEdges:ofView:)
 	open func pinToAllEdges(view: UIView, of ofView: UIView) {
 		self.pinToAllEdges(view: view, of: ofView, gap: 0)
 	}
 
-	@objc(pingToAllEdges: gap:)
+	@objc(pingToAllEdges:gap:)
 	open func pinToAllEdges(view: UIView, gap: CGFloat) {
 		if let superview = view.superview {
 			self.pinToAllEdges(view: view, of: superview, gap: gap)
 		}
 	}
 
-	@objc(pingToAllEdges: ofView:gap:)
+	@objc(pingToAllEdges:ofView:gap:)
 	open func pinToAllEdges(view: UIView, of ofView: UIView, gap: CGFloat) {
 		self.pin(view: view, to: .top, of: ofView, gap: gap)
 		self.pin(view: view, to: .bottom, of: ofView, gap: gap)
@@ -285,51 +292,51 @@ open class Layout: NSObject, NSCoding {
 
 
 	func toLayoutAttribute(_ attribute: Edge) -> NSLayoutConstraint.Attribute {
-		switch (attribute) {
-		case .left:
-			return NSLayoutConstraint.Attribute.left
-		case .right:
-			return NSLayoutConstraint.Attribute.right
-		case .top, .topSafeArea:
-			return NSLayoutConstraint.Attribute.top
-		case .bottom, .bottomSafeArea:
-			return NSLayoutConstraint.Attribute.bottom
-		case .leading, .leadingSafeArea, .leadingReadable:
-			return NSLayoutConstraint.Attribute.leading
-		case .trailing, .trailingSafeArea, .trailingReadable:
-			return NSLayoutConstraint.Attribute.trailing
-		case .firstBaseline:
-			return NSLayoutConstraint.Attribute.firstBaseline
-		case .lastBaseline:
-			return NSLayoutConstraint.Attribute.lastBaseline
+		switch attribute {
+			case .left:
+				return NSLayoutConstraint.Attribute.left
+			case .right:
+				return NSLayoutConstraint.Attribute.right
+			case .top, .topSafeArea:
+				return NSLayoutConstraint.Attribute.top
+			case .bottom, .bottomSafeArea:
+				return NSLayoutConstraint.Attribute.bottom
+			case .leading, .leadingSafeArea, .leadingReadable:
+				return NSLayoutConstraint.Attribute.leading
+			case .trailing, .trailingSafeArea, .trailingReadable:
+				return NSLayoutConstraint.Attribute.trailing
+			case .firstBaseline:
+				return NSLayoutConstraint.Attribute.firstBaseline
+			case .lastBaseline:
+				return NSLayoutConstraint.Attribute.lastBaseline
 		}
 	}
 
 	open func inverseAttribute(_ attribute: NSLayoutConstraint.Attribute) -> NSLayoutConstraint.Attribute {
-		switch (attribute) {
-		case .top:
-			return .bottom
-		case .bottom:
-			return .top
-		case .right:
-			return .left
-		case .left:
-			return .right
-		case .leading:
-			return .trailing
-		case .trailing:
-			return .leading
-		default:
-			return attribute
+		switch attribute {
+			case .top:
+				return .bottom
+			case .bottom:
+				return .top
+			case .right:
+				return .left
+			case .left:
+				return .right
+			case .leading:
+				return .trailing
+			case .trailing:
+				return .leading
+			default:
+				return attribute
 		}
 	}
 
 	func toConstantAttribute(_ attribute: Constant) -> NSLayoutConstraint.Attribute {
-		switch (attribute) {
-		case .height:
-			return NSLayoutConstraint.Attribute.height
-		case .width:
-			return NSLayoutConstraint.Attribute.width
+		switch attribute {
+			case .height:
+				return NSLayoutConstraint.Attribute.height
+			case .width:
+				return NSLayoutConstraint.Attribute.width
 		}
 	}
 
@@ -401,17 +408,22 @@ open class Layout: NSObject, NSCoding {
 		return self.setConstant(view: view, constant: constant, attribute: attribute, relation: .equal, priority: UILayoutPriority.required)
 	}
 
-	@objc @discardableResult open func setConstant(view: UIView, constant: CGFloat, attribute: NSLayoutConstraint.Attribute, priority: UILayoutPriority) -> NSLayoutConstraint {
+	@objc @discardableResult open func setConstant(view: UIView, constant: CGFloat, attribute: NSLayoutConstraint.Attribute, priority: UILayoutPriority)
+		-> NSLayoutConstraint
+	{
 		return self.setConstant(view: view, constant: constant, attribute: attribute, relation: .equal, priority: priority)
 	}
 
-	@objc @discardableResult open func setConstant(view: UIView,
-																								 constant: CGFloat,
-																								 attribute: NSLayoutConstraint.Attribute,
-																								 relation: NSLayoutConstraint.Relation,
-																								 priority: UILayoutPriority) -> NSLayoutConstraint {
+	@objc @discardableResult open func setConstant(
+		view: UIView,
+		constant: CGFloat,
+		attribute: NSLayoutConstraint.Attribute,
+		relation: NSLayoutConstraint.Relation,
+		priority: UILayoutPriority
+	) -> NSLayoutConstraint {
 		view.translatesAutoresizingMaskIntoConstraints = false;
-		let constraint = NSLayoutConstraint(item: view, attribute: attribute, relatedBy: relation, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: constant)
+		let constraint = NSLayoutConstraint(
+			item: view, attribute: attribute, relatedBy: relation, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: constant)
 		constraint.priority = priority
 		view.addConstraint(constraint)
 		self.recorder?.append(constraint)
@@ -431,9 +443,12 @@ open class Layout: NSObject, NSCoding {
 
 
 	@discardableResult
-	func setEqualConstant(view: UIView, andView secondView: UIView, attribute: NSLayoutConstraint.Attribute, priority: UILayoutPriority, multiplier: CGFloat, constant: CGFloat = 0) -> NSLayoutConstraint? {
+	func setEqualConstant(
+		view: UIView, andView secondView: UIView, attribute: NSLayoutConstraint.Attribute, priority: UILayoutPriority, multiplier: CGFloat, constant: CGFloat = 0
+	) -> NSLayoutConstraint? {
 		if let commonSuperView = self.findSuperViewFor(view, secondView) {
-			let constraint = NSLayoutConstraint(item: view, attribute: attribute, relatedBy: .equal, toItem: secondView, attribute: attribute, multiplier: multiplier, constant: constant)
+			let constraint = NSLayoutConstraint(
+				item: view, attribute: attribute, relatedBy: .equal, toItem: secondView, attribute: attribute, multiplier: multiplier, constant: constant)
 			view.translatesAutoresizingMaskIntoConstraints = false
 			constraint.priority = priority;
 			commonSuperView.addConstraint(constraint)
@@ -445,7 +460,8 @@ open class Layout: NSObject, NSCoding {
 
 	@discardableResult
 	func setEqualConstant(view: UIView, andView secondView: UIView, attribute: NSLayoutConstraint.Attribute, constant: CGFloat = 0) -> NSLayoutConstraint? {
-		return setEqualConstant(view: view, andView: secondView, attribute: attribute, priority: UILayoutPriority(rawValue: 1000), multiplier: 1.0, constant: constant)
+		return setEqualConstant(
+			view: view, andView: secondView, attribute: attribute, priority: UILayoutPriority(rawValue: 1000), multiplier: 1.0, constant: constant)
 	}
 
 	@discardableResult
@@ -508,7 +524,8 @@ open class Layout: NSObject, NSCoding {
 	@discardableResult open func align(view first: UIView, with second: UIView, to edge: Edge, gap: CGFloat) -> NSLayoutConstraint? {
 		if let superView = self.findSuperViewFor(first, second) {
 			let attribute = toLayoutAttribute(edge)
-			let constraint = NSLayoutConstraint(item: first, attribute: attribute, relatedBy: .equal, toItem: second, attribute: attribute, multiplier: 1.0, constant: gap)
+			let constraint = NSLayoutConstraint(
+				item: first, attribute: attribute, relatedBy: .equal, toItem: second, attribute: attribute, multiplier: 1.0, constant: gap)
 			superView.addConstraint(constraint)
 			self.recorder?.append(constraint)
 			return constraint
@@ -520,7 +537,8 @@ open class Layout: NSObject, NSCoding {
 		if let superView = self.findSuperViewFor(first, second) {
 			let firstAttribute = toLayoutAttribute(.bottom)
 			let secondAttribute = toLayoutAttribute(.top)
-			let constraint = NSLayoutConstraint(item: first, attribute: firstAttribute, relatedBy: .equal, toItem: second, attribute: secondAttribute, multiplier: 1.0, constant: -gap)
+			let constraint = NSLayoutConstraint(
+				item: first, attribute: firstAttribute, relatedBy: .equal, toItem: second, attribute: secondAttribute, multiplier: 1.0, constant: -gap)
 			superView.addConstraint(constraint)
 			self.recorder?.append(constraint)
 			return constraint
@@ -531,8 +549,7 @@ open class Layout: NSObject, NSCoding {
 
 	@objc open func findConstraintForView(_ view: UIView, attribute: Constant) -> NSLayoutConstraint? {
 		for constraint in view.constraints {
-			if constraint.firstAttribute == toConstantAttribute(attribute) &&
-				 constraint.secondAttribute == .notAnAttribute {
+			if constraint.firstAttribute == toConstantAttribute(attribute) && constraint.secondAttribute == .notAnAttribute {
 				return constraint
 			}
 		}
@@ -543,9 +560,10 @@ open class Layout: NSObject, NSCoding {
 	open func removeAllConstraints(from fromView: UIView?) {
 		var view = fromView
 		while let currentView = view {
-			currentView.removeConstraints(currentView.constraints.filter {
-				return $0.firstItem as? UIView == fromView || $0.secondItem as? UIView == fromView
-			})
+			currentView.removeConstraints(
+				currentView.constraints.filter {
+					return $0.firstItem as? UIView == fromView || $0.secondItem as? UIView == fromView
+				})
 			view = view?.superview
 		}
 	}
