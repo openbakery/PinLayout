@@ -75,6 +75,10 @@ open class Layout: NSObject, NSCoding {
 		case leadingReadable
 		case trailingReadable
 	}
+	
+	public enum Guide {
+		case safeArea
+	}
 
 
 	func findSuperViewFor(_ first: UIView, _ second: UIView) -> UIView? {
@@ -133,6 +137,34 @@ open class Layout: NSObject, NSCoding {
 			return self.pin(view: view, to: edge, of: superview, gap: gap, multiplier: 1.0, relatedBy: relation)
 		}
 		return nil
+	}
+	
+	
+	open func pin(view: UIView, to edge: Edge, guide: Guide, gap: CGFloat, relatedBy relation: NSLayoutConstraint.Relation) -> NSLayoutConstraint? {
+		guard let superview = view.superview else { return nil }
+		
+		var constraint: NSLayoutConstraint?
+		
+		switch edge {
+		case .leading:
+			constraint = superview.guide(guide)?.leadingAnchor.constraint(equalTo: view.leadingAnchor)
+		default:
+			break
+		}
+			
+		if let constraint = constraint {
+			switch edge {
+				case .trailing, .trailingReadable, .trailingSafeArea, .bottom, .bottomSafeArea:
+					constraint.constant = gap
+				default:
+					constraint.constant = -gap
+			}
+			constraint.isActive = true
+			self.recorder?.append(constraint)
+			return constraint
+		}
+
+		return constraint
 	}
 
 

@@ -26,21 +26,21 @@ struct PinLayout_AutoResizing_SwiftTest {
 		superView.addSubview(view)
 		pinLayout.pin(view:view, to: .top)
 
-		#assertThat(view.translatesAutoresizingMaskIntoConstraints, equalTo(false))
+		assertThat(view.translatesAutoresizingMaskIntoConstraints, equalTo(false))
 	}
 
 	@Test func not_disables_translatesAutoresizingMaskIntoConstraints_on_superview() {
 		let superView = UIView()
 		superView.addSubview(view)
 		pinLayout.pin(view:view, to: .top)
-		#assertThat(superView.translatesAutoresizingMaskIntoConstraints, equalTo(true))
+		assertThat(superView.translatesAutoresizingMaskIntoConstraints, equalTo(true))
 	}
 
 	@Test func for_tableCells_contentView_translatesAutoresizingMaskIntoConstraints_is_not_set_to_false() {
 		let cell = UITableViewCell()
 		cell.addSubview(view)
 		pinLayout.pin(view:cell, to: .top, of: toView)
-		#assertThat(cell.translatesAutoresizingMaskIntoConstraints, equalTo(true))
+		assertThat(cell.translatesAutoresizingMaskIntoConstraints, equalTo(true))
 	}
 
 }

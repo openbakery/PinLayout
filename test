@@ -7,7 +7,7 @@ SCHEME=PinLayout
 
 OPTIONS="-showBuildTimingSummary -derivedDataPath ./build -disable-concurrent-destination-testing" #-quiet"
 
-SIMULATOR_ID=E3D997E5-7AF5-4D3C-9A1E-31B96E8380E6
+SIMULATOR_ID=60BF3956-C216-412B-9275-43986809BA53
 
 
 

@@ -7,17 +7,28 @@ import Foundation
 import UIKit
 import XCTest
 import Hamcrest
+import HamcrestSwiftTesting
+import Testing
 @testable import PinLayout
 
-class LayoutBuilder_Insets_Test: PinLayout_Base_Test {
+@MainActor
+class LayoutBuilder_Insets_Test {
+	
+	init() async throws {
+		view = UIView()
+		toView = UIView()
+		HamcrestSwiftTesting.enable()
+	}
+	
+	let view : UIView
+	let toView : UIView
 
 	func createDirectionalInsets() -> NSDirectionalEdgeInsets {
-
 		return NSDirectionalEdgeInsets(top: 5, leading: 11, bottom: 82, trailing: 21)
 	}
 
 
-	func test_pin_leading_with_inset_and_gap() {
+	@Test func pin_leading_with_inset_and_gap() {
 		toView.addSubview(view)
 		let insets = createDirectionalInsets()
 
@@ -28,7 +39,7 @@ class LayoutBuilder_Insets_Test: PinLayout_Base_Test {
 		assertThat(view, isPinned(.leading, gap: insets.leading))
 	}
 
-	func test_pin_leading_with_inset_and_gap_defaults() {
+	@Test func pin_leading_with_inset_and_gap_defaults() {
 		toView.addSubview(view)
 		let insets = createDirectionalInsets()
 
@@ -39,7 +50,7 @@ class LayoutBuilder_Insets_Test: PinLayout_Base_Test {
 		assertThat(view, isPinned(.leading, gap: insets.leading))
 	}
 
-	func test_pin_leadingReadable_with_inset_and_gap() {
+	@Test func pin_leadingReadable_with_inset_and_gap() {
 		toView.addSubview(view)
 		let insets = createDirectionalInsets()
 
@@ -50,7 +61,7 @@ class LayoutBuilder_Insets_Test: PinLayout_Base_Test {
 		assertThat(view, isPinnedToReadableAnchor(.leading, gap: insets.leading))
 	}
 
-	func test_pin_leadingSafeArea_with_inset_and_gap() {
+	@Test func pin_leadingSafeArea_with_inset_and_gap() {
 		toView.addSubview(view)
 		let insets = createDirectionalInsets()
 
@@ -60,8 +71,22 @@ class LayoutBuilder_Insets_Test: PinLayout_Base_Test {
 		// then
 		assertThat(view, isPinnedToSafeAreaAnchor(.leading, gap: insets.leading))
 	}
+	
+	
+	@Test func pin_leading_toSafeArea_with_inset_and_gap() {
+		toView.addSubview(view)
+		let insets = createDirectionalInsets()
 
-	func test_pin_trailing_with_inset_and_gap() {
+		// when
+		view.layout.pin(.leading, guide: .safeArea, insets: insets,  gap: 200)
+
+		// then
+		assertThat(view, isPinnedToSafeAreaAnchor(.leading, gap: insets.leading))
+	}
+	
+	
+
+	@Test func pin_trailing_with_inset_and_gap() {
 		toView.addSubview(view)
 		let insets = createDirectionalInsets()
 
@@ -72,7 +97,7 @@ class LayoutBuilder_Insets_Test: PinLayout_Base_Test {
 		assertThat(view, isPinned(.trailing, gap: insets.trailing))
 	}
 
-	func test_pin_trailingReadable_with_inset_and_gap() {
+	@Test func pin_trailingReadable_with_inset_and_gap() {
 		toView.addSubview(view)
 		let insets = createDirectionalInsets()
 
@@ -83,7 +108,7 @@ class LayoutBuilder_Insets_Test: PinLayout_Base_Test {
 		assertThat(view, isPinnedToReadableAnchor(.trailing, gap: insets.trailing))
 	}
 
-	func test_pin_trailingSafeArea_with_inset_and_gap() {
+	@Test func pin_trailingSafeArea_with_inset_and_gap() {
 		toView.addSubview(view)
 		let insets = createDirectionalInsets()
 
@@ -95,7 +120,7 @@ class LayoutBuilder_Insets_Test: PinLayout_Base_Test {
 	}
 
 
-	func test_pin_topSafeArea_with_inset_and_gap() {
+	@Test func pin_topSafeArea_with_inset_and_gap() {
 		toView.addSubview(view)
 		let insets = createDirectionalInsets()
 
@@ -106,7 +131,7 @@ class LayoutBuilder_Insets_Test: PinLayout_Base_Test {
 		assertThat(view, isPinnedToSafeAreaAnchor(.top, gap: insets.top))
 	}
 
-	func test_pin_bottomSafeArea_with_inset_and_gap() {
+	@Test func pin_bottomSafeArea_with_inset_and_gap() {
 		toView.addSubview(view)
 		let insets = createDirectionalInsets()
 
@@ -117,7 +142,7 @@ class LayoutBuilder_Insets_Test: PinLayout_Base_Test {
 		assertThat(view, isPinnedToSafeAreaAnchor(.bottom, gap: insets.bottom))
 	}
 
-	func test_pin_top_inset_and_gap() {
+	@Test func pin_top_inset_and_gap() {
 		toView.addSubview(view)
 		let insets = createDirectionalInsets()
 
@@ -128,7 +153,7 @@ class LayoutBuilder_Insets_Test: PinLayout_Base_Test {
 		assertThat(view, isPinned(.top, gap: insets.top))
 	}
 
-	func test_pin_bottom_inset_and_gap() {
+	@Test func pin_bottom_inset_and_gap() {
 		toView.addSubview(view)
 		let insets = createDirectionalInsets()
 

@@ -19,19 +19,19 @@ struct PinLayout_Defaults_Test {
 
 
 	@Test func test_cell_height() {
-		#assertThat(pinLayout.value(for:.cellHeight), equalTo(44.0))
+		assertThat(pinLayout.value(for:.cellHeight), equalTo(44.0))
 	}
 
 	@Test func test_cell_margin() {
-		#assertThat(pinLayout.value(for:.cellMargin), equalTo(15.0))
+		assertThat(pinLayout.value(for:.cellMargin), equalTo(15.0))
 	}
 
 	@Test func test_cell_icon_width() {
-		#assertThat(pinLayout.value(for:.cellIconWidth), equalTo(29.0))
+		assertThat(pinLayout.value(for:.cellIconWidth), equalTo(29.0))
 	}
 
 	@Test func test_margin() {
-		#assertThat(pinLayout.value(for:.margin), equalTo(8.0))
+		assertThat(pinLayout.value(for:.margin), equalTo(8.0))
 	}
 
 }

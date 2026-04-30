@@ -32,12 +32,12 @@ struct PinLayout_Center_Test {
 
 		
 		// then
-		#assertThat(constraint, present())
-		#assertThat(constraint?.firstAttribute, equalTo(.centerX))
-		#assertThat(constraint?.firstItem, presentAnd(instanceOf(UIView.self, and:equalTo(view))))
-		#assertThat(constraint?.secondAttribute, presentAnd(equalTo(.centerX)))
-		#assertThat(constraint?.secondItem, presentAnd(instanceOf(UIView.self, and:equalTo(superview))))
-		#assertThat(constraint?.constant, presentAnd(equalTo(0)))
+		assertThat(constraint, present())
+		assertThat(constraint?.firstAttribute, equalTo(.centerX))
+		assertThat(constraint?.firstItem, presentAnd(instanceOf(UIView.self, and:equalTo(view))))
+		assertThat(constraint?.secondAttribute, presentAnd(equalTo(.centerX)))
+		assertThat(constraint?.secondItem, presentAnd(instanceOf(UIView.self, and:equalTo(superview))))
+		assertThat(constraint?.constant, presentAnd(equalTo(0)))
 	}
 
 	
@@ -49,7 +49,7 @@ struct PinLayout_Center_Test {
 
 		
 		// then
-		#assertThat(constraint?.constant, presentAnd(equalTo(10)))
+		assertThat(constraint?.constant, presentAnd(equalTo(10)))
 	}
 	
 	@Test func view_is_horizontal_center_with_other_view() {
@@ -62,12 +62,12 @@ struct PinLayout_Center_Test {
 
 		
 		// then
-		#assertThat(constraint, present())
-		#assertThat(constraint?.firstAttribute, equalTo(.centerX))
-		#assertThat(constraint?.firstItem, presentAnd(instanceOf(UIView.self, and:equalTo(view))))
-		#assertThat(constraint?.secondAttribute, presentAnd(equalTo(.centerX)))
-		#assertThat(constraint?.secondItem, presentAnd(instanceOf(UIView.self, and:equalTo(other))))
-		#assertThat(constraint?.constant, presentAnd(equalTo(0)))
+		assertThat(constraint, present())
+		assertThat(constraint?.firstAttribute, equalTo(.centerX))
+		assertThat(constraint?.firstItem, presentAnd(instanceOf(UIView.self, and:equalTo(view))))
+		assertThat(constraint?.secondAttribute, presentAnd(equalTo(.centerX)))
+		assertThat(constraint?.secondItem, presentAnd(instanceOf(UIView.self, and:equalTo(other))))
+		assertThat(constraint?.constant, presentAnd(equalTo(0)))
 	}
 	
 	
@@ -81,7 +81,7 @@ struct PinLayout_Center_Test {
 
 		
 		// then
-		#assertThat(constraint?.constant, presentAnd(equalTo(10)))
+		assertThat(constraint?.constant, presentAnd(equalTo(10)))
 	}
 	
 	
@@ -95,12 +95,12 @@ struct PinLayout_Center_Test {
 
 		
 		// then
-		#assertThat(constraint, present())
-		#assertThat(constraint?.firstAttribute, equalTo(.centerY))
-		#assertThat(constraint?.firstItem, presentAnd(instanceOf(UIView.self, and:equalTo(view))))
-		#assertThat(constraint?.secondAttribute, presentAnd(equalTo(.centerY)))
-		#assertThat(constraint?.secondItem, presentAnd(instanceOf(UIView.self, and:equalTo(superview))))
-		#assertThat(constraint?.constant, presentAnd(equalTo(0)))
+		assertThat(constraint, present())
+		assertThat(constraint?.firstAttribute, equalTo(.centerY))
+		assertThat(constraint?.firstItem, presentAnd(instanceOf(UIView.self, and:equalTo(view))))
+		assertThat(constraint?.secondAttribute, presentAnd(equalTo(.centerY)))
+		assertThat(constraint?.secondItem, presentAnd(instanceOf(UIView.self, and:equalTo(superview))))
+		assertThat(constraint?.constant, presentAnd(equalTo(0)))
 	}
 
 	
@@ -112,7 +112,7 @@ struct PinLayout_Center_Test {
 
 		
 		// then
-		#assertThat(constraint?.constant, presentAnd(equalTo(10)))
+		assertThat(constraint?.constant, presentAnd(equalTo(10)))
 	}
 	
 	@Test func view_is_vertical_center_with_other_view() {
@@ -125,12 +125,12 @@ struct PinLayout_Center_Test {
 
 		
 		// then
-		#assertThat(constraint, present())
-		#assertThat(constraint?.firstAttribute, equalTo(.centerY))
-		#assertThat(constraint?.firstItem, presentAnd(instanceOf(UIView.self, and:equalTo(view))))
-		#assertThat(constraint?.secondAttribute, presentAnd(equalTo(.centerY)))
-		#assertThat(constraint?.secondItem, presentAnd(instanceOf(UIView.self, and:equalTo(other))))
-		#assertThat(constraint?.constant, presentAnd(equalTo(0)))
+		assertThat(constraint, present())
+		assertThat(constraint?.firstAttribute, equalTo(.centerY))
+		assertThat(constraint?.firstItem, presentAnd(instanceOf(UIView.self, and:equalTo(view))))
+		assertThat(constraint?.secondAttribute, presentAnd(equalTo(.centerY)))
+		assertThat(constraint?.secondItem, presentAnd(instanceOf(UIView.self, and:equalTo(other))))
+		assertThat(constraint?.constant, presentAnd(equalTo(0)))
 	}
 	
 	
@@ -144,7 +144,7 @@ struct PinLayout_Center_Test {
 
 		
 		// then
-		#assertThat(constraint?.constant, presentAnd(equalTo(10)))
+		assertThat(constraint?.constant, presentAnd(equalTo(10)))
 	}
 	
 	

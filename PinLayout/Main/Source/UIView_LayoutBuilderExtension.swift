@@ -11,5 +11,13 @@ public extension UIView {
 		return LayoutBuilder(view: self)
 	}
 
+	
+	func guide(_ guide: Layout.Guide) -> UILayoutGuide? {
+		switch guide {
+		case .safeArea:
+			return self.safeAreaLayoutGuide
+		}
+		return nil
+	}
 }
 
