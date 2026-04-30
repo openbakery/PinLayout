@@ -38,7 +38,7 @@ class LayoutBuilder_Guide_Test: BaseTestCase {
 		view.layout.pin(value.edge, guide: .safeArea)
 
 		// then
-		assertThat(view, isPinnedToSafeAreaAnchor(value.attribute))
+		assertThat(view, isPinned(value.attribute, guide: .safeArea))
 	}
 	
 	@Test(arguments: [
@@ -54,10 +54,9 @@ class LayoutBuilder_Guide_Test: BaseTestCase {
 		view.layout.pin(value.edge, guide: .readable)
 
 		// then
-		assertThat(view, isPinnedToReadableAnchor(value.attribute))
+		assertThat(view, isPinned(value.attribute, guide: .readable))
 	}
 
-	/*
 	@Test(arguments: [
 		LayoutArgument.leading,
 		LayoutArgument.trailing,
@@ -71,7 +70,6 @@ class LayoutBuilder_Guide_Test: BaseTestCase {
 		view.layout.pin(value.edge, guide: .keyboard)
 
 		// then
-		assertThat(view, isPinnedToKeyboardAnchor(value.attribute))
+		assertThat(view, isPinned(value.attribute, guide: .keyboard))
 	}
-	 */
 }

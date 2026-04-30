@@ -79,6 +79,7 @@ open class Layout: NSObject, NSCoding {
 	public enum Guide {
 		case safeArea
 		case readable
+		case keyboard
 	}
 
 

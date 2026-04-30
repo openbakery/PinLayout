@@ -18,6 +18,12 @@ public extension UIView {
 			return self.safeAreaLayoutGuide
 		case .readable:
 			return self.readableContentGuide
+		case .keyboard:
+			if #available(iOS 15, *) {
+				return self.keyboardLayoutGuide
+			} else {
+				return nil
+			}
 		}
 	}
 }

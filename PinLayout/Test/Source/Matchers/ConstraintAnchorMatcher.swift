@@ -40,14 +40,14 @@ private func hasAnchorConstraint(for view: UIView, baseView: UIView?, attribute:
 
 
 public func isPinnedToSafeAreaAnchor<T: UIView>(_ attribute: NSLayoutConstraint.Attribute, gap: CGFloat = 0) -> Matcher<T> {
-	return isPinnedTo(attribute, guide: .safeArea, gap: gap)
+	return isPinned(attribute, guide: .safeArea, gap: gap)
 }
 
 public func isPinnedToReadableAnchor<T: UIView>(_ attribute: NSLayoutConstraint.Attribute, gap: CGFloat = 0) -> Matcher<T> {
-	return isPinnedTo(attribute, guide: .readable, gap: gap)
+	return isPinned(attribute, guide: .readable, gap: gap)
 }
 
-public func isPinnedTo<T: UIView>(_ attribute: NSLayoutConstraint.Attribute, guide: Layout.Guide, gap: CGFloat = 0) -> Matcher<T> {
+public func isPinned<T: UIView>(_ attribute: NSLayoutConstraint.Attribute, guide: Layout.Guide, gap: CGFloat = 0) -> Matcher<T> {
 	return Matcher("view has \(attribute) anchor for safe area") {
 		(value: T) -> MatchResult in
 		return hasAnchorConstraint(for: value, baseView: value.superview, attribute: attribute, guide: guide, constant: attribute.constantValue(-gap))
