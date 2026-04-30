@@ -24,6 +24,11 @@ public extension UIView {
 			} else {
 				return nil
 			}
+		case .content:
+			if let scrollView = self as? UIScrollView {
+				return scrollView.contentLayoutGuide
+			}
+			return nil
 		}
 	}
 }

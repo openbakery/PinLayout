@@ -80,6 +80,7 @@ open class Layout: NSObject, NSCoding {
 		case safeArea
 		case readable
 		case keyboard
+		case content
 	}
 
 

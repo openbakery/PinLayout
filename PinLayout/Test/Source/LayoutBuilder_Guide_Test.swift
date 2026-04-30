@@ -31,7 +31,7 @@ class LayoutBuilder_Guide_Test: BaseTestCase {
 		LayoutArgument.top,
 		LayoutArgument.bottom,
 	])
-	func pin_leading_toSafeArea(value: LayoutArgument) {
+	func pin_to_guide_safeArea(value: LayoutArgument) {
 		toView.addSubview(view)
 
 		// when
@@ -47,7 +47,7 @@ class LayoutBuilder_Guide_Test: BaseTestCase {
 		LayoutArgument.top,
 		LayoutArgument.bottom,
 	])
-	func pin_leading_to_readable(value: LayoutArgument) {
+	func pin_to_guide_readable(value: LayoutArgument) {
 		toView.addSubview(view)
 
 		// when
@@ -63,7 +63,7 @@ class LayoutBuilder_Guide_Test: BaseTestCase {
 		LayoutArgument.top,
 		LayoutArgument.bottom,
 	])
-	func pin_leading_to_keyboard(value: LayoutArgument) {
+	func pin_to_guide_keyboard(value: LayoutArgument) {
 		toView.addSubview(view)
 
 		// when
@@ -71,5 +71,38 @@ class LayoutBuilder_Guide_Test: BaseTestCase {
 
 		// then
 		assertThat(view, isPinned(value.attribute, guide: .keyboard))
+	}
+	
+	@Test(arguments: [
+		LayoutArgument.leading,
+		LayoutArgument.trailing,
+		LayoutArgument.top,
+		LayoutArgument.bottom,
+	])
+	func pin_to_contentGuide_for_UIViews_does_not_create_a_constraint(value: LayoutArgument) {
+		toView.addSubview(view)
+
+		// when
+		view.layout.pin(value.edge, guide: .content)
+
+		// then
+		assertThat(view, not(isPinned(value.attribute, guide: .content)))
+	}
+	
+	@Test(arguments: [
+		LayoutArgument.leading,
+		LayoutArgument.trailing,
+		LayoutArgument.top,
+		LayoutArgument.bottom,
+	])
+	func pin_to_contentGuide_for_IIScrollView(value: LayoutArgument) {
+		let scrollView = UIScrollView()
+		scrollView.addSubview(view)
+
+		// when
+		view.layout.pin(value.edge, guide: .content)
+
+		// then
+		assertThat(view, isPinned(value.attribute, guide: .content))
 	}
 }
