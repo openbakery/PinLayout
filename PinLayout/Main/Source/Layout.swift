@@ -78,6 +78,7 @@ open class Layout: NSObject, NSCoding {
 	
 	public enum Guide {
 		case safeArea
+		case readable
 	}
 
 
@@ -148,6 +149,12 @@ open class Layout: NSObject, NSCoding {
 		switch edge {
 		case .leading:
 			constraint = superview.guide(guide)?.leadingAnchor.constraint(equalTo: view.leadingAnchor)
+		case .trailing:
+			constraint = superview.guide(guide)?.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+		case .top:
+			constraint = superview.guide(guide)?.topAnchor.constraint(equalTo: view.topAnchor)
+		case .bottom:
+			constraint = superview.guide(guide)?.bottomAnchor.constraint(equalTo: view.bottomAnchor)
 		default:
 			break
 		}

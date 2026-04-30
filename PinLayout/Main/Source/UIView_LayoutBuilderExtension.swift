@@ -16,8 +16,9 @@ public extension UIView {
 		switch guide {
 		case .safeArea:
 			return self.safeAreaLayoutGuide
+		case .readable:
+			return self.readableContentGuide
 		}
-		return nil
 	}
 }
 

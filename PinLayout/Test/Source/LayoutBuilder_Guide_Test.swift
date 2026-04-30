@@ -1,0 +1,77 @@
+//
+//  LayoutBuilder_Guide_Test.swift
+//  PinLayout
+//
+//  Created by René Pirringer on 30.04.26.
+//  Copyright © 2026 org.openbakery. All rights reserved.
+//
+
+import Foundation
+import UIKit
+import Testing
+import Hamcrest
+import HamcrestSwiftTesting
+@testable import PinLayout
+
+class LayoutBuilder_Guide_Test: BaseTestCase {
+	
+	struct LayoutArgument {
+		let edge: Layout.Edge
+		let attribute: NSLayoutConstraint.Attribute
+		
+		static let leading = LayoutArgument(edge: .leading, attribute: .leading)
+		static let trailing = LayoutArgument(edge: .trailing, attribute: .trailing)
+		static let top = LayoutArgument(edge: .top, attribute: .top)
+		static let bottom = LayoutArgument(edge: .bottom, attribute: .bottom)
+	}
+	
+	@Test(arguments: [
+		LayoutArgument.leading,
+		LayoutArgument.trailing,
+		LayoutArgument.top,
+		LayoutArgument.bottom,
+	])
+	func pin_leading_toSafeArea(value: LayoutArgument) {
+		toView.addSubview(view)
+
+		// when
+		view.layout.pin(value.edge, guide: .safeArea)
+
+		// then
+		assertThat(view, isPinnedToSafeAreaAnchor(value.attribute))
+	}
+	
+	@Test(arguments: [
+		LayoutArgument.leading,
+		LayoutArgument.trailing,
+		LayoutArgument.top,
+		LayoutArgument.bottom,
+	])
+	func pin_leading_to_readable(value: LayoutArgument) {
+		toView.addSubview(view)
+
+		// when
+		view.layout.pin(value.edge, guide: .readable)
+
+		// then
+		assertThat(view, isPinnedToReadableAnchor(value.attribute))
+	}
+
+	/*
+	@Test(arguments: [
+		LayoutArgument.leading,
+		LayoutArgument.trailing,
+		LayoutArgument.top,
+		LayoutArgument.bottom,
+	])
+	func pin_leading_to_keyboard(value: LayoutArgument) {
+		toView.addSubview(view)
+
+		// when
+		view.layout.pin(value.edge, guide: .keyboard)
+
+		// then
+		assertThat(view, isPinnedToKeyboardAnchor(value.attribute))
+	}
+	 */
+}
