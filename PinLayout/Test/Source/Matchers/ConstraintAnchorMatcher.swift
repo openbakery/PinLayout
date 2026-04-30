@@ -27,20 +27,11 @@ private func hasAnchorConstraint(for view: UIView, baseView: UIView, attribute: 
 	return .mismatch(nil)
 }
 
-private func hasSafeAreaAnchorConstraint(for view: UIView, baseView: UIView?, attribute: NSLayoutConstraint.Attribute, constant: CGFloat = 0) -> MatchResult {
-	if #available(iOS 11, *) {
-		if let baseView = baseView {
-			return hasAnchorConstraint(for: view, baseView: baseView, attribute: attribute, guide: baseView.safeAreaLayoutGuide, constant: constant)
-		}
-	}
-	return .mismatch(nil)
-}
 
-
-private func hasReadableAnchorConstraint(for view: UIView, baseView: UIView?, attribute: NSLayoutConstraint.Attribute, constant: CGFloat = 0) -> MatchResult {
+private func hasAnchorConstraint(for view: UIView, baseView: UIView?, attribute: NSLayoutConstraint.Attribute, guide: Layout.Guide, constant: CGFloat = 0) -> MatchResult {
 	if #available(iOS 9, *) {
-		if let baseView = baseView {
-			return hasAnchorConstraint(for: view, baseView: baseView, attribute: attribute, guide: baseView.readableContentGuide, constant: constant)
+		if let baseView, let layoutGuide = baseView.guide(guide) {
+			return hasAnchorConstraint(for: view, baseView: baseView, attribute: attribute, guide: layoutGuide, constant: constant)
 		}
 	}
 	return .mismatch(nil)
@@ -49,18 +40,16 @@ private func hasReadableAnchorConstraint(for view: UIView, baseView: UIView?, at
 
 
 public func isPinnedToSafeAreaAnchor<T: UIView>(_ attribute: NSLayoutConstraint.Attribute, gap: CGFloat = 0) -> Matcher<T> {
-	return Matcher("view has \(attribute) anchor for safe area") {
-		(value: T) -> MatchResult in
-
-		return hasSafeAreaAnchorConstraint(for: value, baseView: value.superview, attribute: attribute, constant: attribute.constantValue(-gap))
-	}
+	return isPinnedTo(attribute, guide: .safeArea, gap: gap)
 }
 
 public func isPinnedToReadableAnchor<T: UIView>(_ attribute: NSLayoutConstraint.Attribute, gap: CGFloat = 0) -> Matcher<T> {
-	return Matcher("view has \(attribute) anchor for safe area") {
-		(value: T) -> MatchResult in
-		return hasReadableAnchorConstraint(for: value, baseView: value.superview, attribute: attribute, constant: attribute.constantValue(-gap))
-	}
+	return isPinnedTo(attribute, guide: .readable, gap: gap)
 }
 
-
+public func isPinnedTo<T: UIView>(_ attribute: NSLayoutConstraint.Attribute, guide: Layout.Guide, gap: CGFloat = 0) -> Matcher<T> {
+	return Matcher("view has \(attribute) anchor for safe area") {
+		(value: T) -> MatchResult in
+		return hasAnchorConstraint(for: value, baseView: value.superview, attribute: attribute, guide: guide, constant: attribute.constantValue(-gap))
+	}
+}
