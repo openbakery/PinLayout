@@ -699,7 +699,15 @@ class PinLayoutTest: PinLayout_Base_Test {
 		assertThat(constraint.relation, equalTo(.equal))
 	}
 
+	func test_pin_to_left_and_right() {
+		toView.addSubview(view)
+		let constraints = pinLayout.pin(view:view, to: .left, .right)
 
+		assertThat(toView.constraints, hasCount(2))
+		self.checkConstraint(.left)
+		self.checkConstraint(.right)
+		assertThat(constraints, hasCount(2))
+	}
 
 
 }

@@ -75,7 +75,7 @@ open class Layout: NSObject, NSCoding {
 		case leadingReadable
 		case trailingReadable
 	}
-	
+
 	public enum Guide {
 		case safeArea
 		case readable
@@ -141,26 +141,37 @@ open class Layout: NSObject, NSCoding {
 		}
 		return nil
 	}
-	
-	
+
+	@discardableResult
+	open func pin(view: UIView, to edges: Edge..., gap: CGFloat = 0, relatedBy relation: NSLayoutConstraint.Relation = .equal) -> [NSLayoutConstraint] {
+		var constraints = [NSLayoutConstraint]()
+		for edge in edges {
+			if let contraint = pin(view: view, to: edge, gap: gap, relatedBy: relation) {
+				constraints.append(contraint)
+			}
+		}
+		return constraints
+	}
+
+
 	open func pin(view: UIView, to edge: Edge, guide: Guide, gap: CGFloat, relatedBy relation: NSLayoutConstraint.Relation) -> NSLayoutConstraint? {
 		guard let superview = view.superview else { return nil }
-		
+
 		var constraint: NSLayoutConstraint?
-		
+
 		switch edge {
-		case .leading:
-			constraint = superview.guide(guide)?.leadingAnchor.constraint(equalTo: view.leadingAnchor)
-		case .trailing:
-			constraint = superview.guide(guide)?.trailingAnchor.constraint(equalTo: view.trailingAnchor)
-		case .top:
-			constraint = superview.guide(guide)?.topAnchor.constraint(equalTo: view.topAnchor)
-		case .bottom:
-			constraint = superview.guide(guide)?.bottomAnchor.constraint(equalTo: view.bottomAnchor)
-		default:
-			break
+			case .leading:
+				constraint = superview.guide(guide)?.leadingAnchor.constraint(equalTo: view.leadingAnchor)
+			case .trailing:
+				constraint = superview.guide(guide)?.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+			case .top:
+				constraint = superview.guide(guide)?.topAnchor.constraint(equalTo: view.topAnchor)
+			case .bottom:
+				constraint = superview.guide(guide)?.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+			default:
+				break
 		}
-			
+
 		if let constraint = constraint {
 			switch edge {
 				case .trailing, .trailingReadable, .trailingSafeArea, .bottom, .bottomSafeArea:
@@ -316,14 +327,14 @@ open class Layout: NSObject, NSCoding {
 		self.pinToAllEdges(view: view, of: ofView, gap: 0)
 	}
 
-	@objc(pingToAllEdges:gap:)
+	@objc(pinToAllEdges:gap:)
 	open func pinToAllEdges(view: UIView, gap: CGFloat) {
 		if let superview = view.superview {
 			self.pinToAllEdges(view: view, of: superview, gap: gap)
 		}
 	}
 
-	@objc(pingToAllEdges:ofView:gap:)
+	@objc(pinToAllEdges:ofView:gap:)
 	open func pinToAllEdges(view: UIView, of ofView: UIView, gap: CGFloat) {
 		self.pin(view: view, to: .top, of: ofView, gap: gap)
 		self.pin(view: view, to: .bottom, of: ofView, gap: gap)
