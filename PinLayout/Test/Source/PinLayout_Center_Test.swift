@@ -15,9 +15,6 @@ import PinLayout
 
 @MainActor
 struct PinLayout_Center_Test {
-	init() async throws {
-		HamcrestSwiftTesting.enable()
-	}
 	
 	let view = UIView()
 	let pinLayout = Layout()

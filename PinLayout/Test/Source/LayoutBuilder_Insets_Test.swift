@@ -17,7 +17,6 @@ class LayoutBuilder_Insets_Test {
 	init() async throws {
 		view = UIView()
 		toView = UIView()
-		HamcrestSwiftTesting.enable()
 	}
 	
 	let view : UIView

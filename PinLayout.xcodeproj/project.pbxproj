@@ -716,7 +716,7 @@
 			repositoryURL = "https://github.com/nschum/SwiftHamcrest";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 2.3.0;
+				minimumVersion = 2.4.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */

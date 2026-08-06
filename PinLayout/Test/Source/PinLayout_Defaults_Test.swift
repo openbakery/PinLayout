@@ -11,9 +11,6 @@ import HamcrestSwiftTesting
 import PinLayout
 
 struct PinLayout_Defaults_Test {
-	init() async throws {
-		HamcrestSwiftTesting.enable()
-	}
 	
 	let pinLayout = Layout()
 

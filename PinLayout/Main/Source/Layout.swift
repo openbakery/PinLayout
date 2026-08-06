@@ -159,22 +159,26 @@ open class Layout: NSObject, NSCoding {
 		return constraints
 	}
 
-
-	open func pin(view: UIView, to edge: Edge, guide: Guide, gap: CGFloat, relatedBy relation: NSLayoutConstraint.Relation) -> NSLayoutConstraint? {
-		guard let superview = view.superview else { return nil }
+	@discardableResult
+	open func pin(
+		view: UIView,
+		to edge: Edge,
+		guide: UILayoutGuide,
+		gap: CGFloat = 0,
+		relatedBy relation: NSLayoutConstraint.Relation = .equal
+	) -> NSLayoutConstraint? {
 
 		var constraint: NSLayoutConstraint?
 
-		// let contentGuide = (view.superview ?? view).layoutGuide(for: .margins(cornerAdaptation: .horizontal))
 		switch edge {
 			case .leading:
-				constraint = superview.guide(guide)?.leadingAnchor.constraint(equalTo: view.leadingAnchor)
+				constraint = guide.leadingAnchor.constraint(equalTo: view.leadingAnchor)
 			case .trailing:
-				constraint = superview.guide(guide)?.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+				constraint = guide.trailingAnchor.constraint(equalTo: view.trailingAnchor)
 			case .top:
-				constraint = superview.guide(guide)?.topAnchor.constraint(equalTo: view.topAnchor)
+				constraint = guide.topAnchor.constraint(equalTo: view.topAnchor)
 			case .bottom:
-				constraint = superview.guide(guide)?.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+				constraint = guide.bottomAnchor.constraint(equalTo: view.bottomAnchor)
 			default:
 				break
 		}
@@ -192,6 +196,12 @@ open class Layout: NSObject, NSCoding {
 		}
 
 		return constraint
+	}
+
+	open func pin(view: UIView, to edge: Edge, guide: Guide, gap: CGFloat, relatedBy relation: NSLayoutConstraint.Relation) -> NSLayoutConstraint? {
+		guard let superview = view.superview else { return nil }
+		guard let layoutGuide = superview.guide(guide) else { return nil }
+		return self.pin(view: view, to: edge, guide: layoutGuide, gap: gap, relatedBy: relation)
 	}
 
 
