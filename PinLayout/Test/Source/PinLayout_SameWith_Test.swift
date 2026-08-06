@@ -15,7 +15,7 @@ class PinLayout_SameWith_Test: PinLayout_Base_Test {
 		toView.addSubview(view)
 
 		// when
-		pinLayout.setEqualWidthAndHeight(view:view)
+		pinLayout.setEqualWidthAndHeight(view: view)
 
 		// then
 		assertThat(view.constraints, hasCount(1))
@@ -45,7 +45,7 @@ class PinLayout_SameWith_Test: PinLayout_Base_Test {
 
 		// when
 		let multiplier = CGFloat(0.6)
-		pinLayout.setEqualWidth(view:view, andView: otherView, multiplier: multiplier)
+		pinLayout.setEqualWidth(view: view, andView: otherView, multiplier: multiplier)
 
 		// then
 		assertThat(superview.constraints, hasCount(1))
@@ -76,7 +76,7 @@ class PinLayout_SameWith_Test: PinLayout_Base_Test {
 
 		// when
 		let multiplier = CGFloat(0.7)
-		pinLayout.setEqualHeight(view:view, andView: otherView, multiplier: multiplier)
+		pinLayout.setEqualHeight(view: view, andView: otherView, multiplier: multiplier)
 
 		// then
 		assertThat(superview.constraints, hasCount(1))

@@ -49,8 +49,8 @@ public class LayoutBuilder {
 		}
 		return self
 	}
-	
-	
+
+
 	@discardableResult
 	public func pin(
 		_ edges: Layout.Edge..., guide: Layout.Guide, insets: NSDirectionalEdgeInsets = .zero, gap: CGFloat = 0, priority: UILayoutPriority = .required,
@@ -63,7 +63,7 @@ public class LayoutBuilder {
 			}
 		}
 		return self
-		
+
 	}
 
 	private func gap(edge: Layout.Edge, insets: NSDirectionalEdgeInsets, default defaultValue: CGFloat) -> CGFloat {

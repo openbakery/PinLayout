@@ -50,7 +50,7 @@ class PinLayout_Safe_Center: PinLayout_Base_Test {
 		superview.addSubview(view)
 		superview.addSubview(other)
 
-		let constraint = pinLayout.centerX(view: view, with:other)
+		let constraint = pinLayout.centerX(view: view, with: other)
 
 		// then
 		assertThat(constraint, present())
@@ -100,7 +100,7 @@ class PinLayout_Safe_Center: PinLayout_Base_Test {
 		superview.addSubview(view)
 		superview.addSubview(other)
 
-		let constraint = pinLayout.centerY(view: view, with:other)
+		let constraint = pinLayout.centerY(view: view, with: other)
 
 		// then
 		assertThat(constraint, present())

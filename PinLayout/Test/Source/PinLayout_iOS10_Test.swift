@@ -26,7 +26,7 @@ class PinLayout_For_isOS10: Layout {
 }
 
 
-class PinLayout_iOS10_Test :PinLayout_Base_Test {
+class PinLayout_iOS10_Test: PinLayout_Base_Test {
 
 
 	override func setUp() {
@@ -36,11 +36,10 @@ class PinLayout_iOS10_Test :PinLayout_Base_Test {
 
 
 
-
 	func test_iOS10_safeGuide_Top_pins_using_topLayoutGuide() {
 
 		let viewController = MyViewController()
-		show(viewController:viewController)
+		show(viewController: viewController)
 
 		viewController.view.addSubview(view)
 
@@ -65,11 +64,11 @@ class PinLayout_iOS10_Test :PinLayout_Base_Test {
 
 	func testPinViewToGuide() {
 		let viewController = MyViewController()
-		show(viewController:viewController)
+		show(viewController: viewController)
 
 		viewController.view.addSubview(view)
 
-		pinLayout.pin(view:view, to: .top, withGuide: (viewController as TopLayoutGuide).topLayoutGuide)
+		pinLayout.pin(view: view, to: .top, withGuide: (viewController as TopLayoutGuide).topLayoutGuide)
 
 		let constraint = self.constraintOnView(viewController.view, firstAttribute: .top, secondAttribute: .bottom)
 		assertThat(constraint, present())
@@ -91,4 +90,3 @@ class PinLayout_iOS10_Test :PinLayout_Base_Test {
 
 
 }
-
