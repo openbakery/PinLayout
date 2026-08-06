@@ -1,53 +1,108 @@
-#!/bin/sh
-#
+#!/usr/bin/swift sh
+import Bake
+import BakeXcode  // https://codeberg.org/openbakery/bake.git == main
+import Foundation
+
+let xcodeVersion = 26
+let scheme = "PinLayout"
+let deviceName = "iPhone 17 Pro"
+let onlyTesting = [String]()
 
 
-PROJECT=PinLayout.xcodeproj
-SCHEME=PinLayout
+if CommandLine.arguments.count > 1 {
+	if CommandLine.arguments[1] == "--result" {
+		await printResult()
+		exit(0)
+	}
+}
 
-OPTIONS="-showBuildTimingSummary -derivedDataPath ./build -disable-concurrent-destination-testing" #-quiet"
+@discardableResult
+func handle(error: Error) -> Int32 {
+	if let commandError = error as? Command.CommandError {
+		switch commandError {
+			case .failedExecution(let terminationStatus, _):
+				print("error: \(commandError)")
+				return terminationStatus
+		}
+	}
+	return 0
+}
 
-SIMULATOR_ID=60BF3956-C216-412B-9275-43986809BA53
+func printResult(json: Bool = false) async {
+	do {
+		let commandRunner = CommandRunner()
+		var arguments = ["build/Logs/Test"]
+		if json {
+			arguments.append("--json")
+		}
+		try await commandRunner.run("./scripts/xcresult_parser.swift", arguments: arguments)
+	} catch {
+		handle(error: error)
+	}
+}
+
+func runCarthage(xcode: Xcode) async {
+	do {
+
+		let commandRunner = xcode.commandRunner
+		await try commandRunner.run(
+			"/opt/homebrew/bin/carthage", arguments: ["bootstrap", "--platform", "iOS", "--use-xcframeworks", "--cache-builds"])
+
+	} catch {
+		let code = handle(error: error)
+		if code > 0 {
+			exit(code)
+		}
+	}
+}
+
+func delete(url: URL) async {
+	let fileManager = FileManager.default
+	do {
+		try fileManager.removeItem(at: url)
+		print("Directory deleted successfully")
+	} catch {
+		print("Error deleting directory: \(error)")
+	}
+}
 
 
+func clean() async {
+	await delete(url: URL(fileURLWithPath: "build"))
+}
 
-#############################################################
-CLASS_TO_TEST=""
-TEST_TARGET="PinLayout-Tests"
-#############################################################
-echo "Target: $TEST_TARGET"
-echo "Scheme: $SCHEME"
+guard let xcode = try await Xcode(version: xcodeVersion) else {
+	print("No Xcode \(xcodeVersion) found")
+	exit(1)
+}
 
+print("Using: \(xcode)")
+await delete(url: URL(fileURLWithPath: "build/Logs/Test"))
 
-#open -a simulator
-xcrun simctl boot $SIMULATOR_ID
+let simulatorControl = SimulatorControl(commandRunner: xcode.commandRunner)
 
+guard var simulator = try await simulatorControl.simulator(name: deviceName, fuzzy: false) else {
+	print("simulator not found for: \(deviceName)")
+	exit(1)
+}
 
-xcodebuild build-for-testing -scheme $SCHEME -configuration Debug \
--UseNewBuildSystem=YES \
--derivedDataPath ./build -disable-concurrent-destination-testing \
--destination platform="iOS Simulator,id=$SIMULATOR_ID" \
-	-parallel-testing-enabled=NO \
-	-enableAddressSanitizer NO -enableThreadSanitizer NO -enableUndefinedBehaviorSanitizer NO \
-  -enableCodeCoverage NO COMPILER_INDEX_STORE_ENABLE=NO \
-	ARCH=arm64 \
-	CODE_SIGN_IDENTITY= \
-	CODE_SIGNING_REQUIRED=NO \
-	CODE_SIGNING_ALLOWED=NO \
+var exitCode: Int32 = 0
+do {
+	let xcodebuild = Xcodebuild(
+		command: .test,
+		scheme: scheme,
+		destination: simulator.destination,
+		onlyTest: onlyTesting,
+		retryTestsOnFailure: true,
+		xcode: xcode)
 
-if [ $? != 0 ]; then
-  echo "Build failed"
-  exit 1
-fi
+	print("Build output goes to: \(xcodebuild.path)")
 
+	try await xcodebuild.execute()
 
-xcodebuild test-without-building -scheme $SCHEME -configuration Debug \
--UseNewBuildSystem=YES \
--derivedDataPath ./build -disable-concurrent-destination-testing \
--destination platform="iOS Simulator,id=$SIMULATOR_ID" \
-	-parallel-testing-enabled=NO \
-	-enableAddressSanitizer NO -enableThreadSanitizer NO -enableUndefinedBehaviorSanitizer NO \
-  -enableCodeCoverage NO COMPILER_INDEX_STORE_ENABLE=NO \
-	ARCH=arm64 | xcpretty
+} catch {
+	exitCode = handle(error: error)
+}
 
-
+await printResult()
+exit(exitCode)
