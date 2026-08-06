@@ -53,6 +53,21 @@ public class LayoutBuilder {
 
 	@discardableResult
 	public func pin(
+		_ edges: Layout.Edge..., guide: UILayoutGuide, insets: NSDirectionalEdgeInsets = .zero, gap: CGFloat = 0, priority: UILayoutPriority = .required,
+		relatedBy: NSLayoutConstraint.Relation = .equal
+	) -> LayoutBuilder {
+		for edge in edges {
+			let gapValue = insets.value(edge: edge) ?? gap
+			if let constraint = layout.pin(view: view, to: edge, guide: guide, gap: gapValue, relatedBy: relatedBy) {
+				constraint.priority = priority
+			}
+		}
+		return self
+	}
+	
+	
+	@discardableResult
+	public func pin(
 		_ edges: Layout.Edge..., guide: Layout.Guide, insets: NSDirectionalEdgeInsets = .zero, gap: CGFloat = 0, priority: UILayoutPriority = .required,
 		relatedBy: NSLayoutConstraint.Relation = .equal
 	) -> LayoutBuilder {

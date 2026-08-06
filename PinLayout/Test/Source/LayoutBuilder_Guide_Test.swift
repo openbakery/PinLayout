@@ -105,4 +105,22 @@ class LayoutBuilder_Guide_Test: BaseTestCase {
 		// then
 		assertThat(view, isPinned(value.attribute, guide: .content))
 	}
+	
+	
+	@Test(arguments: [
+		LayoutArgument.leading,
+		LayoutArgument.trailing,
+		LayoutArgument.top,
+		LayoutArgument.bottom,
+	])
+	func pin_to_contentGuide(value: LayoutArgument) throws {
+		toView.addSubview(view)
+
+		// when
+		let contentGuide = try #require(toView.guide(.readable))
+		view.layout.pin(value.edge, guide: contentGuide)
+
+		// then
+		assertThat(view, isPinned(value.attribute, guide: .readable))
+	}
 }
