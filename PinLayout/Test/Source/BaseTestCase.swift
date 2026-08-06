@@ -15,27 +15,30 @@ import HamcrestSwiftTesting
 
 @MainActor
 open class BaseTestCase {
-	
+
 	init() async throws {
-		HamcrestSwiftTesting.enable()
 		view = UIView()
 		toView = UIView()
 		pinLayout = Layout()
 	}
-	
-	let view : UIView
-	let toView : UIView
+
+	let view: UIView
+	let toView: UIView
 	let pinLayout: Layout
 
 	@discardableResult func checkConstraint(_ attribute: NSLayoutConstraint.Attribute) -> NSLayoutConstraint? {
 		return self.checkConstraintWithFirstAttribute(attribute, andSecond: attribute)
 	}
 
-	@discardableResult func checkConstraintWithFirstAttribute(_ firstAttribute: NSLayoutConstraint.Attribute, andSecond secondAttribute: NSLayoutConstraint.Attribute) -> NSLayoutConstraint? {
+	@discardableResult func checkConstraintWithFirstAttribute(
+		_ firstAttribute: NSLayoutConstraint.Attribute, andSecond secondAttribute: NSLayoutConstraint.Attribute
+	) -> NSLayoutConstraint? {
 		return self.checkConstraintWithFirstAttribute(firstAttribute, andSecond: secondAttribute, onView: toView)
 	}
 
-	func checkConstraintWithFirstAttribute(_ firstAttribute: NSLayoutConstraint.Attribute, andSecond secondAttribute: NSLayoutConstraint.Attribute, onView: UIView) -> NSLayoutConstraint? {
+	func checkConstraintWithFirstAttribute(
+		_ firstAttribute: NSLayoutConstraint.Attribute, andSecond secondAttribute: NSLayoutConstraint.Attribute, onView: UIView
+	) -> NSLayoutConstraint? {
 
 		let constraint = self.constraintOnView(onView, firstAttribute: firstAttribute, secondAttribute: secondAttribute)
 		assertThat(constraint, present())
@@ -97,8 +100,7 @@ open class BaseTestCase {
 
 	func constraintOnView(_ view: UIView, firstAttribute: NSLayoutConstraint.Attribute, secondAttribute: NSLayoutConstraint.Attribute) -> NSLayoutConstraint? {
 		for constraint in view.constraints {
-			if (constraint.firstAttribute == firstAttribute &&
-					constraint.secondAttribute == secondAttribute) {
+			if (constraint.firstAttribute == firstAttribute && constraint.secondAttribute == secondAttribute) {
 				return constraint;
 			}
 		}
@@ -110,8 +112,7 @@ open class BaseTestCase {
 		let secondAttribute = pinLayout.inverseAttribute(attribute)
 
 		for constraint in view.constraints {
-			if (constraint.firstAttribute == attribute &&
-					constraint.secondAttribute == secondAttribute) {
+			if (constraint.firstAttribute == attribute && constraint.secondAttribute == secondAttribute) {
 				return constraint
 			}
 		}
@@ -139,13 +140,13 @@ open class BaseTestCase {
 	}
 
 
-	func constraintAtIndex(_ index: Int, ofView:UIView, file: StaticString = #filePath, line: UInt = #line) -> NSLayoutConstraint {
+	func constraintAtIndex(_ index: Int, ofView: UIView, file: StaticString = #filePath, line: UInt = #line) -> NSLayoutConstraint {
 		if (ofView.constraints.count > index) {
 			return ofView.constraints[index]
 		}
 		let location = Testing.SourceLocation(fileID: "", filePath: "\(file)", line: Int(line), column: Int(0))
 		Issue.record("there is no constraint a index: \(index)", sourceLocation: location)
 		// return something to make the compiler happy
-		return NSLayoutConstraint(item: ofView, attribute:.top, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 0.0, constant: 0.0)
+		return NSLayoutConstraint(item: ofView, attribute: .top, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 0.0, constant: 0.0)
 	}
 }

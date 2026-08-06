@@ -81,21 +81,27 @@ open class Layout: NSObject, NSCoding {
 		case readable
 		case keyboard
 		case content
+		case margins(AdaptivityAxis)
+	}
+
+	public enum AdaptivityAxis {
+		case horizontal
+		case vertical
 	}
 
 
 	func findSuperViewFor(_ first: UIView, _ second: UIView) -> UIView? {
-		if (first == second) {
-			return first;
+		if first == second {
+			return first
 		}
 
 		var superView: UIView? = first.superview
 
 		while let firstSuperView = superView {
-			if (firstSuperView == second) {
-				return firstSuperView;
+			if firstSuperView == second {
+				return firstSuperView
 			}
-			superView = firstSuperView.superview;
+			superView = firstSuperView.superview
 		}
 
 		if let secondSuperview = second.superview {
@@ -159,6 +165,7 @@ open class Layout: NSObject, NSCoding {
 
 		var constraint: NSLayoutConstraint?
 
+		// let contentGuide = (view.superview ?? view).layoutGuide(for: .margins(cornerAdaptation: .horizontal))
 		switch edge {
 			case .leading:
 				constraint = superview.guide(guide)?.leadingAnchor.constraint(equalTo: view.leadingAnchor)
